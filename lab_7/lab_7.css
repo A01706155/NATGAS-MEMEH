@@ -1,6 +1,6 @@
 header{
     padding:1rem 1rem;
-    background-color: rgba(127, 255, 212, 0.178);
+    background-color: #7fffd42d;
 }
 
 body {
@@ -21,7 +21,7 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(48, 13, 2, 0.37);
+    background-color: #89eb4815;
     width:100%;
 }
 
@@ -45,10 +45,14 @@ div p.centro{
     text-align: center;
 }
 
-h1, strong {
-    color: rgb(255, 152, 17);
+h1 {
+    color: #ff9811;
     margin-top: 1rem;
     padding-top: 1rem;
+}
+
+strong {
+    color:greenyellow;
 }
 
 header h1{
