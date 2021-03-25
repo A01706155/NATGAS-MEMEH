@@ -2163,10 +2163,11 @@ html {
  */
 body {
   margin: 0;
-  background-image: url("../../images/nat-background.png");
-  background-position: center 6%;
+  background-image: url(../../images/nat-background.png);
+  background-position: 50% -194px;
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: auto;
+  background-attachment: fixed;
 }
 
 /**
