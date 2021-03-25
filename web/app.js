@@ -1,3 +1,7 @@
+// Mensaje del servidor iniciado
+console.log('¡Servidor iniciado!');
+
+// Importación de frameworks
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -5,6 +9,7 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
+// Sirve para establecer las carpetas de view engine y views
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
@@ -31,8 +36,14 @@ app.use((request, response, next) => {
     next(); //Le permite a la petición avanzar hacia el siguiente middleware
 });
 
-app.use('/users', rutasUsers);
+app.get('/', (request, response, next) => {
+    console.log('Bienvenido');
+    response.render('login', {
+        titulo: 'Login',
+    }); 
+});
 
+app.use('/users', rutasUsers);
 
 app.get('/inicio', (request, response, next) => {
     response.render('inicio', { 
