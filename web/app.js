@@ -19,8 +19,10 @@ const rutasUsers = require('./routes/users');
 //Middleware
 //Para acceder fácilmente a los datos de las formas
 app.use(bodyParser.urlencoded({extended: false}));
+
 //Para acceder a los valores de las cookies
 app.use(cookieParser());
+
 //Para trabajar con sesiones
 app.use(session({
     secret: 'grgrfgrgeddgaagsres', 
