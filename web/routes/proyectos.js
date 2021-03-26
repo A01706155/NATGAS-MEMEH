@@ -4,11 +4,11 @@ const path = require('path');
 const proyectosController = require('../controllers/proyectos_controller');
 
 
-router.get('/proyectos/registrar-proyecto', funcionesController.getRegistrarProyecto);
+router.get('/registrar-proyecto', proyectosController.getRegistrarProyecto);
 
-router.post('/proyectos/registrar-proyecto', proyectoController.postRegistrarProyecto);
+router.post('/registrar-proyecto', proyectosController.postRegistrarProyecto);
 
-router.get('/proyectos', proyectoController.getProyecto);
+router.get('/', proyectosController.getProyecto);
 
 
 

@@ -10,5 +10,13 @@ exports.postRegistrarProyecto = (request, response, next) => {
     request.session.isLoggedIn = true;
     request.session.usuario = request.body.usuario;
 
-    response.redirect('/');
+    response.redirect('/proyectos');
+};
+
+exports.getProyecto = (request, response, next) => {
+    response.render('proyectos', {
+        isLoggedIn: request.session.isLoggedIn === true ? true : false,
+        titulo: 'Proyectos',
+        error: request.session.error
+    });
 };

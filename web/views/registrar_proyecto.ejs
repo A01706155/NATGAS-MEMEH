@@ -6,12 +6,22 @@
     <% if (error) { %>
        <span style="color:red"><%= error %></span>
     <% } %>
-    <form action="/users/login" method="POST">
+    <form action="/proyectos/registrar-proyecto" method="POST">
         <br>
+        Nombre del proyecto<br>
         <input type="text" name="usuario"><br><br>
-        Contraseña<br>
-        <input type="password" name="password"><br>
-        <input type="submit" value="Ingresar">
+
+        Fecha de inicio<br>
+        <input type="text" name="fecha_inicio"><br><br>
+
+        Fecha de finalización<br>
+        <input type="text" name="fecha_fin"><br><br>
+
+        Descripción
+        <input type="text" name="descripcion"><br><br>
+        
+
+        <input type="submit" value="Registrar">
     </form>
 </main>
 

@@ -10,13 +10,13 @@ exports.postLogin = (request, response, next) => {
     request.session.isLoggedIn = true;
     request.session.usuario = request.body.usuario;
 
-    response.redirect('/');
+    response.redirect('/proyectos');
 };
 
 exports.getLogout = (request, response, next) => {
     request.session.destroy((err) => {
         console.log(err);
        console.log('Logout');
-        response.redirect('/');
+        response.redirect('/inicio');
     }); 
 };

@@ -14,6 +14,7 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 const rutasUsers = require('./routes/users');
+const rutasProyectos = require('./routes/proyectos');
 //const rutasPersonajes = require('./routes/personajes');
 
 //Middleware
@@ -38,6 +39,7 @@ app.use((request, response, next) => {
     next(); //Le permite a la petición avanzar hacia el siguiente middleware
 });
 
+// Página de login
 app.get('/', (request, response, next) => {
     console.log('Bienvenido');
     response.render('login', {
@@ -45,8 +47,19 @@ app.get('/', (request, response, next) => {
     }); 
 });
 
-app.use('/users', rutasUsers);
+// Página de proyectos
+//app.get('/proyectos', (request, response, next) => {
+//    console.log('Bienvenido');
+//    response.render('proyectos', {
+//        titulo: 'Proyectos',
+//    }); 
+//});
 
+// Página de usuarios
+app.use('/users', rutasUsers);
+app.use('/proyectos', rutasProyectos);
+
+// Página de inicio
 app.get('/inicio', (request, response, next) => {
     response.render('inicio', { 
     titulo: 'Inicio',
@@ -54,6 +67,7 @@ app.get('/inicio', (request, response, next) => {
     });
 });
 
+// Página de 404
 app.use((request, response, next) => {
     response.statusCode = 404;
     response.send('Page not found :('); //Manda la respuesta
