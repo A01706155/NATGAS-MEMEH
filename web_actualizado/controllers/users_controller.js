@@ -7,7 +7,7 @@ exports.getLogin = (request, response, next) => {
     response.render('login', {
         titulo: 'Inicia sesión',
         //csrfToken: request.csrfToken(),
-        error: request.session.error,
+        error: request.session.error === true ? true : false,
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };
