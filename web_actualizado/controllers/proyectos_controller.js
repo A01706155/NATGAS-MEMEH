@@ -18,6 +18,12 @@ exports.postRegistrarProyecto = (request, response, next) => {
 
 }
 
+exports.getContenido = (request, response, next) => {
+    response.render('contenido', {
+        titulo: 'Registrar proyecto',
+    });
+};
+
 /*exports.getProyecto = (request, response, next) => {
     const proyectos = Proyecto.fetchAll();
     response.render('proyectos', { 

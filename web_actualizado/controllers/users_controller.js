@@ -3,11 +3,13 @@ const bcrypt = require('bcryptjs');
 const session = require('express-session');
 
 exports.getLogin = (request, response, next) => {
+    console.log("j");
 
     response.render('login', {
         titulo: 'Inicia sesión',
         //csrfToken: request.csrfToken(),
-        error: request.session.error === true ? true : false,
+        //error: request.session.error === true ? true : false,
+        error: true,
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };
