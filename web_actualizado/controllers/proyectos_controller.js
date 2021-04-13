@@ -59,7 +59,7 @@ exports.get = (request, response, next) => {
             response.render('proyectos', { 
                 lista_proyecto: rows, 
                 titulo: 'Proyectos',
-                csrfToken: request.csrfToken(),
+                //csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
