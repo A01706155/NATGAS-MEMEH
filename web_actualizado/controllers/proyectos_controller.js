@@ -18,6 +18,20 @@ exports.postRegistrarProyecto = (request, response, next) => {
 
 }
 
+exports.postBuscarProyecto = (request, response, next) => {
+    console.log(request.body);
+    console.log(request.body.valor_busqueda);
+    const name = request.body.valor_busqueda;
+    Personaje.fetchNombreProyecto(name)
+        .then(([rows, fieldData]) => {
+            console.log(rows);
+            response.status(200).json(rows);
+        })
+        .catch(err => {
+            console.log(err);
+        });  
+};
+
 exports.getContenido = (request, response, next) => {
     response.render('contenido', {
         titulo: 'Registrar proyecto',
@@ -45,6 +59,7 @@ exports.get = (request, response, next) => {
             response.render('proyectos', { 
                 lista_proyecto: rows, 
                 titulo: 'Proyectos',
+                csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })

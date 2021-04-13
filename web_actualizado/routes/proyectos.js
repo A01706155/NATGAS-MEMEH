@@ -10,6 +10,8 @@ router.post('/registrar-proyecto', proyectosController.postRegistrarProyecto);
 
 router.get('/contenido', proyectosController.getContenido);
 
+router.post('/buscar', proyectosController.postBuscarProyecto);
+
 router.get('/', proyectosController.get);
 //router.get('/', proyectosController.getProyecto);
 
