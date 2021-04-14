@@ -11,33 +11,24 @@
     <div class="container">
         <div class="row">
              
-            <div class="mycol md-12 sm-12 lg-9">
+            <div class="col md-12 sm-12 lg-9">
                 <table class="responsive-table">
-                    <tr>
-                    <td>Nombre</td>
-                    <td>Descripcion</td>
-                    <td>Fecha Inicial</td>
-                    <td>Fecha Final </td>
-                    </tr>
-                
-                    <tr> 
-                    <% for (let elemento of Proyecto) { %>
-                        <td><%= elemento.nombre %> </td>
+                <tr>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+                <td>Fecha inicial</td>
+                <td>Fecha Final</td>
+                </tr>
+                <tr> 
+                    <% for (let elemento of proyecto) { %>
+                        <td><%= elemento.nombreProyecto %> </td>
                         <td><%= elemento.descripcion %></td>
-                        <td><%= elemento.fechaInicial %> </td>
-                        <td><%= elemento.fechaPlaneada %></td>
-                        <td><%= elemento.fechaLimite %></td>
-    
-                    <% } %>           
-                              
-                   </tr>
-                            
-                              
+                        <td><%= elemento.fecha_inicio %> </td>
+                        <td><%= elemento.fecha_fin %></td>
+                    <% } %>          
+                   </tr>      
                 </table>    
-            <br>
-                    <% for (let elemento of Proyecto){ %>
-                    <a href="/proyectos/<%= elemento.IdProyecto %>" class="btn btn-primary">Editar</a>
-                    <a href="/proyectos/casosdeuso/<%= elemento.IdProyecto %>" class="btn btn-primary">Casos de Uso</a>
+            </div>
                     <a href="#" class="btn btn-primary">WBS</a>
                     <a href="/proyectos/inicio" class="btn btn-primary">Volver al inicio</a>
                    <% } %> 
