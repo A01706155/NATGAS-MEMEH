@@ -7,20 +7,18 @@
     <form action="/proyectos/registrar-proyecto" method="POST">
         <br>
         Nombre del proyecto<br>
-        <input type="text" name="nombreProyecto"><br><br>
+        <input type="text" name="nombreProyecto"><br>
+        <br>
+        Descripcion<br>
+        <input type="text" name="descripcion"><br>
+        <br>
+        Fecha de inicio<br>
+        <input type="date" name="fecha_inicio" class="datepicker"><br><br>
+
+        Fecha de finalización<br>
+        <input type="date" name="fecha_fin" class="datepicker"><br><br>
         
         <input type="submit" value="Registrar">
     </form>
 </main>
- <!--<%- include('partials/footer.ejs') %>
-Fecha de inicio<br>
-<input type="text" name="fecha_inicio" class="datepicker"><br><br>
-
-Fecha de finalización<br>
-<input type="text" name="fecha_fin" class="datepicker"><br><br>
-
-Descripción
-<input type="text" name="descripcion"><br><br>
-
-
-<input type="submit" value="Registrar">  -->
+<%- include('partials/footer.ejs')  %>

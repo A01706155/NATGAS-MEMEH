@@ -1,8 +1,51 @@
 <%- include('partials/head.ejs') %>
-<%- include('partials/navbar.ejs') %>
 
-<main>
-    <h1><%= titulo %></h1>
-</main>
+
+  
+<body>  
+    <div class="row">
+        <%- include('partials/navbar.ejs') %>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+             
+            <div class="mycol md-12 sm-12 lg-9">
+                <table class="responsive-table">
+                    <tr>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                    <td>Fecha Inicial</td>
+                    <td>Fecha Final </td>
+                    </tr>
+                
+                    <tr> 
+                    <% for (let elemento of Proyecto) { %>
+                        <td><%= elemento.nombre %> </td>
+                        <td><%= elemento.descripcion %></td>
+                        <td><%= elemento.fechaInicial %> </td>
+                        <td><%= elemento.fechaPlaneada %></td>
+                        <td><%= elemento.fechaLimite %></td>
+    
+                    <% } %>           
+                              
+                   </tr>
+                            
+                              
+                </table>    
+            <br>
+                    <% for (let elemento of Proyecto){ %>
+                    <a href="/proyectos/<%= elemento.IdProyecto %>" class="btn btn-primary">Editar</a>
+                    <a href="/proyectos/casosdeuso/<%= elemento.IdProyecto %>" class="btn btn-primary">Casos de Uso</a>
+                    <a href="#" class="btn btn-primary">WBS</a>
+                    <a href="/proyectos/inicio" class="btn btn-primary">Volver al inicio</a>
+                   <% } %> 
+                    <br><br>                
+            </div>
+        </div>
+    </div>    
+</body>
+
 
 <%- include('partials/footer.ejs') %>

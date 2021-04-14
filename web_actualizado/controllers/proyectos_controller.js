@@ -9,7 +9,7 @@ exports.getRegistrarProyecto = (request, response, next) => {
 
 exports.postRegistrarProyecto = (request, response, next) => {
     console.log(request.body.nombreProyecto);
-    const nuevo_proyecto = new Proyecto(request.body.nombreProyecto);
+    const nuevo_proyecto = new Proyecto(request.body.nombreProyecto,request.body.descripcion,request.body.fecha_inicio,request.body.fecha_fin);
     nuevo_proyecto.save()
         .then(() => {
             response.setHeader('Set-Cookie', ['ultimo_proyecto='+nuevo_proyecto.nombreProyecto+'; HttpOnly']);
