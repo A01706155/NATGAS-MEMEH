@@ -5,11 +5,11 @@ const session = require('express-session');
 exports.getLogin = (request, response, next) => {
     console.log("j");
 
-    response.render('login', {
+    response.render('login2', {
         titulo: 'Inicia sesión',
         //csrfToken: request.csrfToken(),
         //error: request.session.error === true ? true : false,
-        error: true,
+        error: request.session.error,
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };

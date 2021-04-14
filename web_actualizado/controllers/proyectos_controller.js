@@ -33,8 +33,9 @@ exports.postBuscarProyecto = (request, response, next) => {
 };
 
 exports.getContenido = (request, response, next) => {
+    
     response.render('contenido', {
-        titulo: 'Registrar proyecto',
+        titulo: 'Trabajo del proyecto',
     });
 };
 

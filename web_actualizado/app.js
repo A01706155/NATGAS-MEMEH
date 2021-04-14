@@ -48,22 +48,14 @@ app.use('/users', rutasUsers);
 app.get('/', (request, response, next) => {
     console.log('Bienvenido');
     console.log(request.session);
-    response.render('login.ejs', {
-        titulo: 'Login',
+    response.render('login2.ejs', {
+        titulo: 'Iniciar sesión',
+        error: request.session.error,
+        isLoggedIn: request.session.isLoggedIn === true ? true : false
     }); 
 });
 
-// Página de proyectos
-//app.get('/proyectos', (request, response, next) => {
-//    console.log('Bienvenido');
-//    response.render('proyectos', {
-//        titulo: 'Proyectos',
-//    }); 
-//});
-
-
-
-
+/*
 // Página de inicio
 app.get('/inicio', (request, response, next) => {
     response.render('inicio', { 
@@ -71,6 +63,7 @@ app.get('/inicio', (request, response, next) => {
     isLoggedIn: request.session.isLoggedIn === true ? true : false 
     });
 });
+*/
 
 // Página de 404
 app.use((request, response, next) => {
