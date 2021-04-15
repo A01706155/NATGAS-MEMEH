@@ -14,15 +14,18 @@
                             <label for="descripcion"> Descripción del Proyecto  </label> <input type="text" name="descripcion" value="<%= proyecto.descripcion %>" required>
                             <label for="fecha_inicio" > Fecha de Inicio   </label> <input type="date" name="fecha_inicio" value="<%= proyecto.fecha_inicio %>" required>
                             <label for="fecha_fin" > Fecha de finalización  </label> <input type="date" name="fecha_fin" value="<%= proyecto.fecha_fin %>" required>
-
                             <br><br>                 
                           
                 
                 <button class="btn waves-effect waves-light" type="submit" name="action"> Guardar
                     <i class="material-icons right">send</i>
                 </button>                
+<<<<<<< HEAD
                 <a href="/proyectos/<%=proyecto.idProyecto %>" class="waves-effect waves-light btn" > Cancelar </a> <br> 
                 <% } %>
+=======
+                <a href="/proyectos<%=proyecto.idProyecto %>" class="waves-effect waves-light btn" > Cancelar </a> <br> 
+>>>>>>> 08fae0bfc6e118eaab539da56d9944d69f958bfc
 
                 </form>
 

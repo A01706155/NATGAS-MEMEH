@@ -15,6 +15,8 @@ router.post('/buscar', proyectosController.postBuscarProyecto);
 
 router.get('/:proyecto_id', proyectosController.getProyecto);
 
+router.get('/modificar/:proyecto_id', proyectosController.getProyectoModificar);
+
 router.get('/', proyectosController.get);
 
 

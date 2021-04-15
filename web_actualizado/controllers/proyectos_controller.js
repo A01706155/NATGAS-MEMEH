@@ -50,6 +50,24 @@ exports.getProyecto = (request, response, next) => {
         });
 };
 
+exports.getProyectoModificar = (request, response, next) => {
+    const id = request.params.proyecto_id;
+    console.log("getModificar");
+    Proyecto.fetchOne(id);
+    console.log(id);
+    Proyecto.fetchOne(id)
+        .then(([rows, fieldData]) => {
+            response.render('modificar-proyecto', { 
+                Proyecto: rows,  
+                titulo: 'Modificar Proyecto',
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 exports.get = (request, response, next) => {
     console.log('Cookie: ' + request.get('Cookie'));
     //console.log(request.get('Cookie').split(';')[1].trim().split('=')[1]);
