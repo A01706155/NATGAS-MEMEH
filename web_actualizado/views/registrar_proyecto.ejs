@@ -2,24 +2,27 @@
 <%- include('partials/navbar.ejs') %>
 
 <main class="container">
-    <h1><%= titulo %></h1>
+    
+    <div class="container white-text" style="margin: auto; min-width:50%; max-width:max-content;">
+        <h1 class="center white-text"><%= titulo %></h1>
 
-    <form action="/proyectos/registrar-proyecto" method="POST">
-        <br>
-        Nombre del proyecto<br>
-        <input type="text" name="nombreProyecto"><br>
-        <br>
-        Descripcion<br>
-        <input type="text" name="descripcion"><br>
-        <br>
-        Fecha de inicio<br>
-        <input type="date" name="fecha_inicio" class="datepicker"><br><br>
+        <form class="passcontent grey-text text-lighten-1" action="/proyectos/registrar-proyecto" method="POST">
+            Nombre del proyecto<br>
+            <input class="white-text" type="text" name="nombreProyecto"><br>
+            Descripcion<br>
+            <input class="white-text" type="text" name="descripcion"><br>
+            Fecha de inicio<br>
+            <input type="text" name="fecha_inicio" class="datepicker white-text"><br>
+            Fecha de finalización<br>
+            <input type="text" name="fecha_fin" class="datepicker white-text"><br><br>
+            <div class="center-align">
+                <button class=" btn waves-effect waves-light green" type="submit">Registrar proyecto
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
 
-        Fecha de finalización<br>
-        <input type="date" name="fecha_fin" class="datepicker"><br><br>
-        
-        <input type="submit" value="Registrar">
-    </form>
+    </div>
 </main>
 
 <%- include('partials/footer.ejs')  %>
