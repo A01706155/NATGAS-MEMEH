@@ -1,4 +1,3 @@
-
 const Proyecto = require('../models/proyecto');
 
 exports.getRegistrarProyecto = (request, response, next) => {
@@ -32,12 +31,12 @@ exports.postBuscarProyecto = (request, response, next) => {
         });  
 };
 
-exports.getContenido = (request, response, next) => {
-const id = request.params.id;
-    console.log("getContenido",id);
+exports.getProyecto = (request, response, next) => {
+    const id = request.params.proyecto_id;
+    console.log("getContenido");
+    Proyecto.fetchOne(id);
+    console.log(id);
     Proyecto.fetchOne(id)
-    const nombre = request.params.id;
-    Proyecto.fetchOne(nombre)
         .then(([rows, fieldData]) => {
             response.render('contenido', { 
                 Proyecto: rows,  
@@ -49,21 +48,6 @@ const id = request.params.id;
             console.log(err);
         });
 };
-
-/*exports.getContenido = (request, response, next) => {
-    
-    response.render('contenido', {
-        titulo: 'Trabajo del proyecto',
-    });
-};*/
-
-/*exports.getProyecto = (request, response, next) => {
-    const proyectos = Proyecto.fetchAll();
-    response.render('proyectos', { 
-        lista_proyecto: proyectos, 
-        titulo: 'Proyecto' 
-    });
-};*/
 
 exports.get = (request, response, next) => {
     console.log('Cookie: ' + request.get('Cookie'));

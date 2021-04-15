@@ -15,6 +15,7 @@ app.set('views', 'views');
 
 const rutasProyectos = require('./routes/proyectos');
 const rutasUsers = require('./routes/users');
+const rutasFases = require('./routes/fases');
 
 //const rutasPersonajes = require('./routes/personajes');
 
@@ -43,6 +44,7 @@ app.use((request, response, next) => {
 // Página de usuarios
 app.use('/proyectos', rutasProyectos);
 app.use('/users', rutasUsers);
+//app.use('/fases', rutasFases);
 
 // Página de login
 app.get('/', (request, response, next) => {
@@ -54,16 +56,6 @@ app.get('/', (request, response, next) => {
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     }); 
 });
-
-/*
-// Página de inicio
-app.get('/inicio', (request, response, next) => {
-    response.render('inicio', { 
-    titulo: 'Inicio',
-    isLoggedIn: request.session.isLoggedIn === true ? true : false 
-    });
-});
-*/
 
 // Página de 404
 app.use((request, response, next) => {

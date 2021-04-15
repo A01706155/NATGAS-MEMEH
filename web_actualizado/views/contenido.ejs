@@ -1,13 +1,7 @@
 <%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
 
-
-  
-<body>  
-    <div class="row">
-        <%- include('partials/navbar.ejs') %>
-
-    </div>
-
+<br><br><br>
     <div class="container">
         <div class="row">
              
@@ -20,7 +14,7 @@
                 <td>Fecha Final</td>
                 </tr>
                 <tr> 
-                    <% for (let elemento of proyecto) { %>
+                    <% for (let elemento of Proyecto) { %>
                         <td><%= elemento.nombreProyecto %> </td>
                         <td><%= elemento.descripcion %></td>
                         <td><%= elemento.fecha_inicio %> </td>
@@ -28,15 +22,13 @@
                     <% } %>          
                    </tr>      
                 </table>    
-            </div>
+                    <br><br><br>
                     <a href="#" class="btn btn-primary">WBS</a>
-                    <a href="/proyectos/inicio" class="btn btn-primary">Volver al inicio</a>
-                   <% } %> 
+                    <a href="/proyectos" class="btn btn-primary">Volver al inicio</a>
                     <br><br>                
             </div>
         </div>
     </div>    
-</body>
 
 
 <%- include('partials/footer.ejs') %>

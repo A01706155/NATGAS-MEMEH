@@ -1,12 +1,10 @@
-//const proyectos = ["Proyecto Prueba 1"];
-
 const db = require('../util/database');
 
 module.exports = class Proyecto {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
     constructor(nombreProyecto,descripcion,fecha_inicio,fecha_fin) {
-        this.nombreProyecto = nombreProyecto;
+        this.numFase = numFase;
         this.descripcion = descripcion;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
@@ -20,15 +18,11 @@ module.exports = class Proyecto {
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
-    static fetchAll() {
-        return db.execute('SELECT * FROM proyectos');
-    }
-
-    static fetchNombreProyecto() {
-        return db.execute("SELECT * FROM `proyectos` WHERE `nombreProyecto` LIKE ? ", ['%'+nombre+'%']);
+    static fetchAll(id) {
+        return db.execute('SELECT * FROM fases WHERE idProyecto=?', [id]);
     }
 
     static fetchOne(id) {
-        return db.execute('SELECT * FROM proyectos WHERE idProyecto=?', [id]);
+        return db.execute('SELECT * FROM fases WHERE idFase=?', [id]);
     }
 }
