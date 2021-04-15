@@ -7,7 +7,7 @@
              
             <div class="mycol md-12 sm-12 lg-9">
                 <form action="/proyectos/:proyecto_id" method="POST">
-                <% for (let Proyecto of lista_proyecto) { %>
+                <% for (let elemento of proyecto) { %>
 
                             <label for="idProyecto" > idProyecto </label> <input type="text" name="idProyecto" value="<%= proyecto.IdProyecto %>" required>
                             <label for="nombreProyecto" > Nombre del Proyecto  </label> <input type="text" name="nombreProyecto" value="<%= proyecto.nombreProyecto %>" required>
@@ -20,12 +20,8 @@
                 <button class="btn waves-effect waves-light" type="submit" name="action"> Guardar
                     <i class="material-icons right">send</i>
                 </button>                
-<<<<<<< HEAD
-                <a href="/proyectos/<%=proyecto.idProyecto %>" class="waves-effect waves-light btn" > Cancelar </a> <br> 
+                <a href="/proyectos/<%=elemento.idProyecto %>" class="waves-effect waves-light btn" > Cancelar </a> <br> 
                 <% } %>
-=======
-                <a href="/proyectos<%=proyecto.idProyecto %>" class="waves-effect waves-light btn" > Cancelar </a> <br> 
->>>>>>> 08fae0bfc6e118eaab539da56d9944d69f958bfc
 
                 </form>
 
