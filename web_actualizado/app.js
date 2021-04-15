@@ -44,7 +44,7 @@ app.use((request, response, next) => {
 // Página de usuarios
 app.use('/proyectos', rutasProyectos);
 app.use('/users', rutasUsers);
-//app.use('/fases', rutasFases);
+// app.use('/fases', rutasFases);
 
 // Página de login
 app.get('/', (request, response, next) => {
