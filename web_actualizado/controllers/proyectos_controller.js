@@ -39,7 +39,7 @@ exports.getProyecto = (request, response, next) => {
     console.log(id);
     Proyecto.fetchOne(id)
         .then(([rows, fieldData]) => {
-            response.render('contenido', { 
+            response.render('ver_proyecto', { 
                 Proyecto: rows,  
                 titulo: 'Trabajo del proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
