@@ -1,5 +1,6 @@
 
 const Proyecto = require('../models/proyecto');
+const Fase = require('../models/fase');
 
 exports.getRegistrarProyecto = (request, response, next) => {
     response.render('registrar_proyecto', {
@@ -49,21 +50,6 @@ exports.getProyecto = (request, response, next) => {
             console.log(err);
         });
 };
-
-/*exports.getContenido = (request, response, next) => {
-    
-    response.render('contenido', {
-        titulo: 'Trabajo del proyecto',
-    });
-};*/
-
-/*exports.getProyecto = (request, response, next) => {
-    const proyectos = Proyecto.fetchAll();
-    response.render('proyectos', { 
-        lista_proyecto: proyectos, 
-        titulo: 'Proyecto' 
-    });
-};*/
 
 exports.get = (request, response, next) => {
     console.log('Cookie: ' + request.get('Cookie'));
