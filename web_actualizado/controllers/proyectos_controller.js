@@ -57,7 +57,7 @@ exports.getProyectoModificar = (request, response, next) => {
     console.log(id);
     Proyecto.fetchOne(id)
         .then(([rows, fieldData]) => {
-            response.render('modificar-proyecto', { 
+            response.render('modificar_proyecto', { 
                 proyecto: rows,  
                 titulo: 'Modificar Proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
