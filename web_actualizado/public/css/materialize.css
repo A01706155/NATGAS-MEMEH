@@ -2976,6 +2976,9 @@ body {
  
  table, th, td {
    border: none;
+   border-bottom-style: solid;
+   border-width: thin;
+   border-color: grey;
  }
  
  table {
@@ -4276,12 +4279,12 @@ body {
  
  nav {
   background-image: url(../../images/nat-background.png);
-  background-position: 50% -206px;
+  background-position: 50% -192px;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: 118rem;
   background-attachment: fixed;
-   height: 56px;
-   line-height: 56px;
+  height: 56px;
+  line-height: 56px;
  }
  
  nav.nav-extended {
@@ -4483,8 +4486,8 @@ body {
      min-height: 64px;
    }
    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
-    height: 140px;
-    line-height: 140px;
+    height: 96px;
+    line-height: 96px;
    }
    .navbar-fixed {
      height: 64px;
@@ -9113,7 +9116,19 @@ div.passcontent{
   border-radius: 20px;
   margin-bottom: 60px;
   backdrop-filter: blur(6px);
-} 
+}
+
+div.proyectContent{
+  min-width:68%; 
+  max-width:max-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  border-radius: 20px;
+  margin-bottom: 60px;
+  backdrop-filter: blur(10px) contrast(80%);
+  padding: 20px;
+}
 
 form.passcontent{
   display: block;
