@@ -32,12 +32,12 @@ exports.postBuscarProyecto = (request, response, next) => {
         });  
 };
 
-exports.getContenido = (request, response, next) => {
-const id = request.params.id;
-    console.log("getContenido",id);
+exports.getProyecto = (request, response, next) => {
+    const id = request.params.proyecto_id;
+    console.log("getContenido");
+    Proyecto.fetchOne(id);
+    console.log(id);
     Proyecto.fetchOne(id)
-    const nombre = request.params.id;
-    Proyecto.fetchOne(nombre)
         .then(([rows, fieldData]) => {
             response.render('contenido', { 
                 Proyecto: rows,  

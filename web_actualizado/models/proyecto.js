@@ -29,7 +29,7 @@ module.exports = class Proyecto {
     }
 
     static fetchOne(id) {
-        return db.execute('SELECT * FROM proyectos WHERE id=?', [id]);
+        return db.execute('SELECT * FROM proyectos WHERE idProyecto=?', [id]);
     }
 
 
