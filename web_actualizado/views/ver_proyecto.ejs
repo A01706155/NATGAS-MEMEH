@@ -14,18 +14,21 @@
                 <td>Fecha Final</td>
                 </tr>
                 <tr> 
-                    <% for (let elemento of Proyecto) { %>
-                        <td><%= elemento.nombreProyecto %> </td>
-                        <td><%= elemento.descripcion %></td>
-                        <td><%= elemento.fecha_inicio %> </td>
-                        <td><%= elemento.fecha_fin %></td>
+                    <% for (let detalle of Proyecto) { %>
+                        <td><%= detalle.nombreProyecto %> </td>
+                        <td><%= detalle.descripcion %></td>
+                        <td><%= detalle.fecha_inicio %> </td>
+                        <td><%= detalle.fecha_fin %></td>
                     <% } %>          
                    </tr>      
                 </table>    
                     <br><br><br>
+                    <% for (let detalle of Proyecto) { %>
+                    <a href="/proyectos/<%= detalle.IdProyecto %>" class="btn btn-primary">Editar</a>
                     <a href="#" class="btn btn-primary">WBS</a>
                     <a href="/proyectos" class="btn btn-primary">Volver al inicio</a>
-                    <br><br>                
+                    <br><br>         
+                    <% } %>        
             </div>
         </div>
     </div>    
