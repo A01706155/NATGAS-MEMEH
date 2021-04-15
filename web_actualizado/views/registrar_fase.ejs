@@ -1,0 +1,19 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<main class="container">
+    <h1><%= titulo %></h1>
+
+    <form action="/proyectos/registrar-fase" method="POST">
+        <br>
+        Numero de la fase<br>
+        <input type="number" name="numFase"><br>
+        <br>
+        Nombre de la fase<br>
+        <input type="text" name="nombreFase"><br>
+        <br>
+        
+        <input type="submit" value="Registrar">
+    </form>
+</main>
+<%- include('partials/footer.ejs')  %>

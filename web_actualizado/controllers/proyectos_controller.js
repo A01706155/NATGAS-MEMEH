@@ -1,6 +1,4 @@
-
 const Proyecto = require('../models/proyecto');
-const Fase = require('../models/fase');
 
 exports.getRegistrarProyecto = (request, response, next) => {
     response.render('registrar_proyecto', {
