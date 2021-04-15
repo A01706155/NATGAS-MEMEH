@@ -6,7 +6,7 @@ exports.getLogin = (request, response, next) => {
     console.log("j");
 
     response.render('login2', {
-        titulo: 'Inicia sesión',
+        titulo: 'Iniciar sesión:',
         //csrfToken: request.csrfToken(),
         //error: request.session.error === true ? true : false,
         error: request.session.error,
@@ -56,7 +56,7 @@ exports.getLogout = (request, response, next) => {
 
 exports.getRegister = (request, response, next) => {
     response.render('register', {
-        titulo: 'Registra tus datos',
+        titulo: 'Registrar usuario',
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };

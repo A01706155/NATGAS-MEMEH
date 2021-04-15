@@ -1,77 +1,44 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
 
-      <!-- Parallax section  -->
-  <div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-      <!-- Info of parallax section  -->
-      <div class="container">
-        <br><br>
-        <h1 class="header center white-text"><%= titulo %></h1>
-        <div class="row center">
-          <h5 class="header col s12 light">Bienvenido @Usuario</h5>
-        </div>
-
-
-        <div class="cuadrito">
-          <div class="passcontent">
-            <div class="row center">
-              <strong>Buscar proyecto </strong>
-            </div>
-
-          </div>
-        </div>
-
-          
-        <!-- Primer cuadro -->
-        <div class="cuadrito">
-          <div class="passcontent">
-              <table style="width:100%" id="resultados">
-                <% for (let proyecto of lista_proyecto) { %>
-                    <b></b>
-                      <div>
-                        <span class="card-title activator white-text text-darken-4"><a href="/proyectos/contenido"><%= proyecto.nombreProyecto %></a><i class="material-icons right">more_vert</i></span> <span class="material-icons right">close</i></span>
-                        <p><%= proyecto.descripcion %></p>
-                        <p><a href="#">...</a></p>
-
-                        
-                      </div>
-              <% } %>
-              </table>
-          </div>
-        </div>
-
-
-        <!-- Segundo cuadro -->
-        <div class="cuadrito">
-          <div class="passcontent">
-            
-            <!-- Un botón  -->
-            <div class="row center">
-                <a href="/proyectos/registrar-proyecto" id="new_project" class="btn-large waves-effect waves-light teal lighten-1">Crear nuevo proyecto</a>
-            </div>
-
-          </div>
-        </div>
-
-        <br><br>
-      </div>
-    </div>
+  <main class="container">
+    <!-- Titulo -->
+    <h1 class="header center white-text"><%= titulo %></h1>
     
-    <!-- Set parallax image  -->
-    <div class="parallax"><img src="images/proyectos.jpg" alt="Imagen stock unsplash."></div>
-  </div>
-
-  <!-- White container section  -->
-  <div class="container">
-    <div class="section">
-
-      <!--vacio por mientras-->
+    <!-- Para que se vea bonito-->
+    <div style="backdrop-filter: blur(10px) contrast(70%); padding:20px; border-radius: 20px;">
+      
+      <!-- Generar proyectos almacenados con tarjetas -->
+      <div class="row">
+        <% for (let proyecto of lista_proyecto) { %>
+          <div class="col s12 m4 l3">
+            <div class="card small grey darken-4">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="/images/background2.jpg">
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-lighten-3"><%= proyecto.nombreProyecto %><i class="material-icons right">more_vert</i></span>
+                  <p><a href="#">Ver proyecto</a></p>
+                </div>
+                <div class="card-reveal grey darken-4 grey-text text-lighten-3">
+                  <span class="card-title"><%= proyecto.nombreProyecto %><i class="material-icons right">close</i></span>
+                  <p class="">Descripción: <%= proyecto.descripcion %></p>
+                </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    
+      <!-- Botón para crear un nuevo proyecto-->
+        <div class="row center">
+            <a href="/proyectos/registrar-proyecto" id="new_project" class="btn-large waves-effect waves-light green lighten-1">Crear nuevo proyecto</a>
+        </div>
 
     </div>
-  </div>
 
-<%- include('partials/footer.ejs') %>
+  </main>
+
+  <%- include('partials/footer.ejs') %>
 
 
 <script>
