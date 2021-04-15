@@ -3,6 +3,7 @@ const Proyecto = require('../models/proyecto');
 exports.getRegistrarProyecto = (request, response, next) => {
     response.render('registrar_proyecto', {
         titulo: 'Registrar proyecto',
+        isLoggedIn: request.session.isLoggedIn === true ? true : false,
     });
 };
 
