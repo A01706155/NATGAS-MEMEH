@@ -9,11 +9,11 @@ const path = require('path');
 const casosdeusoController = require('../controllers/casosdeuso_controller');
 
 
-router.get('/NuevoCasoDeUso',   casosdeusoController.getNuevoCasoDeUso);
+router.get('/crear-casoDeUso',   casosdeusoController.getNuevoCasoDeUso);
 
-router.post('/NuevoCasoDeUso',   casosdeusoController.postNuevoCasoDeUso);
+router.post('/crear-casoDeUso',   casosdeusoController.postNuevoCasoDeUso);
 
-router.get('/todos',   casosdeusoController.get);
+router.get('/',   casosdeusoController.get);
 
 router.post('/eliminar-casoDeUso',   casosdeusoController.postEliminarCasoDeUso);
 

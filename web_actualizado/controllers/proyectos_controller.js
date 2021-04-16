@@ -76,9 +76,7 @@ exports.getModificarProyecto = (request, response, next) => {
 exports.postModificarProyecto = (request, response, next) => {
     console.log("Se esta modificando");
     console.log(request.body.nombreProyecto);
-    const modificar_proyecto = new Proyecto(request.body.nombreProyecto, request.body.descripcion, request.body.fecha_inicio);
-    console.log(modificar_proyecto);
-    modificar_proyecto.modify()
+    Proyecto.modify(request.body.nombreProyecto, request.body.descripcion, request.body.fecha_inicio, request.body.fecha_final, request.body.idProyecto)
         .then(() => {
             response.redirect('/proyectos');
         }).catch(err => console.log(err));
