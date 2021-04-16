@@ -2,15 +2,19 @@ const Fase = require('../models/fase');
 const session = require('express-session');
 
 exports.getRegistrarFase = (request, response, next) => {
+    const id = request.params.proyecto_id;
     response.render('registrar_fase', {
         titulo: 'Registrar fase',
+        idProyecto: id,
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };
 
 exports.postRegistrarFase = (request, response, next) => {
     console.log(request.body.nombreFase);
-    const id = request.params.proyecto_id;
+    console.log(request.body.numeroFase);
+    console.log(request.body.prueba);
+    const id = request.body.proyecto_id;
     console.log(id);
     const nueva_fase = new Fase(request.body.numFase, request.body.nombreFase, id);
     nueva_fase.save()
