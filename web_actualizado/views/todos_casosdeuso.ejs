@@ -68,10 +68,10 @@
                         
                      
                 
-                
-            <button name="opt"><a href="/proyectos/detalles/<%=idProyecto %>" class="btn " > Volver al proyecto </a></button>
-            <button name="opt"><a href="/proyectos/nuevocaso/<%=idProyecto %>" class="btn"> Crear nuevo</a></button>
-             
+                <% for (let CasoDeUso of lista_casosdeuso) { %>
+            <button name="opt"><a href="/proyectos/detalles/<%=CasoDeUso.idProyecto %>" class="btn " > Volver al proyecto </a></button>
+            <button name="opt"><a href="/proyectos/nuevocaso/<%=CasoDeUso.idProyecto %>" class="btn"> Crear nuevo</a></button>
+            <% } %> 
             
                 
 

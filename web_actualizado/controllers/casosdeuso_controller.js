@@ -108,6 +108,7 @@ exports.postEliminarCasoDeUso = (request, response) => {
 }
 
 exports.get = (request, response, next) => {
+    
 
     CasoDeUso.fetchAll()
         .then(([rows, fieldData]) => {
