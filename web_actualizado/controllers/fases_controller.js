@@ -1,4 +1,5 @@
 const Fase = require('../models/fase');
+const session = require('express-session');
 
 exports.getRegistrarFase = (request, response, next) => {
     response.render('registrar_proyecto', {
@@ -17,6 +18,26 @@ exports.postRegistrarFase = (request, response, next) => {
 
 }
 
+exports.getFaseProyecto = (request, response, next) => {
+    const id = request.params.proyecto_id;
+    console.log("getContenido");
+    Fase.fetchByProject(id);
+    console.log(id);
+    //console.log(request.session.rol);
+    Fase.fetchByProject(id)
+        .then(([rows, fieldData]) => {
+            response.render('fase_por_proyecto', { 
+                lista_fases: rows,
+                //rol: request.session.rol,
+                titulo: 'Fases del proyecto',
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 exports.get = (request, response, next) => {
     console.log('Cookie: ' + request.get('Cookie'));
     //console.log(request.get('Cookie').split(';')[1].trim().split('=')[1]);
@@ -24,9 +45,9 @@ exports.get = (request, response, next) => {
     //Con cookie-parser
     console.log(request.cookies);
 
-    Proyecto.fetchAll()
+    Fase.fetchAll()
         .then(([rows, fieldData]) => {
-            response.render('proyectos', { 
+            response.render('fases', { 
                 lista_fases: rows, 
                 titulo: 'Fases',
                 //csrfToken: request.csrfToken(),
