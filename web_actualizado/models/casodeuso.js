@@ -44,8 +44,8 @@ module.exports = class CasoDeUso {
         return db.execute('SELECT * FROM  usecase WHERE idProyecto=? ORDER BY iteracion ASC', [idProyecto]);
     }
     
-    static EliminarCasoDeUso(idCasoDeUso){
-        return db.execute('DELETE FROM  usecase WHERE idCasoUso=?', [idCasoDeUso]);
+    static EliminarCasoDeUso(idCasoUso){
+        return db.execute('DELETE FROM  usecase WHERE idCasoUso=?', [idCasoUso]);
     }        
 
 
