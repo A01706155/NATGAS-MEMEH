@@ -11,9 +11,7 @@
         
         <form class="passcontent grey-text text-lighten-1" action="/proyectos/:proyecto_id" method="POST">
             <% for (let elemento of proyecto) { %>
-
-                Id <br>
-                <input class="white-text" type="text" name="idProyecto" value="<%= proyecto.IdProyecto %>" required>
+                
                 Nombre <br>
                 <input class="white-text" type="text" name="nombreProyecto" value="<%= proyecto.nombreProyecto %>" required>
                 Descripcion <br>
