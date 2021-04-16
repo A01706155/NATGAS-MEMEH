@@ -9,8 +9,8 @@
     <div style="backdrop-filter: blur(10px) contrast(70%); padding:20px; border-radius: 20px; margin-bottom: 6%;">
       
       <!-- Generar proyectos almacenados con tarjetas -->
-      <div class="row">
         <label for="buscar">Buscar</label>
+        <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>">
         <input type="text" name="buscar" id="buscar" onkeyup="buscar()">
         <div class="row" id="resultados">
           <% for (let proyecto of lista_proyecto) { %>
@@ -31,7 +31,6 @@
             </div>
           <% } %>
         </div>
-      </div>
       
     
       <!-- Botón para crear un nuevo proyecto-->
@@ -49,7 +48,8 @@
 <script>
   function buscar() {
     const valor_busqueda = document.getElementById("buscar").value;
-
+    //El token de protección CSRF
+    const csrf = document.getElementById('_csrf').value;
     let data = {valor_busqueda: valor_busqueda};
     console.log(valor_busqueda);
     //función que manda la petición asíncrona
@@ -57,6 +57,7 @@
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
+            'csrf-token': csrf,
             'Content-Type': 'application/json'
           },
     }).then(result => {
@@ -71,16 +72,16 @@
                         '<div class="card-image waves-effect waves-block waves-light">' +
                           '<img class="activator" src="/images/background2.jpg">' +
                         '</div>' +
-                        '<div class="card-content">'
-                          '<span class="card-title activator grey-text text-lighten-3">' + proyecto.nombreProyecto +                      
-                          '<p><a href="/proyectos/proyecto.idProyecto">Ver proyecto</a></p>' +
+                        '<div class="card-content">' +
+                          '<span class="card-title activator grey-text text-lighten-3">' + proyecto.nombreProyecto +                     
+                          '<p><a href="/proyectos/' + proyecto.idProyecto +'" ">Ver proyecto</a></p>' +
                         '</div>' +
                         '<div class="card-reveal grey darken-4 grey-text text-lighten-3">' +
                           '<span class="card-title">' + proyecto.nombreProyecto + '<i class="material-icons right">close</i></span>' +
                           '<p class="">Descripción:' + proyecto.descripcion + '</p>' +
                         '</div>' +
-                   '</div>' +
-                '</div>';
+                      '</div>' +
+                  '</div>';
         }
         document.getElementById("resultados").innerHTML = html;
 
