@@ -1,7 +1,12 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
 
-    </div>
+<h1 class="center white-text">Caso de uso</h1>
+
+<div class="container highlight proyectContent">
+  <div style="margin-bottom: 0px;">
+       
+      <div class="white-text col md-12 sm-12 lg-9">
     <div class="container white-text">
         <div class="row">
             <div>
@@ -24,12 +29,15 @@
                     <label for="idProyecto" class="oculto"><br> idProyecto </label><input type="text" name="idProyecto_cu" value="<%= casodeuso.idProyecto %>" class="oculto" required>
                     <label for="idCasoUso" class="oculto"> Id Caso de Uso  </label><input type="text" name="idCasoUso_cu"  value="<%= casodeuso.idCasoUso %>" class="oculto" required>  
                     <% } %>
-
+                </form>
+                </div>
+            </div>
+        </div>   
                         
                     <%- include('partials/footer.ejs') %>
                         
                     </div>
-                </form>
+                
             </div>
         </div>
     </div>    
