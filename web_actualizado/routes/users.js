@@ -1,5 +1,7 @@
-const express = require('express');
+// Para proteger rutas
 const isAuth = require('../util/is-auth');
+
+const express = require('express');
 const router = express.Router();
 const path = require('path');
 const usersController = require('../controllers/users_controller');
