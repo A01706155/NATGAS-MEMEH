@@ -1,4 +1,6 @@
+const session = require('express-session');
 const Proyecto = require('../models/proyecto');
+
 
 exports.getRegistrarProyecto = (request, response, next) => {
     response.render('registrar_proyecto', {
@@ -37,10 +39,12 @@ exports.getProyecto = (request, response, next) => {
     console.log("getContenido");
     Proyecto.fetchOne(id);
     console.log(id);
+    console.log(request.session.rol);
     Proyecto.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('ver_proyecto', { 
-                Proyecto: rows,  
+                Proyecto: rows,
+                rol: request.session.rol,
                 titulo: 'Trabajo del proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
