@@ -14,18 +14,24 @@
                    <div class="row">
                     <% for (let casodeuso of lista_casosdeuso) { %>
 
-                    <label for="nombre">Nombre </label><br><br><input type="text" name="nombre_cu" value="<%= casodeuso.nombre %>" required>
-                    <label for="descripcion"><br>Descripción </label><br><br><br><input type="text" name="descripcion_cu" value="<%= casodeuso.descripcion %>" required>
+                    <label for="nombre">Nombre </label><br>
+                    <input type="text" name="nombre_cu" value="<%= casodeuso.nombre %>" required><br><br>
+
+                    <label for="descripcion"><br>Descripción </label><br>
+                    <input type="text" name="descripcion_cu" value="<%= casodeuso.descripcion %>" required><br>
                     
-                    <label for="iteracion"><br>Iteracion </label><br><br><br><input type="numeric" name="iteracion_cu" value="<%= casodeuso.iteracion %>" required>
+                    <label for="iteracion"><br>Iteracion </label><br>
+                    <input type="numeric" name="iteracion_cu" value="<%= casodeuso.iteracion %>" required><br>
                     
-                    <label for="IdDificultad"><br>Dificultad</label><br><br><br><input type="numeric" name="dificultad_cu" value="<%= casodeuso.dificultad %>" required>
+                    <label for="IdDificultad"><br>Dificultad</label><br>
+                    <input type="numeric" name="dificultad_cu" value="<%= casodeuso.dificultad %>" required><br>
                     
                     
                     <label><br></label>
                         <button type="submit" name="action"> Actualizar
                     </button>
-                        
+                    
+                    <br>
                     <label for="idProyecto" class="oculto"><br> idProyecto </label><input type="text" name="idProyecto_cu" value="<%= casodeuso.idProyecto %>" class="oculto" required>
                     <label for="idCasoUso" class="oculto"> Id Caso de Uso  </label><input type="text" name="idCasoUso_cu"  value="<%= casodeuso.idCasoUso %>" class="oculto" required>  
                     <% } %>
