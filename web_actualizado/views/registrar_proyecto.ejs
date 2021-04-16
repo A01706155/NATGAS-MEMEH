@@ -1,6 +1,7 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
 
+<<<<<<< HEAD
 <main class="container">
     
     <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
@@ -9,24 +10,36 @@
             <br><br>
             <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
         </div>
+=======
+    <main>
+>>>>>>> 00c951179c6b354aa877fe1ce9231ab952633757
 
-        <form class="passcontent grey-text text-lighten-1" action="/proyectos/registrar-proyecto" method="POST">
-            Nombre del proyecto<br>
-            <input class="white-text" type="text" name="nombreProyecto"><br>
-            Descripcion<br>
-            <input class="white-text" type="text" name="descripcion"><br>
-            Fecha de inicio<br>
-            <input type="text" name="fecha_inicio" class="datepicker white-text"><br>
-            Fecha de finalización<br>
-            <input type="text" name="fecha_fin" class="datepicker white-text"><br><br>
-            <div class="center-align">
-                <button class=" btn waves-effect waves-light green" type="submit">Registrar proyecto
-                    <i class="material-icons right">send</i>
-                </button>
-            </div>
-        </form>
+        <div class="container">
+            <br><br>
+            <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+        </div>
+            
+        <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
+            <h1 class="center white-text"><%= titulo %></h1>
 
-    </div>
-</main>
+            <form class="passcontent grey-text text-lighten-1" action="/proyectos/registrar-proyecto" method="POST">
+                Nombre del proyecto<br>
+                <input class="white-text" type="text" name="nombreProyecto"><br>
+                Descripcion<br>
+                <input class="white-text" type="text" name="descripcion"><br>
+                Fecha de inicio<br>
+                <input type="date" name="fecha_inicio" class="datepicker white-text"><br>
+                Fecha de finalización<br>
+                <input type="date" name="fecha_fin" class="datepicker white-text"><br><br>
+                <div class="center-align">
+                    <button class=" btn waves-effect waves-light green" type="submit">Registrar proyecto
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+
+    </main>
 
 <%- include('partials/footer.ejs')  %>
