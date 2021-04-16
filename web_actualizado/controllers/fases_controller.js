@@ -20,14 +20,14 @@ exports.postRegistrarFase = (request, response, next) => {
 
 exports.getFaseProyecto = (request, response, next) => {
     const id = request.params.proyecto_id;
-    console.log("getContenido");
     Fase.fetchByProject(id);
+    console.log("getContenido");
     console.log(id);
     //console.log(request.session.rol);
     Fase.fetchByProject(id)
         .then(([rows, fieldData]) => {
-            response.render('fase_por_proyecto', { 
-                lista_fases: rows,
+            response.render('fases_por_proyecto', { 
+                datos_fases: rows,
                 //rol: request.session.rol,
                 titulo: 'Fases del proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false

@@ -1,7 +1,7 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
 
-    <h1 class="center white-text">Fases de proyectos</h1>
+    <h1 class="center white-text"><%= titulo %></h1>
 
     <div class="container highlight proyectContent">
         <div style="margin-bottom: 0px;">
@@ -15,7 +15,7 @@
                     <td>Id Proyecto</td>
                     </tr>
                     <tr> 
-                        <% for (let detalle of lista_fases) { %>
+                        <% for (let detalle of datos_fases) { %>
                             
                             <td><%= detalle.numFase %></td>
                             <td><%= detalle.nombreFase %> </td>

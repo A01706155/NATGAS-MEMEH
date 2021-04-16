@@ -11,7 +11,7 @@ router.get('/registrar-fase', fasesController.getRegistrarFase);
 
 router.post('/registrar-fase', fasesController.postRegistrarFase);
 
-router.get('/:id_proyecto', fasesController.getFaseProyecto);
+router.get('/:proyecto_id', fasesController.getFaseProyecto);
 
 router.get('/', fasesController.get);
 
