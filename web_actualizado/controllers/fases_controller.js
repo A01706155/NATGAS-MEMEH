@@ -11,6 +11,7 @@ exports.getRegistrarFase = (request, response, next) => {
 exports.postRegistrarFase = (request, response, next) => {
     console.log(request.body.nombreFase);
     const id = request.params.proyecto_id;
+    console.log(id);
     const nueva_fase = new Fase(request.body.numFase, request.body.nombreFase, id);
     nueva_fase.save()
         .then(() => {

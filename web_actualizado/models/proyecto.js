@@ -1,5 +1,3 @@
-//const proyectos = ["Proyecto Prueba 1"];
-
 const db = require('../util/database');
 
 module.exports = class Proyecto {
