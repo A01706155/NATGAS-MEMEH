@@ -39,12 +39,12 @@ exports.getProyecto = (request, response, next) => {
     console.log("getContenido");
     Proyecto.fetchOne(id);
     console.log(id);
-    console.log(request.session.rol);
+    //console.log(request.session.rol);
     Proyecto.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('ver_proyecto', { 
                 Proyecto: rows,
-                rol: request.session.rol,
+                //rol: request.session.rol,
                 titulo: 'Trabajo del proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });

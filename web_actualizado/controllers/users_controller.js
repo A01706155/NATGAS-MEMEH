@@ -29,7 +29,7 @@ exports.postLogin = (request, response, next) => {
                         if (doMatch) {
                             request.session.isLoggedIn = true;
                             request.session.usuario = request.body.usuario;
-                            request.session.rol = rows[0].rol;
+                            //request.session.rol = rows[0].rol;
                             return request.session.save(err => {
                                 response.redirect('/proyectos');
                             });
