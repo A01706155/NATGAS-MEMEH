@@ -63,7 +63,7 @@ exports.getProyectoModificar = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('modificar_proyecto', { 
                 proyecto: rows,  
-                titulo: 'Modificar Proyecto',
+                titulo: 'Editar proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
