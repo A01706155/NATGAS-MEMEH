@@ -24,11 +24,11 @@ module.exports = class Proyecto {
         return db.execute('SELECT * FROM proyectos');
     }
 
-    static fetchNombreProyecto() {
-        return db.execute("SELECT * FROM `proyectos` WHERE `nombreProyecto` LIKE ? ", ['%'+nombre+'%']);
-    }
-
     static fetchOne(id) {
         return db.execute('SELECT * FROM proyectos WHERE idProyecto=?', [id]);
+    }
+
+    static fetchByName(nombreProyecto) {
+        return db.execute("SELECT * FROM `proyectos` WHERE `nombreProyecto` LIKE ? ", ['%'+nombreProyecto+'%']);
     }
 }

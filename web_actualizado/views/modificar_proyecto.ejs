@@ -1,39 +1,36 @@
- 
-        <%- include('partials/head.ejs') %>
-        <%- include('partials/navbar.ejs') %>
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
 
     <div class="container">
-        <div class="row">
-             
-            <div class="mycol md-12 sm-12 lg-9">
-                <form action="/proyectos/:proyecto_id" method="POST">
-                <% for (let elemento of proyecto) { %>
+        <br><br>
+        <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+    </div>
 
-                            <label for="idProyecto" > idProyecto </label> <input type="text" name="idProyecto" value="<%= proyecto.IdProyecto %>" required>
-                            <label for="nombreProyecto" > Nombre del Proyecto  </label> <input type="text" name="nombreProyecto" value="<%= proyecto.nombreProyecto %>" required>
-                            <label for="descripcion"> Descripción del Proyecto  </label> <input type="text" name="descripcion" value="<%= proyecto.descripcion %>" required>
-                            <label for="fecha_inicio" > Fecha de Inicio   </label> <input type="date" name="fecha_inicio" value="<%= proyecto.fecha_inicio %>" required>
-                            <label for="fecha_fin" > Fecha de finalización  </label> <input type="date" name="fecha_fin" value="<%= proyecto.fecha_fin %>" required>
-                            <br><br>                 
-                          
+    <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
+        <h1 class="center white-text"><%= titulo %></h1>
+        
+        <form class="passcontent grey-text text-lighten-1" action="/proyectos/:proyecto_id" method="POST">
+            <% for (let elemento of proyecto) { %>
                 
+                Nombre <br>
+                <input class="white-text" type="text" name="nombreProyecto" value="<%= proyecto.nombreProyecto %>" required>
+                Descripcion <br>
+                <input class="white-text" type="text" name="descripcion" value="<%= proyecto.descripcion %>" required>
+                Fecha inicio <br>
+                <input class="datepicker white-text" type="date" name="fecha_inicio" value="<%= proyecto.fecha_inicio %>" required>
+                Fecha fin <br>
+                <input class="datepicker white-text" type="date" name="fecha_fin" value="<%= proyecto.fecha_fin %>" required>
+                <br><br>           
+
                 <button class="btn waves-effect waves-light" type="submit" name="action"> Guardar
                     <i class="material-icons right">send</i>
-                </button>                
+                </button>
                 <a href="/proyectos/<%=elemento.idProyecto %>" class="waves-effect waves-light btn" > Cancelar </a> <br> 
-                <% } %>
+            <% } %>
+        </form>
 
-                </form>
-
-                <br><br><br>                    
-            </div>
-        </div>
     </div>    
 
-
-
-    
-</body>
 <%- include('partials/footer.ejs')  %>
 
 </html>

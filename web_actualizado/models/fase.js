@@ -2,7 +2,7 @@ const db = require('../util/database');
 
 module.exports = class Proyecto {
 
-    //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
+    //Constructor de la clase. Sirve para crear un nuevo objeto y en él se definen las propiedades del modelo
     constructor(nombreProyecto,descripcion,fecha_inicio,fecha_fin) {
         this.numFase = numFase;
         this.descripcion = descripcion;

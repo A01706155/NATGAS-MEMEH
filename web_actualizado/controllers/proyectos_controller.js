@@ -20,11 +20,11 @@ exports.postRegistrarProyecto = (request, response, next) => {
 
 }
 
-exports.postBuscarProyecto = (request, response, next) => {
+exports.postBuscar= (request, response, next) => {
     console.log(request.body);
     console.log(request.body.valor_busqueda);
     const name = request.body.valor_busqueda;
-    Personaje.fetchNombreProyecto(name)
+    Proyecto.fetchByName(name)
         .then(([rows, fieldData]) => {
             console.log(rows);
             response.status(200).json(rows);

@@ -5763,7 +5763,7 @@ body {
    position: fixed;
    left: 0;
    right: 0;
-   background-color: #fafafa;
+   background-color: #2f535a;
    padding: 0;
    max-height: 70%;
    width: 55%;
@@ -8730,9 +8730,9 @@ body {
  .datepicker-date-display {
    -webkit-box-flex: 1;
    -webkit-flex: 1 auto;
-       -ms-flex: 1 auto;
-           flex: 1 auto;
-   background-color: #26a69a;
+   -ms-flex: 1 auto;
+   flex: 1 auto;
+   background-color: #268279;
    color: #fff;
    padding: 20px 22px;
    font-weight: 500;
@@ -8781,7 +8781,7 @@ body {
  
  .datepicker-table abbr {
    text-decoration: none;
-   color: #999;
+   color: rgb(211, 211, 211);
  }
  
  .datepicker-table td {
@@ -8799,7 +8799,7 @@ body {
  }
  
  .datepicker-table td.is-outside-current-month, .datepicker-table td.is-disabled {
-   color: rgba(0, 0, 0, 0.3);
+   color: rgba(255, 255, 255, 0.3);
    pointer-events: none;
  }
  
@@ -8838,7 +8838,7 @@ body {
  .datepicker-clear,
  .datepicker-today,
  .datepicker-done {
-   color: #26a69a;
+   color: #5bd6ca;
    padding: 0 1rem;
  }
  

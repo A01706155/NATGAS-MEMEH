@@ -11,7 +11,7 @@ router.get('/registrar-proyecto', proyectosController.getRegistrarProyecto);
 
 router.post('/registrar-proyecto', proyectosController.postRegistrarProyecto);
 
-router.post('/buscar', proyectosController.postBuscarProyecto);
+router.post('/buscar', proyectosController.postBuscar);
 
 router.get('/:proyecto_id', proyectosController.getProyecto);
 
