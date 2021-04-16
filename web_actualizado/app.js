@@ -10,13 +10,14 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 // Para proteger rutas
-const isAuth = require('./util/is-auth');
+// const isAuth = require('./util/is-auth');
 
 // Sirve para establecer las carpetas de view engine y views
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 const rutasProyectos = require('./routes/proyectos');
+const casosdeuso = require('./routes/casosdeuso');
 const rutasUsers = require('./routes/users');
 const rutasFases = require('./routes/fases');
 
@@ -48,9 +49,10 @@ app.use((request, response, next) => {
 app.use('/proyectos', rutasProyectos);
 app.use('/users', rutasUsers);
 app.use('/fases', rutasFases);
+app.use('/casosdeuso', casosdeuso);
 
 // Página de login
-app.get('/', isAuth, (request, response, next) => {
+app.get('/', (request, response, next) => {
     console.log('Bienvenido');
     console.log(request.session);
     response.render('login2.ejs', {
