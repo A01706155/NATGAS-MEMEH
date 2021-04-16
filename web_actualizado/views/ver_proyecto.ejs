@@ -1,34 +1,50 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
 
-<br><br><br>
     <div class="container">
-        <div class="row">
+        <br><br>
+        <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+    </div>
+
+    <% for (let detalle of Proyecto) { %>
+    <h1 class="center white-text">Detalles del proyecto <%= detalle.idProyecto %></h1>
+    <% } %>
+
+    <div class="container highlight proyectContent">
+        <div style="margin-bottom: 0px;">
              
             <div class="white-text col md-12 sm-12 lg-9">
+                
                 <table class="responsive-table">
-                <tr>
-                <td>Nombre</td>
-                <td>Descripcion</td>
-                <td>Fecha inicial</td>
-                <td>Fecha Final</td>
-                </tr>
-                <tr> 
-                    <% for (let detalle of Proyecto) { %>
-                        <td><%= detalle.nombreProyecto %> </td>
-                        <td><%= detalle.descripcion %></td>
-                        <td><%= detalle.fecha_inicio %> </td>
-                        <td><%= detalle.fecha_fin %></td>
-                    <% } %>          
-                   </tr>      
-                </table>    
-                    <br><br><br>
-                    <% for (let detalle of Proyecto) { %>
-                    <a href="/proyectos/modificar/<%= detalle.idProyecto %>" class="btn btn-primary">Editar</a>
-                    <a href="#" class="btn btn-primary">WBS</a>
-                    <a href="/proyectos" class="btn btn-primary">Volver al inicio</a>
-                    <br><br>         
-                    <% } %>        
+                    <tr>
+                    <td>Id Proyecto</td>    
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                    <td>Fecha inicial</td>
+                    <td>Fecha planeada</td>
+                    <td>Fecha Final</td>
+                    </tr>
+                    <tr> 
+                        <% for (let detalle of Proyecto) { %>
+                            
+                            <td><%= detalle.idProyecto %></td>
+                            <td><%= detalle.nombreProyecto %> </td>
+                            <td><%= detalle.descripcion %></td>
+                            <td><%= detalle.fecha_inicio %> </td>
+                            <td>Sugiero añadir esto</td>
+                            <td><%= detalle.fecha_fin %></td>
+
+                        <% } %>          
+                    </tr>      
+                </table>   
+
+                <br><br>
+                <% for (let detalle of Proyecto) { %>
+                <a href="/proyectos/modificar/<%= detalle.idProyecto %>" class="waves-effect waves-light yellow darken-4 btn"><i class="material-icons left">edit</i>Editar</a>
+                <a href="#" class="waves-effect waves-light pink darken-4 btn"><i class="material-icons left">grid_view</i>WBS</a>
+                <br><br>         
+                <% } %>       
+                 
             </div>
         </div>
     </div>    
