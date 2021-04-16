@@ -31,13 +31,13 @@
                       <th scope="row" ><%= CasoDeUso.IdCasoDeUso %></th>
                       <td><%= CasoDeUso.nombre %> </td>
                       <td><%= CasoDeUso.descripcion %></td>
-                      <td><%= CasoDeUso.IdProyecto %> </td>
+                      <td><%= CasoDeUso.idProyecto %> </td>
                       <td><%= CasoDeUso.dificultad %></td>
                       <td><%= CasoDeUso.iteracion %></td>
                       
                       <td> <button name="opt"><a href="/casosdeuso/<%= CasoDeUso.IdCasoDeUso %>">Editar</a></button></td>
                       
-                      <td> <button name="opt"><a href="/casosdeuso/<%= CasoDeUso.IdCasoDeUso %>/<%= CasoDeUso.IdProyecto %>">Ver tareas asociadas</a></button></td>                      
+                      <td> <button name="opt"><a href="/casosdeuso/<%= CasoDeUso.IdCasoDeUso %>/<%= CasoDeUso.idProyecto %>">Ver tareas asociadas</a></button></td>                      
                       <td>
                             <form action="/casosdeuso/eliminar-casoDeUso" method="POST" id="eliminar_<%= CasoDeUso.IdCasoDeUso %>">
                                 <input type="hidden" name="IdCasoDeUso" value="<%= CasoDeUso.IdCasoDeUso %>">
