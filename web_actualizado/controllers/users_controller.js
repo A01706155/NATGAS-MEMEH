@@ -1,13 +1,12 @@
 const Usuario = require('../models/user');
 const bcrypt = require('bcryptjs');
-const session = require('express-session');
 
 exports.getLogin = (request, response, next) => {
     console.log("j");
 
     response.render('login2', {
         titulo: 'Iniciar sesión',
-        //csrfToken: request.csrfToken(),
+        csrfToken: request.csrfToken(),
         //error: request.session.error === true ? true : false,
         error: request.session.error,
         isLoggedIn: request.session.isLoggedIn === true ? true : false
@@ -55,6 +54,7 @@ exports.getLogout = (request, response, next) => {
 
 exports.getRegister = (request, response, next) => {
     response.render('register', {
+        csrfToken: request.csrfToken(),
         titulo: 'Registrar usuario',
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });

@@ -6,7 +6,8 @@ exports.getRegistrarFase = (request, response, next) => {
     response.render('registrar_fase', {
         titulo: 'Registrar fase',
         idProyecto: id,
-        isLoggedIn: request.session.isLoggedIn === true ? true : false
+        isLoggedIn: request.session.isLoggedIn === true ? true : false,
+        csrfToken: request.csrfToken()
     });
 };
 
@@ -35,6 +36,7 @@ exports.getFaseProyecto = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('fases_por_proyecto', { 
                 datos_fases: rows,
+                csrfToken: request.csrfToken(),
                 //rol: request.session.rol,
                 titulo: 'Fases del proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
@@ -57,7 +59,7 @@ exports.get = (request, response, next) => {
             response.render('fases', { 
                 lista_fases: rows, 
                 titulo: 'Fases',
-                //csrfToken: request.csrfToken(),
+                csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })

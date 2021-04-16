@@ -6,23 +6,24 @@
     <div class="container" style="position: absolute; left:25%; top:20%;
       margin: auto; min-width:50%; max-width:max-content;">
       <h1 class="center white-text"><%= titulo %></h1>
-      <% if (error) { %> 
-        <span style="color:red"><%= error %></span>
-      <% } %>
       
         <form class="passcontent grey-text text-lighten-1" action="/users/login" method="POST">
-            Nombre de usuario <br>
-            <input class="white-text" type="text" name="usuario">
-            <br><br>
-            Contraseña<br> 
-            <input class="white-text" type="password" name="password">
-            <br><br>
-            <div class="center">
-              <button class="waves-effect waves-light green darken-1 btn" type="submit"> 
-                <i class="material-icons left">login</i>Ingresar
-              </button>
-            </div>
-            <br>
+          <% if (error) { %> 
+            <span style="color:red"><%= error %></span>
+          <% } %>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+          Nombre de usuario <br>
+          <input class="white-text" type="text" name="usuario">
+          <br><br>
+          Contraseña<br> 
+          <input class="white-text" type="password" name="password">
+          <br><br>
+          <div class="center">
+            <button class="waves-effect waves-light green darken-1 btn" type="submit"> 
+              <i class="material-icons left">login</i>Ingresar
+            </button>
+          </div>
+          <br>
         </form>
     </div>
   

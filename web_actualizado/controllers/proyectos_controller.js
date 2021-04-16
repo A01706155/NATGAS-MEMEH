@@ -45,7 +45,7 @@ exports.getProyecto = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('ver_proyecto', { 
                 Proyecto: rows,
-                //rol: request.session.rol,
+                csrfToken: request.csrfToken(),
                 titulo: 'Trabajo del proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
@@ -63,6 +63,7 @@ exports.getModificarProyecto = (request, response, next) => {
     Proyecto.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('modificar_proyecto', { 
+                csrfToken: request.csrfToken(),
                 proyecto: rows,  
                 titulo: 'Modificar proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
@@ -96,7 +97,7 @@ exports.get = (request, response, next) => {
             response.render('proyectos', { 
                 lista_proyecto: rows, 
                 titulo: 'Proyectos',
-                //csrfToken: request.csrfToken(),
+                csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
