@@ -11,11 +11,11 @@ router.get('/registrar-proyecto', proyectosController.getRegistrarProyecto);
 
 router.post('/registrar-proyecto', proyectosController.postRegistrarProyecto);
 
-router.post('/buscar', proyectosController.postBuscar);
-
 router.get('/:proyecto_id', proyectosController.getProyecto);
 
 router.get('/modificar/:proyecto_id', proyectosController.getProyectoModificar);
+
+router.post('/buscar', proyectosController.postBuscar);
 
 router.get('/', proyectosController.get);
 

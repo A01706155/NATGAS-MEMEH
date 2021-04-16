@@ -1,15 +1,10 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
 
-    <main>
-
-        <div class="container">
-            <br><br>
-            <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
-        </div>
-            
-        <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
-            <h1 class="center white-text"><%= titulo %></h1>
+<main class="container">
+    
+    <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
+        <h1 class="center white-text"><%= titulo %></h1>
 
             <form class="passcontent grey-text text-lighten-1" action="/proyectos/registrar-proyecto" method="POST">
                 Nombre del proyecto<br>
@@ -20,15 +15,17 @@
                 <input type="date" name="fecha_inicio" class="datepicker white-text"><br>
                 Fecha de finalización<br>
                 <input type="date" name="fecha_fin" class="datepicker white-text"><br><br>
-                <div class="center-align">
-                    <button class=" btn waves-effect waves-light green" type="submit">Registrar proyecto
+                <div class="center">
+                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Registrar proyecto
                         <i class="material-icons right">send</i>
                     </button>
+                    <p></p>
+                    <button href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
+                </div>
                 </div>
             </form>
 
         </div>
-
     </main>
 
 <%- include('partials/footer.ejs')  %>
