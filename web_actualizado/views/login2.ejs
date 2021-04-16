@@ -10,17 +10,19 @@
         <span style="color:red"><%= error %></span>
       <% } %>
       
-        <form class="passcontent" action="/users/login" method="POST">
-            <label for="usuario">Nombre de usuario</label> 
+        <form class="passcontent grey-text text-lighten-1" action="/users/login" method="POST">
+            Nombre de usuario <br>
             <input class="white-text" type="text" name="usuario">
             <br><br>
-            <label for="password">Contraseña</label> 
+            Contraseña<br> 
             <input class="white-text" type="password" name="password">
             <br><br>
-            <button class="waves-effect waves-light btn" type="submit"> 
-              <i class="material-icons left">login</i>Ingresar
-            </button>
-            <br><br>
+            <div class="center">
+              <button class="waves-effect waves-light green darken-1 btn" type="submit"> 
+                <i class="material-icons left">login</i>Ingresar
+              </button>
+            </div>
+            <br>
         </form>
     </div>
   
