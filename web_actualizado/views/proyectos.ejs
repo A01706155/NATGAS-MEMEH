@@ -13,26 +13,25 @@
         <label for="buscar">Buscar</label>
         <input type="text" name="buscar" id="buscar" onkeyup="buscar()">
         <div class="row" id="resultados">
-          <% for (let proyecto of lista_proyecto) { %>
-            <div class="col s12 m4 l3">
-              <div class="card small grey darken-4">
-                  <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="/images/background2.jpg">
-                  </div>
-                  <div class="card-content">
-                    <span class="card-title activator grey-text text-lighten-3"><%= proyecto.nombreProyecto %>                            
-                    
-                    
-                    <p><a href="/proyectos/<%= proyecto.idProyecto %>">Ver proyecto</a></p>
-                  </div>
-                  <div class="card-reveal grey darken-4 grey-text text-lighten-3">
-                    <span class="card-title"><%= proyecto.nombreProyecto %><i class="material-icons right">close</i></span>
-                    <p class="">Descripción: <%= proyecto.descripcion %></p>
-                  </div>
-              </div>
+        <% for (let proyecto of lista_proyecto) { %>
+          <div class="col s12 m4 l3">
+            <div class="card small grey darken-4">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="/images/background2.jpg">
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-lighten-3"><%= proyecto.nombreProyecto %>                            
+                  
+                  
+                  <p><a href="/proyectos/<%= proyecto.idProyecto %>">Ver proyecto</a></p>
+                </div>
+                <div class="card-reveal grey darken-4 grey-text text-lighten-3">
+                  <span class="card-title"><%= proyecto.nombreProyecto %><i class="material-icons right">close</i></span>
+                  <p class="">Descripción: <%= proyecto.descripcion %></p>
+                </div>
             </div>
-          <% } %>
-        </div>
+          </div>
+        <% } %>
       </div>
       
     
@@ -78,6 +77,12 @@
                       '</div>'+
                       '<div class="card-content">' +
                         '<span class="card-title activator grey-text text-lighten-3">'+ proyecto.nombreProyecto +                 
+                        '<p><a href="/proyectos/proyecto.idProyecto>Ver proyecto</a></p>' +
+                      '</div>' +
+                      '<div class="card-reveal grey darken-4 grey-text text-lighten-3">' +
+                        '<span class="card-title"> '+  proyecto.nombreProyecto + '<i class="material-icons right">close</i></span>' +
+                        '<p class="">' +  proyecto.descripcion + '</p>' +
+                      '</div>'+
                   '</div>' +
                 '</div>'
         }
