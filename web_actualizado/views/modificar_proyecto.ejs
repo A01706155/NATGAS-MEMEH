@@ -3,29 +3,34 @@
 
     <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
         <h1 class="center white-text"><%= titulo %></h1>
+
         
-        <form class="passcontent grey-text text-lighten-1" action="/proyectos/:proyecto_id" method="POST">
-            <% for (let elemento of proyecto) { %>
+        <form class="passcontent grey-text text-lighten-1" action="/proyectos/modificar/:proyecto_id" method="POST">
+            <% for (let elemento of proyecto) { %> 
                 
                 Nombre <br>
-                <input class="white-text" type="text" name="nombreProyecto" value="<%= proyecto.nombreProyecto %>" required>
+                <input class="white-text" type="text" name="nombreProyecto" value="<%= elemento.nombreProyecto %>" required>
                 Descripcion <br>
-                <input class="white-text" type="text" name="descripcion" value="<%= proyecto.descripcion %>" required>
+                <input class="white-text" type="text" name="descripcion" value="<%= elemento.descripcion %>" required>
                 Fecha inicio <br>
-                <input class="datepicker white-text" type="date" name="fecha_inicio" value="<%= proyecto.fecha_inicio %>" required>
+                <input class="datepicker white-text" type="date" name="fecha_inicio" value="<%= elemento.fecha_inicio %>" required>
                 Fecha fin <br>
-                <input class="datepicker white-text" type="date" name="fecha_fin" value="<%= proyecto.fecha_fin %>" required>
-                <br><br>           
+                <input class="datepicker white-text" type="date" name="fecha_fin" value="<%= elemento.fecha_fin %>" required>
+                <br><br>
+                Id Proyecto <br>
+                <input class="white-text" type="text" name="idProyecto" value="<%= elemento.idProyecto %>" required>
+                <br><br>  
 
                 <div class="center">
-                    <button class="btn-large waves-effect waves-light green" style="width:12rem;" type="submit" name="action"> Guardar
+                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Modificar proyecto
                         <i class="material-icons right">send</i>
                     </button>
                     <p></p>
-                    <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
+                    <a href="/proyectos/<%= elemento.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
                 </div>
+            </form>
             <% } %>
-        </form>
+        
 
     </div>    
 

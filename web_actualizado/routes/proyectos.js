@@ -14,9 +14,11 @@ router.get('/registrar-proyecto',   proyectosController.getRegistrarProyecto);
 
 router.post('/registrar-proyecto',   proyectosController.postRegistrarProyecto);
 
-router.get('/:proyecto_id',   proyectosController.getProyecto);
+router.get('/modificar/:proyecto_id',   proyectosController.getModificarProyecto);
 
-router.get('/modificar/:proyecto_id',   proyectosController.getProyectoModificar);
+router.post('/modificar/:proyecto_id',   proyectosController.getModificarProyecto);
+
+router.get('/:proyecto_id',   proyectosController.getProyecto);
 
 router.post('/buscar',   proyectosController.postBuscar);
 

@@ -55,7 +55,7 @@ exports.getProyecto = (request, response, next) => {
         });
 };
 
-exports.getProyectoModificar = (request, response, next) => {
+exports.getModificarProyecto = (request, response, next) => {
     const id = request.params.proyecto_id;
     console.log("getModificar");
     Proyecto.fetchOne(id);
@@ -64,7 +64,7 @@ exports.getProyectoModificar = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('modificar_proyecto', { 
                 proyecto: rows,  
-                titulo: 'Editar proyecto',
+                titulo: 'Modificar proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
@@ -72,6 +72,18 @@ exports.getProyectoModificar = (request, response, next) => {
             console.log(err);
         });
 };
+
+exports.postModificarProyecto = (request, response, next) => {
+    console.log("Se esta modificando");
+    console.log(request.body.nombreProyecto);
+    const modificar_proyecto = new Proyecto(request.body.nombreProyecto, request.body.descripcion, request.body.fecha_inicio);
+    console.log(modificar_proyecto);
+    modificar_proyecto.modify()
+        .then(() => {
+            response.redirect('/proyectos');
+        }).catch(err => console.log(err));
+
+}
 
 exports.get = (request, response, next) => {
     console.log('Cookie: ' + request.get('Cookie'));
