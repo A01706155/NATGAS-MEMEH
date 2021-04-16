@@ -2,18 +2,20 @@ const Fase = require('../models/fase');
 const session = require('express-session');
 
 exports.getRegistrarFase = (request, response, next) => {
-    response.render('registrar_proyecto', {
+    response.render('registrar_fase', {
         titulo: 'Registrar fase',
+        isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };
 
 exports.postRegistrarFase = (request, response, next) => {
-    console.log(request.body.nombreProyecto);
-    const nueva_fase = new Fase(request.body.nombreProyecto,request.body.descripcion,request.body.fecha_inicio,request.body.fecha_fin);
+    console.log(request.body.nombreFase);
+    const id = request.params.proyecto_id;
+    const nueva_fase = new Fase(request.body.numFase, request.body.nombreFase, id);
     nueva_fase.save()
         .then(() => {
             response.setHeader('Set-Cookie', ['ultimo_proyecto='+nueva_fase.nombreFase+'; HttpOnly']);
-            response.redirect('/proyectos');
+            response.redirect('/fases/' + id);
         }).catch(err => console.log(err));
 
 }

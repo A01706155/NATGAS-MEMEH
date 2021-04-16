@@ -2,18 +2,26 @@
 <%- include('partials/navbar.ejs') %>
 
 <main class="container">
-    <h1><%= titulo %></h1>
+    
+    <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
+        <h1 class="center white-text"><%= titulo %></h1>
 
-    <form action="/proyectos/registrar-fase" method="POST">
-        <br>
-        Numero de la fase<br>
-        <input type="number" name="numFase"><br>
-        <br>
-        Nombre de la fase<br>
-        <input type="text" name="nombreFase"><br>
-        <br>
-        
-        <input type="submit" value="Registrar">
-    </form>
-</main>
+            <form class="passcontent grey-text text-lighten-1" action="/fases/registrar-fase/:proyecto_id" method="POST">
+                Número de fase<br>
+                <input class="white-text" type="text" name="numFase"><br>
+                Nombre de la fase<br>
+                <input class="white-text" type="text" name="nombreFase"><br>
+                Fecha de inicio<br>
+                <div class="center">
+                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Registrar fase
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <p></p>
+                    <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
+                </div>
+                </div>
+            </form>
+
+        </div>
+    </main>
 <%- include('partials/footer.ejs')  %>
