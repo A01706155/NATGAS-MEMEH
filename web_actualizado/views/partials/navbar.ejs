@@ -4,14 +4,15 @@
       <a id="logo-container" href="/proyectos" class="brand-logo"><img src="/images/natdev_logo.png" style="width:auto; height: 3rem; filter: contrast(0%) brightness(200%);"></a>
       <ul class="right hide-on-med-and-down">
         <% if (isLoggedIn === true) { %>
-          <li><a href="/">Cerrar sesión</a></li>
+          <li><a href="/users/logout">Cerrar sesión</a></li>
           <li><a href="/users/register">Registrar</a></li>
         <% } %>
       </ul>
 
       <!-- Navigation bar MOBILE  -->
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="/">Cerrar sesión</a></li>
+        <li><a href="/users/logout">Cerrar sesión</a></li>
+        <li><a href="/users/register">Registrar</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <!-- <img class="separador" src="images/separacion.png"> -->

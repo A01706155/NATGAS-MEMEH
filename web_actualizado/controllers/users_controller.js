@@ -6,7 +6,7 @@ exports.getLogin = (request, response, next) => {
     console.log("j");
 
     response.render('login2', {
-        titulo: 'Iniciar sesión:',
+        titulo: 'Iniciar sesión',
         //csrfToken: request.csrfToken(),
         //error: request.session.error === true ? true : false,
         error: request.session.error,
@@ -48,10 +48,8 @@ exports.postLogin = (request, response, next) => {
 };
 
 exports.getLogout = (request, response, next) => {
-    request.session.destroy((err) => {
-        console.log(err);
-        console.log('Logout');
-        response.redirect('/'); //Este código se ejecuta cuando la sesión se elimina.
+    request.session.destroy(() => {
+        response.redirect('/')
     });
 };
 
