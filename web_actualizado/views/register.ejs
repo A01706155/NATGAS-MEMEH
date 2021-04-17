@@ -12,6 +12,7 @@
 
 
             <form class="passcontent" action="/users/register" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                 <label for="nombre">Nombre</label> <input class="white-text" type="text" name="nombre" required>
                 <br><br>
                 <label for="usuario">Nombre de usuario</label> <input type="text" name="usuario" required>
