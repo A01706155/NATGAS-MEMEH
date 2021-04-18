@@ -1,13 +1,16 @@
   <!-- Navigation bar DESKTOP -->
+
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="/proyectos" class="brand-logo"><img src="/images/natdev_logo.png" style="width:auto; height: 3rem; filter: contrast(0%) brightness(200%);"></a>
       <ul class="right hide-on-med-and-down">
         <% if (isLoggedIn === true) { %>
-          <li><a href="/users/logout">Cerrar sesión</a></li>
-          <li><a href="/users/register">Registrar</a></li>
+          <li><a href="/users/register"><i class="tiny material-icons right">add</i>Registrar</a></li></a></li>
+          <li class="logout"><a href="/users/logout"><i class="material-icons right">input</i>Cerrar Sesión</a></li>
         <% } %>
       </ul>
+
+     
 
       <!-- Navigation bar MOBILE  -->
       <ul id="nav-mobile" class="sidenav">

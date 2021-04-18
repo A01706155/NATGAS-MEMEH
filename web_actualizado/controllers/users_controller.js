@@ -5,6 +5,7 @@ exports.getLogin = (request, response, next) => {
     console.log("j");
 
     response.render('login2', {
+        user: request.session.usuario,
         titulo: 'Iniciar sesión',
         csrfToken: request.csrfToken(),
         //error: request.session.error === true ? true : false,
@@ -17,6 +18,7 @@ exports.postLogin = (request, response, next) => {
     request.session.error = "";
     const username = request.body.usuario;
     console.log(username);
+    
     Usuario.fetchOne(username)
         .then(([rows, fieldData]) => {
             if (rows.length < 1) {
@@ -48,6 +50,7 @@ exports.postLogin = (request, response, next) => {
 
 exports.getLogout = (request, response, next) => {
     request.session.destroy(() => {
+        
         response.redirect('/')
     });
 };
@@ -55,6 +58,7 @@ exports.getLogout = (request, response, next) => {
 exports.getRegister = (request, response, next) => {
     response.render('register', {
         csrfToken: request.csrfToken(),
+        user: request.session.usuario,
         titulo: 'Registrar usuario',
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });

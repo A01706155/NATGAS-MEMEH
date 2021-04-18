@@ -96,6 +96,7 @@ exports.get = (request, response, next) => {
     Proyecto.fetchAll()
         .then(([rows, fieldData]) => {
             response.render('proyectos', { 
+                user: request.session.usuario,
                 lista_proyecto: rows, 
                 titulo: 'Proyectos',
                 csrfToken: request.csrfToken(),
