@@ -31,8 +31,8 @@ module.exports = class Proyecto {
         return db.execute("SELECT * FROM `proyectos` WHERE `nombreProyecto` LIKE ? ", ['%'+nombreProyecto+'%']);
     }
 
-    static modify(nombreProyecto, descripcionProyecto, fecha_inicioProyecto, fecha_finProyecto, idProyecto) {
+    static modify(nombreProyecto, descripcion, fecha_inicio, fecha_fin, idProyecto) {
         return db.execute('UPDATE proyectos SET nombreProyecto=?, descripcion=?, fecha_inicio=?, fecha_fin=? WHERE idProyecto=?',
-        [nombreProyecto, descripcionProyecto, fecha_inicioProyecto, fecha_finProyecto, idProyecto]);
+        [nombreProyecto, descripcion, fecha_inicio, fecha_fin, idProyecto]);
     }
 }

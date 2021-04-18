@@ -7,11 +7,17 @@
     
     <!-- Para que se vea bonito-->
     <div style="backdrop-filter: blur(10px) contrast(70%); padding:20px; border-radius: 20px; margin-bottom: 6%;">
-      
+       <!-- Botón para crear un nuevo proyecto-->
+       <div class="row center">
+        <a href="/proyectos/registrar-proyecto" id="new_project" class="btn-large waves-effect waves-light green lighten-1">Crear nuevo proyecto</a>
+    </div>
       <!-- Generar proyectos almacenados con tarjetas -->
         <label for="buscar">Buscar</label>
         <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>">
-        <input type="text" name="buscar" id="buscar" onkeyup="buscar()">
+        <div class="input-field">
+          <input type="text" name="buscar" id="buscar" onkeyup="buscar()">
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        </div>
         <div class="row" id="resultados">
           <% for (let proyecto of lista_proyecto) { %>
             <div class="col s12 m4 l3">
@@ -20,10 +26,12 @@
                     <img class="activator" src="/images/background2.jpg">
                   </div>
                   <div class="card-content">
-                    <span class="card-title activator grey-text text-lighten-3"><%= proyecto.nombreProyecto %>                            
+                    <span class="card-title activator grey-text text-lighten-3"><%= proyecto.nombreProyecto %>       
+                      <i class="material-icons right">arrow_drop_down</i>                     
                     <p><a href="/proyectos/<%= proyecto.idProyecto %>">Ver proyecto</a></p>
                   </div>
                   <div class="card-reveal grey darken-4 grey-text text-lighten-3">
+                    
                     <span class="card-title"><%= proyecto.nombreProyecto %><i class="material-icons right">close</i></span>
                     <p class="">Descripción: <%= proyecto.descripcion %></p>
                   </div>
@@ -33,10 +41,7 @@
         </div>
       
     
-      <!-- Botón para crear un nuevo proyecto-->
-        <div class="row center">
-            <a href="/proyectos/registrar-proyecto" id="new_project" class="btn-large waves-effect waves-light green lighten-1">Crear nuevo proyecto</a>
-        </div>
+     
 
     </div>
 
