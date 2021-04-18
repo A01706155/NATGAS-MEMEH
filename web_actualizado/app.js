@@ -21,13 +21,9 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 const rutasProyectos = require('./routes/proyectos');
-<<<<<<< HEAD
-const rutasUsers = require('./routes/users');
-=======
 //const casosdeuso = require('./routes/casosdeuso');
 const rutasUsers = require('./routes/users');
 //const rutasFases = require('./routes/fases');
->>>>>>> 5ba2303c2eed8b5d83ab7d06322ff394014a7b69
 
 //const rutasPersonajes = require('./routes/personajes');
 
