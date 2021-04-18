@@ -1,4 +1,5 @@
   <!-- Navigation bar DESKTOP -->
+
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="/proyectos" class="brand-logo"><img src="/images/natdev_logo.png" style="width:auto; height: 3rem; filter: contrast(0%) brightness(200%);"></a>
@@ -8,6 +9,9 @@
           <li><a href="/users/register">Registrar</a></li>
         <% } %>
       </ul>
+      <div class="right hide-on-down">
+        <a href="#name"><span class="white-text name"><%=user%></span></a>
+      </div>
 
       <!-- Navigation bar MOBILE  -->
       <ul id="nav-mobile" class="sidenav">
