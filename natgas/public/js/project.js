@@ -1,0 +1,3 @@
+
+/*Material Initialization*/
+M.AutoInit();

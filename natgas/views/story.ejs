@@ -1,0 +1,61 @@
+<%- include('includes/head.ejs') %>  
+    <div id="div_story_tab">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#div_task_list">Task List</a></li>
+                <li class="tab col s3"><a href="#div_test_list">Test List</a></li>
+            </ul>
+        </div>
+   
+        <div id="div_task_list" class="col s12">
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>Task ID</th>
+                        <th>Task Name</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% for (let task of task_list) { %>
+                        <tr>
+                            <td> <%= task.id %> </td>
+                            <td> <%= task.name %> </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div><!--End of Task Div-->
+
+        <div id="div_test_list" class="col s12">
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>Test ID</th>
+                        <th>Test Name</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% for (let test of test_list) { %>
+                        <tr>
+                            <td> <%= test.id %> </td>
+                            <td> <%= test.name %> </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div><!--End of User Div--> 
+    
+    </div><!--End of Tab div--> 
+    
+
+    <div id="div_control">
+
+    </div>
+
+
+
+    <%- include('includes/tail.ejs') %>
+    <script src="js/story.js"></script> 
+    <%- include('includes/end.ejs') %>
