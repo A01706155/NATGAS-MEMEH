@@ -1,6 +1,6 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
-
+  
   <main class="container">
     <!-- Titulo -->
     <h1 class="header center white-text"><%= titulo %></h1>
@@ -12,12 +12,12 @@
         <a href="/proyectos/registrar-proyecto" id="new_project" class="btn-large waves-effect waves-light green lighten-1">Crear nuevo proyecto</a>
     </div>
       <!-- Generar proyectos almacenados con tarjetas -->
-        <label for="buscar">Buscar</label>
         <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>">
-        <div class="input-field">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">search</i>
           <input type="text" name="buscar" id="buscar" onkeyup="buscar()">
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-        </div>
+        </div>  
+
         <div class="row" id="resultados">
           <% for (let proyecto of lista_proyecto) { %>
             <div class="col s12 m4 l3">
@@ -33,7 +33,7 @@
                   <div class="card-reveal grey darken-4 grey-text text-lighten-3">
                     
                     <span class="card-title"><%= proyecto.nombreProyecto %><i class="material-icons right">close</i></span>
-                    <p class="">Descripción: <%= proyecto.descripcion %></p>
+                    <p class="">Descripción:<p></p> <%= proyecto.descripcion %></p>
                   </div>
               </div>
             </div>

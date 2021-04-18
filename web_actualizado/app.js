@@ -21,9 +21,9 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 const rutasProyectos = require('./routes/proyectos');
-const casosdeuso = require('./routes/casosdeuso');
+//const casosdeuso = require('./routes/casosdeuso');
 const rutasUsers = require('./routes/users');
-const rutasFases = require('./routes/fases');
+//const rutasFases = require('./routes/fases');
 
 //const rutasPersonajes = require('./routes/personajes');
 
@@ -55,8 +55,8 @@ app.use((request, response, next) => {
 // Página de usuarios
 app.use('/proyectos', rutasProyectos);
 app.use('/users', rutasUsers);
-app.use('/fases', rutasFases);
-app.use('/casosdeuso', casosdeuso);
+//app.use('/fases', rutasFases);
+//app.use('/casosdeuso', casosdeuso);
 
 // Página de login
 app.get('/', (request, response, next) => {
