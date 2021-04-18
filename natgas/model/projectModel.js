@@ -30,6 +30,23 @@ class ProjectClass
         return project;
     }
 
+    static modify(id
+                , name
+                , description
+                , state)
+    {
+        let project = getById(id);
+
+        if(project)
+        {
+            project.name = name;
+            project.description = description;
+            project.state = state;
+        }
+
+        return project;
+    }
+
     static getEmpty()
     {
         return    new ProjectClass(0
@@ -42,7 +59,7 @@ class ProjectClass
     {
         let returnProject = null;
 
-        for(project of this.project_list)
+        for(let project of this.project_list)
         {
             if(project.id == id)
             {

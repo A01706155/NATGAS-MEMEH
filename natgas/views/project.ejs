@@ -1,4 +1,19 @@
 <%- include('includes/head.ejs') %>   
+    <div id="div_project_info">
+        <div class="col s12">
+            <div class="row">
+                <% if(project.id) { %>
+                    <h1>Project <%= project.id %></h1>
+                <% }else{ %>
+                    <h1>New Project</h1>
+                <% } %>
+            </div>  
+            <div class="row">
+                <h2><%= project.name %></h2>
+            </div>
+        </div>
+    </div>
+
     <div id="div_project_tab">
         <div class="col s12">
             <ul class="tabs">
@@ -10,20 +25,42 @@
    
         <div id="div_project_detail" class="col s12">
             <div class="row">
-                <form class="col s12" id="form_project" action="\project\submit" method="POST">
+                <form class="col s12" id="form_project_detail" action="\project\submit" method="POST">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="id" name="id" type="text" class="validate">
-                            <label for="id">project id</label>
+                            <input id="id" name="id" type="hidden" class="validate" value=<%= project.id %>>
+                            <!--label for="id">ID</label-->
+                        </div>
+                    </div>                     
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select name="state" value=<%= project.state %>>                                
+                                <option value="0">Init</option>
+                                <option value="1">In Progress</option>
+                                <option value="2">Done</option>
+                              </select>
+                            <label>State</label>                            
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="name" name="name" type="text" class="validate" value=<%= project.name %>>
+                            <label for="name">name</label>
+                            <span class="helper-text red-text" id="name_helper"></span>
+                        </div>
+                    </div>     
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="description" name="description" type="text" class="validate" value=<% project.description %>>
+                            <label for="description">description</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="name" name="name" type="text" class="validate">
-                            <label for="name">name</label>
-                        </div>
-                    </div>              
+
+                    <button class="btn waves-effect waves-light" type="button" name="SaveBtn" onclick="SaveBtnHandler();">Save
+                        <i class="material-icons right">send</i>
+                    </button>                            
                 </form>
+                
             </div>
         </div><!--End of Detail Div-->
 

@@ -29,5 +29,23 @@ exports.new = (request, response, next) => {
 
 exports.submit = (request, response, next) => {
     /*update project*/
- 
+    console.log("Set Project");
+    console.log(request.body);
+
+    let id = request.body.id;
+    if(request.body.id == 0)
+    {/*New Project*/
+        id = projectModel.getList().length + 1;
+        console.log('new');
+        projectModel.create(id, request.body.name, request.body.description, request.body.state);
+    }
+    else
+    {/*Modify Project*/
+        projectModel.modify(id, request.body.name, request.body.description, request.body.state);
+    }
+
+    console.log(`id is ${id}`);
+
+    
+    response.redirect("/project");
 }
