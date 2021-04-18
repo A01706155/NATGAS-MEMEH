@@ -2,11 +2,31 @@
     <div id="div_project_tab">
         <div class="col s12">
             <ul class="tabs">
+                <li class="tab col s3"><a href="#div_project_detail">Detail</a></li>
                 <li class="tab col s3"><a href="#div_story_list">Story List</a></li>
                 <li class="tab col s3"><a href="#div_user_list">User List</a></li>
             </ul>
         </div>
    
+        <div id="div_project_detail" class="col s12">
+            <div class="row">
+                <form class="col s12" id="form_project" action="\project\submit" method="POST">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="id" name="id" type="text" class="validate">
+                            <label for="id">project id</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="name" name="name" type="text" class="validate">
+                            <label for="name">name</label>
+                        </div>
+                    </div>              
+                </form>
+            </div>
+        </div><!--End of Detail Div-->
+
         <div id="div_story_list" class="col s12">
             <table class="striped">
                 <thead>
@@ -57,5 +77,5 @@
 
 
     <%- include('includes/tail.ejs') %>
-    <script src="js/project.js"></script> 
+    <script type="text/javascript" src="/js/project.js"></script> 
     <%- include('includes/end.ejs') %>

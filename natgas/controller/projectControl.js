@@ -5,6 +5,7 @@ const projectModel = require('../model/projectModel.js');
 
 
 exports.get = (request, response, next) => {
+    console.log('get project');
     let project = projectModel.getById(1234);
 
     if(!project)
@@ -17,6 +18,8 @@ exports.get = (request, response, next) => {
 }
 
 exports.new = (request, response, next) => {
+    console.log('new project');
+
     project = projectModel.getEmpty();
 
     response.render('project', {project: project,
@@ -26,4 +29,5 @@ exports.new = (request, response, next) => {
 
 exports.submit = (request, response, next) => {
     /*update project*/
+ 
 }

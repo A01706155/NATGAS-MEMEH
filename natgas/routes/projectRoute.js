@@ -25,10 +25,9 @@ function UserObj(id, name)
     this.name = name;
 }
 
-router.get('/', projectControl.get);
 router.get('/new', projectControl.new);
 router.post('/submit', projectControl.submit);
-
+router.get('/', projectControl.get);
 
 
 module.exports = router;
