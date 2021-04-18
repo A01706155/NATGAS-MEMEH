@@ -2,11 +2,16 @@ const path = require('path');
 const storyModel = require('../model/storyModel.js');
 const projectAssignModel = require('../model/projectAssignModel.js');
 const projectModel = require('../model/projectModel.js');
+const url = require('url');
 
 
 exports.get = (request, response, next) => {
     console.log('get project');
-    let project = projectModel.getById(1234);
+
+    const queryObj = url.parse(request.url, true).query;
+    console.log(queryObj);
+
+    let project = projectModel.getById(queryObj.id);
 
     if(!project)
     {
@@ -46,6 +51,5 @@ exports.submit = (request, response, next) => {
 
     console.log(`id is ${id}`);
 
-    
-    response.redirect("/project");
+    response.redirect(`/project/?id=${id}`);
 }

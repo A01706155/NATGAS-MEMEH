@@ -12,7 +12,7 @@
             <tbody>
                 <% for (let project of project_list) { %>
                 <tr>
-                    <td> <%= project.id %> </td>
+                    <td><a href=<%= `\project\?id=${project.id}` %> > <%= project.id %> </a></td>
                     <td> <%= project.name %> </td>
                 </tr>
                 <% } %>
