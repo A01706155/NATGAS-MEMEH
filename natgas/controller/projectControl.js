@@ -2,6 +2,7 @@ const path = require('path');
 const storyModel = require('../model/storyModel.js');
 const projectAssignModel = require('../model/projectAssignModel.js');
 const projectModel = require('../model/projectModel.js');
+const optionModel = require('../model/optionModel.js');
 const url = require('url');
 
 
@@ -11,25 +12,31 @@ exports.get = (request, response, next) => {
     const queryObj = url.parse(request.url, true).query;
     console.log(queryObj);
 
-    let project = projectModel.getById(queryObj.id);
+    let project_obj = projectModel.getById(queryObj.id);
 
-    if(!project)
+    if(!project_obj)
     {
-        project = projectModel.getEmpty();
+        project_obj = projectModel.getEmpty();
     }
-    response.render('project', {project: project,
-                                story_list: storyModel.getByProject(project.id),
-                                user_list: projectAssignModel.getByProject(project.id)});
+
+    console.log('state');
+    console.log((projectModel.getList())[0].state);
+
+    response.render('project', {project: project_obj,
+                                story_list: storyModel.getByProject(project_obj.id),
+                                user_list: projectAssignModel.getByProject(project_obj.id),
+                                state: optionModel.getWorkState()});
 }
 
 exports.new = (request, response, next) => {
     console.log('new project');
 
-    project = projectModel.getEmpty();
+    project_obj = projectModel.getEmpty();
 
-    response.render('project', {project: project,
-                                story_list: storyModel.getByProject(project.id),
-                                user_list: projectAssignModel.getByProject(project.id)});
+    response.render('project', {project: project_obj,
+                                story_list: storyModel.getByProject(project_obj.id),
+                                user_list: projectAssignModel.getByProject(project_obj.id),
+                                state: optionModel.getWorkState()});
 }
 
 exports.submit = (request, response, next) => {
@@ -46,6 +53,7 @@ exports.submit = (request, response, next) => {
     }
     else
     {/*Modify Project*/
+        console.log('modify');
         projectModel.modify(id, request.body.name, request.body.description, request.body.state);
     }
 

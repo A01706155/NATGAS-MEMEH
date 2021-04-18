@@ -39,3 +39,28 @@ function SaveBtnHandler()
 
     //alert('Done');
 }
+
+/*Select the value of Select Compoment according to it's value*/
+/*
+function PreSetSelectComp()
+{
+    let SelectComp_List = document.getElementsByTagName("select");
+
+    for(let SelectComp of SelectComp_List)
+    {
+        let Option_List = SelectComp.childNodes;
+        let value = SelectComp.value;
+
+        for(child of Option_List)
+        {
+            if(child.value == value)
+            {
+                alert(child.innerHTML + value.toString());
+                child.selected = "selected";
+            }
+        }
+    }
+}
+
+PreSetSelectComp();
+*/

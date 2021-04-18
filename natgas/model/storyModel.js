@@ -50,6 +50,19 @@ class StoryClass
         return story;
     }
 
+    static modify(id
+                    , project_id
+                    , name
+                    , description = ''
+                    , purpose = ''
+                    , comment = ''
+                    , stakeholder = 0
+                    , ap = 0
+                    , state = 0)
+    {
+        
+    }
+
     static getById(id)
     {
         let returnStory = null;

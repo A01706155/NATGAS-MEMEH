@@ -3,6 +3,7 @@ const path = require('path');
 const router = express.Router();
 const projectControl = require('../controller/projectControl.js');
 
+/*
 const story_array = [new StoryObj(1234, 'Story A')
                             , new StoryObj(5678, 'Story B')
                             , new StoryObj(9012, 'Story C')
@@ -23,7 +24,7 @@ function UserObj(id, name)
 {
     this.id = id;
     this.name = name;
-}
+}*/
 
 router.get('/new', projectControl.new);
 router.post('/submit', projectControl.submit);

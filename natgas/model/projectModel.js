@@ -18,8 +18,8 @@ class ProjectClass
 
     static create(id
                     , name
-                    , description = ''
-                    , state = 0)
+                    , description 
+                    , state)
     {
         let project = new ProjectClass(id
                                     , name
@@ -35,15 +35,39 @@ class ProjectClass
                 , description
                 , state)
     {
-        let project = getById(id);
+        
+        let index = this.getIndexById(id);
+        let project = null;
 
-        if(project)
+
+        if(index != -1)
+        {
+            //console.log(`index ${index}`);
+            //console.log("Modify project");
+            //console.log(this.project_list[index].name);
+
+            this.project_list[index].name = name;
+            this.project_list[index].description = description;
+            this.project_list[index].state = state;
+            
+            project = this.project_list[index];
+
+            console.log(this.project_list[index].description);
+        }
+        else
+        {
+            console.log("Project No Found");
+        }
+        /*
+        let project = this.getById(id);
+
+        if(!project)
         {
             project.name = name;
             project.description = description;
             project.state = state;
         }
-
+        */
         return project;
     }
 
@@ -57,6 +81,7 @@ class ProjectClass
 
     static getById(id)
     {
+        /*
         let returnProject = null;
 
         for(let project of this.project_list)
@@ -68,7 +93,31 @@ class ProjectClass
             }
         }
 
-        return returnProject;
+        return returnProject;*/
+        return this.project_list.find((element)=>{
+            if(element.id == id)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        });
+    }
+
+    static getIndexById(id)
+    {
+        return this.project_list.findIndex((element)=>{
+                    if(element.id == id)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                });
     }
 
     static getList()

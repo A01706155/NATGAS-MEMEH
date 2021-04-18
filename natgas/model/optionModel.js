@@ -1,0 +1,1 @@
+exports.getWorkState = ()=>{ return {"Init":0, "In Progress":1, "Done":2};};

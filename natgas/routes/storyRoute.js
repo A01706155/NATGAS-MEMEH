@@ -1,7 +1,9 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const storyControl = require('../controller/storyControl.js');
 
+/*
 const task_array = [new TaskObj(1234, 'Task A')
                             , new TaskObj(5678, 'Task B')
                             , new TaskObj(9012, 'Task C')
@@ -28,7 +30,11 @@ function TestObj(id, name)
 router.use('/', (request, response, next) => {
     response.render('story', {task_list: task_array,
                                 test_list: test_array});
-});
+});*/
+
+router.get('/new', storyControl.new);
+router.post('/submit', storyControl.submit);
+router.get('/', storyControl.get);
 
 module.exports = router;
 
