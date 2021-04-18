@@ -67,7 +67,7 @@ class ProjectAssignClass
             }
         }
 
-        return returnProjectassign;
+        return returnProjectassign_list;
     }
 
     static getIndex(project_id, user_id, role)

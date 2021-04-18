@@ -32,10 +32,10 @@ class ProjectClass
 
     static getEmpty()
     {
-        return    new ProjectClass(id = 0
-                                , name = ''
-                                , description = ''
-                                , state = 0);
+        return    new ProjectClass(0
+                                , ''
+                                , ''
+                                , 0);
     }
 
     static getById(id)
