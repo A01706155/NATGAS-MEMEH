@@ -5,21 +5,27 @@
     <!-- Titulo -->
     <h1 class="header center white-text"><%= titulo %></h1>
     
+    <!-- Search bar -->
+    <div class="white-text searchbar">
+      <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>">
+      
+      <div class="input-field">
+        <i class="material-icons prefix">search</i>
+        <label for="buscar">Escribe aquí para buscar un proyecto</label>
+        <input class="white-text" type="text" name="buscar" id="buscar" onkeyup="buscar()">
+
+      </div> 
+
+    </div>
+
     <!-- Para que se vea bonito-->
     <div style="backdrop-filter: blur(10px) contrast(70%); padding:20px; border-radius: 20px; margin-bottom: 6%;">
        <!-- Botón para crear un nuevo proyecto-->
        <div class="row center">
         <a href="/proyectos/registrar-proyecto" id="new_project" class="btn-large waves-effect waves-light green lighten-1">Crear nuevo proyecto</a>
-    </div>
+      </div>
     
     <!-- Generar proyectos almacenados con tarjetas -->
-      <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>">
-
-      <div class="input-field">
-        <i class="material-icons prefix">search</i>
-        <input class="white-text" type="text" name="buscar" id="buscar" onkeyup="buscar()">
-      </div> 
-
       <div class="row" id="resultados">
         
         <% for (let proyecto of lista_proyecto) { %>
