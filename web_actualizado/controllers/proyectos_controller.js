@@ -58,16 +58,16 @@ exports.getProyecto = (request, response, next) => {
 };
 
 exports.getModificarProyecto = (request, response, next) => {
-    const id = request.params.
-    console.log("getModificar");
-    Proyecto.fetchOne(id);
-    console.log(id);
+    const id = request.params.proyecto_id;
+ 
+    
     Proyecto.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('modificar_proyecto', { 
-                csrfToken: request.csrfToken(),
+                
                 proyecto: rows,  
                 titulo: 'Modificar proyecto',
+                csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
