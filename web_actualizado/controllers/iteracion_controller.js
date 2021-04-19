@@ -10,6 +10,7 @@ exports.getIteracion = (request, response, next) => {
     Iteracion.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('iteracion', { 
+                lista_iteraciones: rows, 
                 Iteracion: rows,
                 csrfToken: request.csrfToken(),
                 titulo: 'Trabajo del proyecto',
@@ -39,3 +40,26 @@ exports.postRegistrarIteracion = (request, response, next) => {
         }).catch(err => console.log(err));
 
 }
+
+exports.get = (request, response, next) => {
+    console.log('Cookie: ' + request.get('Cookie'));
+    //console.log(request.get('Cookie').split(';')[1].trim().split('=')[1]);
+    
+    //Con cookie-parser
+    console.log(request.cookies);
+    console.log(request.cookies.ultima_iteracion);
+
+    Iteracion.fetchAll()
+        .then(([rows, fieldData]) => {
+            response.render('iteracion', { 
+                user: request.session.usuario,
+                lista_iteraciones: rows, 
+                titulo: 'Iteracion',
+                csrfToken: request.csrfToken(),
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};

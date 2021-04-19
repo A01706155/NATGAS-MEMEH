@@ -23,11 +23,11 @@ module.exports = class Iteracion {
     }
 
     static fetchOne(id) {
-        return db.execute('SELECT * FROM iteracion WHERE idProyecto=?', [id]);
+        return db.execute('SELECT * FROM iteracion WHERE idIteracion=?', [id]);
     }
 
-    static fetchByName(nombreProyecto) {
-        return db.execute("SELECT * FROM `proyiteracionecto` WHERE `nombreProyecto` LIKE ? ", ['%'+nombreProyecto+'%']);
+    static fetchByName(idIteracion) {
+        return db.execute("SELECT * FROM `iteracion` WHERE `nombreProyecto` LIKE ? ", ['%'+idIteracion+'%']);
     }
 
     static modify(nombreProyecto, descripcion, fecha_inicio, fecha_fin, idProyecto) {
