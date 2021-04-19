@@ -8,13 +8,12 @@ module.exports = class Proyecto {
         this.descripcion = descripcion;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
-        this.idProyecto = idProyecto;
         this.estadoProyecto = estadoProyecto;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        return db.execute('INSERT INTO proyectos (nombreProyecto, descripcion,fechaPlaneada, fechaEntrega, estadoProyecto) VALUES (?,?,?,?,?)',
+        return db.execute('INSERT INTO proyecto (nombreProyecto, descripcion,fechaPlaneada, fechaEntrega, estadoProyecto) VALUES (?,?,?,?,?)',
             [this.nombreProyecto, this.descripcion, this.fecha_inicio, this.fecha_fin, this.estadoProyecto]
         );
     }
