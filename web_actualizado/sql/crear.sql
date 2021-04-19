@@ -37,9 +37,9 @@
 
     CREATE TABLE Empleado (
         idEmpleado INT AUTO_INCREMENT NOT NULL,
-        usuario VARCHAR(14),
-        contrasena VARCHAR(100),
+        usuario VARCHAR(14),       
         nombreEmpleado VARCHAR(64),
+        contrasena VARCHAR(100),
         PRIMARY KEY(idEmpleado)
     );
 
