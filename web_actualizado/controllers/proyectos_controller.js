@@ -57,7 +57,7 @@ exports.getProyecto = (request, response, next) => {
 };
 
 exports.getModificarProyecto = (request, response, next) => {
-    const id = request.params.proyecto_id;
+    const id = request.params.
     console.log("getModificar");
     Proyecto.fetchOne(id);
     console.log(id);

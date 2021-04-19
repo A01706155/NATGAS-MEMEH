@@ -1,0 +1,22 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<main class="container">
+    <!-- Titulo -->
+    <h1 class="header center white-text">Iteraciones</h1>
+    
+    <!-- Para que se vea bonito-->
+    <div style="backdrop-filter: blur(10px) contrast(70%); padding:20px; border-radius: 20px; margin-bottom: 6%;">
+       <!-- Botón para crear un nuevo proyecto-->
+       <div class="row center">
+        <a href="/iteracion/register_iteracion" id="new_iteracion" class="btn-large waves-effect waves-light green lighten-1">Crear nueva iteracion</a>
+    </div>
+      <!-- Generar proyectos almacenados con tarjetas -->
+        <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">search</i>
+          <input type="text" name="buscar" id="buscar" onkeyup="buscar()">
+        </div>  
+       
+
+<%- include('partials/footer.ejs') %>

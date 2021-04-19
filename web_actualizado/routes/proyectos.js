@@ -11,6 +11,8 @@ const path = require('path');
 
 const proyectosController = require('../controllers/proyectos_controller');
 
+const iteracionController = require('../controllers/iteracion_controller');
+
 
 router.get('/registrar-proyecto', isAuth,  proyectosController.getRegistrarProyecto);
 
@@ -23,6 +25,12 @@ router.post('/modificar-proyecto',   proyectosController.postModificarProyecto);
 router.get('/:proyecto_id', isAuth,   proyectosController.getProyecto);
 
 router.post('/buscar',   proyectosController.postBuscar);
+
+router.get('/iteracion/:proyecto_id', isAuth,   iteracionController.getIteracion);
+
+router.get('/iteracion/:proyecto_id', isAuth,   iteracionController.getRegistrarIteracion);
+
+router.post('/iteracion/:proyecto_id', isAuth,   iteracionController.postRegistrarIteracion);
 
 router.get('/',   proyectosController.get);
 
