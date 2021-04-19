@@ -23,7 +23,7 @@ exports.getIteracion = (request, response, next) => {
 };
 
 exports.getRegistrarIteracion = (request, response, next) => {
-    request.session.last = '/proyectos/nueva-iteracion';
+    request.session.last = '/proyectos/register_iteracion';
     response.render('register_iteracion', {
         csrfToken: request.csrfToken(),
         titulo: 'Registrar iteracion',
@@ -36,7 +36,7 @@ exports.postRegistrarIteracion = (request, response, next) => {
     const nueva_iteracion = new Iteracion(request.body.descripcion,request.body.fecha_inicio,request.body.fecha_fin,request.body.estadoIteracion);
     nueva_iteracion.save()
         .then(() => {
-            response.setHeader('Set-Cookie', ['ultimo_proyecto='+nueva_iteracion.idIteracion+'; HttpOnly']);
+            response.setHeader('Set-Cookie', ['ultima_iteracion='+nueva_iteracion.idIteracion+'; HttpOnly']);
             response.redirect('/iteracion');
         }).catch(err => console.log(err));
 
