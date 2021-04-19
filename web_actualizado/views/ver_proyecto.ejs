@@ -17,6 +17,7 @@
                     <td>Descripcion</td>
                     <td>Fecha inicial</td>
                     <td>Fecha Final</td>
+                    <td>Estado</td>
                     </tr>
                     <tr> 
                         <% for (let detalle of Proyecto) { %>
@@ -24,8 +25,9 @@
                             <td><%= detalle.idProyecto %></td>
                             <td><%= detalle.nombreProyecto %> </td>
                             <td><%= detalle.descripcion %></td>
-                            <td><%= detalle.fecha_inicio %> </td>
-                            <td><%= detalle.fecha_fin %></td>
+                            <td><%= detalle.fechaPlaneada %> </td>
+                            <td><%= detalle.fechaEntrega %></td>
+                            <td><%= detalle.estadoProyecto %></td>
 
                         <% } %>          
                     </tr>      

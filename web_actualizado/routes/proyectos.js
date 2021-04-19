@@ -14,17 +14,17 @@ const proyectosController = require('../controllers/proyectos_controller');
 const iteracionController = require('../controllers/iteracion_controller');
 
 
-router.get('/registrar-proyecto', isAuth,  proyectosController.getRegistrarProyecto);
+router.get('/registrar-proyecto', isAuth, proyectosController.getRegistrarProyecto);
 
-router.post('/registrar-proyecto', isAuth,  proyectosController.postRegistrarProyecto);
+router.post('/registrar-proyecto', isAuth, proyectosController.postRegistrarProyecto);
 
-router.get('/modificar-proyecto/:proyecto_id',   proyectosController.getModificarProyecto);
+router.get('/modificar-proyecto/:proyecto_id', proyectosController.getModificarProyecto);
 
-router.post('/modificar-proyecto',   proyectosController.postModificarProyecto);
+router.post('/modificar-proyecto', proyectosController.postModificarProyecto);
 
-router.get('/:proyecto_id', isAuth,   proyectosController.getProyecto);
+router.get('/:proyecto_id', isAuth, proyectosController.getProyecto);
 
-router.post('/buscar',   proyectosController.postBuscar);
+router.post('/buscar', proyectosController.postBuscar);
 
 router.get('/iteracion/:proyecto_id', isAuth,   iteracionController.getIteracion);
 

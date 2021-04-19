@@ -1,8 +1,8 @@
 const session = require('express-session');
-const Proyecto = require('../models/proyecto');
+const Proyecto = require('../models/fase');
 
 
-exports.getRegistrarProyecto = (request, response, next) => {
+exports.getRegistrarFase = (request, response, next) => {
     response.render('registrar_proyecto', {
         csrfToken: request.csrfToken(),
         titulo: 'Registrar proyecto',
@@ -57,7 +57,7 @@ exports.getProyecto = (request, response, next) => {
 };
 
 exports.getModificarProyecto = (request, response, next) => {
-    const id = request.params.
+    const id = request.params.proyecto_id;
     console.log("getModificar");
     Proyecto.fetchOne(id);
     console.log(id);
@@ -84,26 +84,3 @@ exports.postModificarProyecto = (request, response, next) => {
         }).catch(err => console.log(err));
 
 }
-
-exports.get = (request, response, next) => {
-    console.log('Cookie: ' + request.get('Cookie'));
-    //console.log(request.get('Cookie').split(';')[1].trim().split('=')[1]);
-    
-    //Con cookie-parser
-    console.log(request.cookies);
-    console.log(request.cookies.ultimo_proyecto);
-
-    Proyecto.fetchAll()
-        .then(([rows, fieldData]) => {
-            response.render('proyectos', { 
-                user: request.session.usuario,
-                lista_proyecto: rows, 
-                titulo: 'Proyectos',
-                csrfToken: request.csrfToken(),
-                isLoggedIn: request.session.isLoggedIn === true ? true : false
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
-};
