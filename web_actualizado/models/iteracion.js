@@ -3,17 +3,17 @@ const db = require('../util/database');
 module.exports = class Iteracion {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(descripcion,fecha_inicio,fecha_fin, estadoIteracion) {
+    constructor(descripcion,fechaPlaneada,fechaEntrega, estadoIteracion) {
         this.descripcion = descripcion;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
+        this.fechaPlaneada = fechaPlaneada;
+        this.fechaEntrega = fechaEntrega;
         this.estadoIteracion = estadoIteracion;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        return db.execute('INSERT INTO iteracion (nombreProyecto, descripcion,fechaPlaneada, fechaEntrega, estadoIteracion) VALUES (?,?,?,?,?)',
-            [this.nombreProyecto, this.descripcion, this.fecha_inicio, this.fecha_fin, this.estadoIteracion]
+        return db.execute('INSERT INTO iteracion (descripcion, fechaPlaneada, fechaEntrega, estadoIteracion) VALUES (?,?,?,?)',
+            [this.descripcion, this.fechaPlaneada, this.fechaEntrega, this.estadoIteracion]
         );
     }
 
@@ -26,12 +26,12 @@ module.exports = class Iteracion {
         return db.execute('SELECT * FROM iteracion WHERE idIteracion=?', [id]);
     }
 
-    static fetchByName(idIteracion) {
-        return db.execute("SELECT * FROM `iteracion` WHERE `nombreProyecto` LIKE ? ", ['%'+idIteracion+'%']);
+   /* static fetchByName(idIteracion) {
+        return db.execute("SELECT * FROM `iteracion` WHERE `idIteracion` LIKE ? ", ['%'+idIteracion+'%']);
     }
 
-    static modify(nombreProyecto, descripcion, fecha_inicio, fecha_fin, idProyecto) {
-        return db.execute('UPDATE iteracion SET nombreProyecto=?, descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idProyecto=?',
-        [nombreProyecto, descripcion, fecha_inicio, fecha_fin, idProyecto]);
-    }
+    static modify(descripcion, fechaPlaneada, fechaEntrega, idProyecto) {
+        return db.execute('UPDATE iteracion SET descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idProyecto=?',
+        [ descripcion, fechaPlaneada, fechaEntrega, idProyecto]);
+    }*/
 }

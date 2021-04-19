@@ -18,9 +18,9 @@ router.get('/registrar-proyecto', isAuth, proyectosController.getRegistrarProyec
 
 router.post('/registrar-proyecto', isAuth, proyectosController.postRegistrarProyecto);
 
-router.get('/modificar-proyecto/:proyecto_id', proyectosController.getModificarProyecto);
+router.get('/modificar-proyecto/:proyecto_id', isAuth, proyectosController.getModificarProyecto);
 
-router.post('/modificar-proyecto', proyectosController.postModificarProyecto);
+router.post('/modificar-proyecto', isAuth, proyectosController.postModificarProyecto);
 
 router.get('/nueva-iteracion', isAuth, iteracionController.getRegistrarIteracion);
 
@@ -32,7 +32,7 @@ router.post('/buscar', proyectosController.postBuscar);
 
 router.get('/iteracion/:proyecto_id', isAuth, iteracionController.getIteracion);
 
-router.get('/',   proyectosController.get);
+router.get('/', isAuth,   proyectosController.get);
 
 
 module.exports = router;
