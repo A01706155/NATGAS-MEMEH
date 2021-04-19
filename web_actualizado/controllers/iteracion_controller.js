@@ -23,7 +23,8 @@ exports.getIteracion = (request, response, next) => {
 };
 
 exports.getRegistrarIteracion = (request, response, next) => {
-    response.render('registrar_iteracion', {
+    request.session.last = '/proyectos/nueva-iteracion';
+    response.render('register_iteracion', {
         csrfToken: request.csrfToken(),
         titulo: 'Registrar iteracion',
         isLoggedIn: request.session.isLoggedIn === true ? true : false

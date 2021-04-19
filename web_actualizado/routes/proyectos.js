@@ -28,9 +28,9 @@ router.post('/buscar', proyectosController.postBuscar);
 
 router.get('/iteracion/:proyecto_id', isAuth,   iteracionController.getIteracion);
 
-router.get('/iteracion/:proyecto_id', isAuth,   iteracionController.getRegistrarIteracion);
+router.get('/nueva-iteracion', isAuth,   iteracionController.getRegistrarIteracion);
 
-router.post('/iteracion/:proyecto_id', isAuth,   iteracionController.postRegistrarIteracion);
+router.post('/nueva-iteracion', isAuth,   iteracionController.postRegistrarIteracion);
 
 router.get('/',   proyectosController.get);
 
