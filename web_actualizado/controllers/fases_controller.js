@@ -1,53 +1,40 @@
 const session = require('express-session');
-const Proyecto = require('../models/fase');
+const Proyecto = require('../models/proyecto');
+const Fase = require('../models/fase');
 
 
 exports.getRegistrarFase = (request, response, next) => {
-    response.render('registrar_proyecto', {
+    const id = request.params.proyecto_id;
+    response.render('registrar_fase', {
         csrfToken: request.csrfToken(),
-        titulo: 'Registrar proyecto',
+        titulo: 'Registrar fase nueva',
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };
 
-exports.postRegistrarProyecto = (request, response, next) => {
+exports.postRegistrarFase = (request, response, next) => {
     console.log(request.body.nombreProyecto);
-    const nuevo_proyecto = new Proyecto(request.body.nombreProyecto,request.body.descripcion,request.body.fecha_inicio,request.body.fecha_fin,request.body.estado);
-    nuevo_proyecto.save()
+    const nueva_fase = new Fase(request.body.nombreFase, request.body.estado);
+    nueva_fase.save()
         .then(() => {
-            response.setHeader('Set-Cookie', ['ultimo_proyecto='+nuevo_proyecto.nombreProyecto+'; HttpOnly']);
-            response.redirect('/proyectos');
+            response.setHeader('Set-Cookie', ['ultimo_proyecto='+nueva_fase.nombreFase+'; HttpOnly']);
+            response.redirect('/fases');
         }).catch(err => console.log(err));
 
 }
 
-exports.postBuscar = (request, response, next) => {
-    console.log(request.body);
-    console.log(request.body.valor_busqueda);
-    const name = request.body.valor_busqueda;
-    Proyecto.fetchByName(name)
-        .then(([rows, fieldData]) => {
-            console.log(rows);
-            response.status(200).json(rows);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-    
-};
-
-exports.getProyecto = (request, response, next) => {
+exports.getProyectoFase = (request, response, next) => {
     const id = request.params.proyecto_id;
-    console.log("getContenido");
+    console.log("getFases");
     Proyecto.fetchOne(id);
     console.log(id);
     //console.log(request.session.rol);
     Proyecto.fetchOne(id)
         .then(([rows, fieldData]) => {
-            response.render('ver_proyecto', { 
+            response.render('WBS_proyecto', { 
                 Proyecto: rows,
                 csrfToken: request.csrfToken(),
-                titulo: 'Trabajo del proyecto',
+                titulo: 'Fases',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
@@ -56,17 +43,16 @@ exports.getProyecto = (request, response, next) => {
         });
 };
 
-exports.getModificarProyecto = (request, response, next) => {
-    const id = request.params.proyecto_id;
+exports.getModificarFase = (request, response, next) => {
+    const id = request.params.fase_id;
     console.log("getModificar");
-    Proyecto.fetchOne(id);
     console.log(id);
-    Proyecto.fetchOne(id)
+    Fase.fetchOne(id)
         .then(([rows, fieldData]) => {
-            response.render('modificar_proyecto', { 
+            response.render('modificar_fase', { 
                 csrfToken: request.csrfToken(),
-                proyecto: rows,  
-                titulo: 'Modificar proyecto',
+                fase: rows,  
+                titulo: 'Modificar fase',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
@@ -75,12 +61,13 @@ exports.getModificarProyecto = (request, response, next) => {
         });
 };
 
-exports.postModificarProyecto = (request, response, next) => {
-    console.log("Se esta modificando");
+exports.postModificarFase = (request, response, next) => {
+    const id_proyecto = request.body.idProyecto;
+    console.log("Se esta modificando la fase");
     console.log(request.body);
-    Proyecto.modify(request.body.nombreProyecto, request.body.descripcion, request.body.fecha_inicio, request.body.fecha_fin, request.body.estado, request.body.idProyecto)
+    Fase.modify(request.body.nombreFase, id_proyecto)
         .then(() => {
-            response.redirect('/proyectos');
+            response.redirect('/fases/' + id_proyecto);
         }).catch(err => console.log(err));
 
 }
