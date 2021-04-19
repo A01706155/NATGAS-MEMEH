@@ -9152,3 +9152,13 @@ div.cuadrito {
     margin-left:auto;
     margin-right:auto;
 }
+
+div.searchbar{
+  backdrop-filter: blur(10px) contrast(70%); 
+  padding-left: 20%; 
+  padding-right: 20%; 
+  padding-top: 5px; 
+  padding-bottom: 5px; 
+  border-radius: 20px; 
+  margin-bottom: 1%;
+}

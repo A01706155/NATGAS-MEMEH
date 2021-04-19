@@ -19,23 +19,9 @@ function buscar() {
         console.log(data);
         let html = '';
         for (let proyecto of data) {
-          html += '<div class="col s12 m4 l3">' +
-                    '<div class="card small grey darken-4">' +
-                        '<div class="card-image waves-effect waves-block waves-light">' +
-                          '<img class="activator" src="/images/background2.jpg">' +
-                        '</div>' +
-                        '<div class="card-content">' +
-                          '<span class="card-title activator grey-text text-lighten-3">' + proyecto.nombreProyecto +       
-                            '<i class="material-icons right">arrow_drop_down</i>' +              
-                          '<p><a href="/proyectos/' + proyecto.idProyecto +'" ">Ver proyecto</a></p>' +
-                        '</div>' +
-                        '<div class="card-reveal grey darken-4 grey-text text-lighten-3">' +
-                          '<span class="card-title">' + proyecto.nombreProyecto + '<i class="material-icons right">close</i></span>' +
-                          '<p class="">Descripción:' + proyecto.descripcion + '</p>' +
-                        '</div>' +
-                      '</div>' +
-                  '</div>';
+          html += '<div class="col s12 m6 l4"> <div class="card small grey darken-4"> <div class="card-content white-text"> <span class="card-title">' + proyecto.nombreProyecto + '</span> <p>' + proyecto.descripcion + ' </p> </div> <div class="center card-action"> <a class="waves-effect waves-light btn teal darken-2" href="/proyectos/' + proyecto.idProyecto + '"><i class="material-icons left">visibility</i>Ver proyecto</a> </div> </div> </div>';
         }
+
         document.getElementById("resultados").innerHTML = html;
 
     }).catch(err => {
