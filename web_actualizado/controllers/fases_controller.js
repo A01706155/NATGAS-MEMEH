@@ -13,7 +13,7 @@ exports.getRegistrarFase = (request, response, next) => {
 };
 
 exports.postRegistrarFase = (request, response, next) => {
-    console.log(request.body.nombreProyecto);
+    console.log(request.body.nombreFase);
     const nueva_fase = new Fase(request.body.nombreFase, request.body.estado);
     nueva_fase.save()
         .then(() => {
