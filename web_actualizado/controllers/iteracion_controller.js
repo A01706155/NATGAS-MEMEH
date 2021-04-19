@@ -1,5 +1,6 @@
 const session = require('express-session');
 const Iteracion = require('../models/iteracion');
+const Proyecto = require('../models/proyecto');
 
 
 exports.getIteracion = (request, response, next) => {
@@ -11,7 +12,7 @@ exports.getIteracion = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('iteracion', { 
                 lista_iteraciones: rows, 
-                Iteracion: rows,
+                Iteracion: request.session.idIteracion,
                 csrfToken: request.csrfToken(),
                 titulo: 'Trabajo del proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
@@ -25,6 +26,7 @@ exports.getIteracion = (request, response, next) => {
 exports.getRegistrarIteracion = (request, response, next) => {
     response.render('register_iteracion', {
         csrfToken: request.csrfToken(),
+        Iteracion: request.session.idIteracion,
         titulo: 'Registrar iteracion',
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
@@ -32,11 +34,11 @@ exports.getRegistrarIteracion = (request, response, next) => {
 
 exports.postRegistrarIteracion = (request, response, next) => {
     console.log(request.body.idIteracion);
-    const nueva_iteracion = new Iteracion(request.body.idIteracion,request.body.idProyecto,request.body.descripcion,request.body.fechaPlaneada,request.body.fechaEntrega,request.body.estadoIteracion);
+    const nueva_iteracion = new Iteracion(request.body.idProyecto,request.body.descripcion,request.body.fechaPlaneada,request.body.fechaEntrega,request.body.estadoIteracion);
     nueva_iteracion.save()
         .then(() => {
+            response.redirect('/proyectos/iteracion/'+request.body.idProyecto);
             response.setHeader('Set-Cookie', ['ultima_iteracion='+nueva_iteracion.idIteracion+'; HttpOnly']);
-            response.redirect('/iteracion');
         }).catch(err => console.log(err));
 
 }
@@ -54,6 +56,7 @@ exports.get = (request, response, next) => {
             response.render('iteracion', { 
                 user: request.session.usuario,
                 lista_iteraciones: rows, 
+                Iteracion: rows,
                 titulo: 'Iteracion',
                 csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
