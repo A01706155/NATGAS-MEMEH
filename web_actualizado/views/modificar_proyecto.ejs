@@ -13,9 +13,13 @@
                 Descripcion <br>
                 <input class="white-text" type="text" name="descripcion" value="<%= elemento.descripcion %>" required>
                 Fecha inicio <br>
-                <input class="datepicker white-text" type="date" name="fecha_inicio" value="<%= elemento.fecha_inicio %>" required>
+                <input class="datepicker white-text" type="date" name="fecha_inicio" value="<%= elemento.fechaPlaneada %>" required>
                 Fecha fin <br>
-                <input class="datepicker white-text" type="date" name="fecha_fin" value="<%= elemento.fecha_fin %>" required>
+                <input class="datepicker white-text" type="date" name="fecha_fin" value="<%= elemento.fechaEntrega %>" required>
+                Estado <br>
+                <input class="white-text" type="number" name="estado" value="<%= elemento.estadoProyecto %>">
+                
+                <input type="hidden" name="idProyecto" value="<%= elemento.idProyecto %>">
                 <br><br>
                 <br>  
 
