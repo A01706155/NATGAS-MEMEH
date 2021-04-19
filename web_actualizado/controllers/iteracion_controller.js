@@ -23,7 +23,6 @@ exports.getIteracion = (request, response, next) => {
 };
 
 exports.getRegistrarIteracion = (request, response, next) => {
-    request.session.last = '/proyectos/register_iteracion';
     response.render('register_iteracion', {
         csrfToken: request.csrfToken(),
         titulo: 'Registrar iteracion',
