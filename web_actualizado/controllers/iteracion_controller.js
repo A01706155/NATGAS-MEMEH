@@ -4,14 +4,12 @@ const Proyecto = require('../models/proyecto');
 
 
 exports.getIteracion = (request, response, next) => {
-    const idUseCase = request.params.casodeuso_id;
-    const idProyecto = request.params.proyecto_id;
+    const idIteracion = request.params.iteracion_id;
     console.log("getIteracion");
-    console.log(idUseCase);
-    Iteracion.fetchOne(idUseCase)
+    Iteracion.fetchOne(idIteracion)
         .then(([rows, fieldData]) => {
             response.render('ver_iteracion', { 
-                lista_iteraciones: rows, 
+                detalles_iteracion: rows, 
                 Iteracion: request.session.idIteracion,
                 idProyecto:  request.params.proyecto_id,
                 csrfToken: request.csrfToken(),

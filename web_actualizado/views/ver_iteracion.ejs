@@ -1,7 +1,7 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
 
-    <% for (let detalle of lista_iteraciones) { %>
+    <% for (let detalle of detalles_iteracion) { %>
     <h1 class="center white-text">Detalles de la Iteracion <%= detalle.idIteracion %></h1>
     <% } %>
 
@@ -19,7 +19,7 @@
                     <td>Estado de Iteracion</td>
                     </tr>
                     <tr> 
-                        <% for (let detalle of Iteracion) { %>
+                        <% for (let detalle of detalles_iteracion) { %>
                             
                             <td><%= detalle.idIteracion %></td>
                             <td><%= detalle.descripcion %></td>
@@ -34,9 +34,9 @@
                 <br><br>
                 
                 <div class="center">
-                    <% for (let detalle of Iteracion) { %>
-                    <a href="/proyectos/modificar-proyecto/<%= detalle.idIteracion%>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a>
-                    <a href="/iteracion" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>        
+                    <% for (let detalle of detalles_iteracion) { %>
+                    <a href="/iteracion/modificar-iteracion/<%= detalle.idIteracion%>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a>
+                    <a href="/proyectos/iteracion/<%= detalle.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>        
                     <% } %>     
                 </div>
                 
