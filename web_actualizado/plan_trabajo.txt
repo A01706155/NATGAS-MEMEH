@@ -23,3 +23,27 @@ Lo que debemos de hacer: Meternos a la iteración y meternos a los casos de uso,
 Podemos omitir los tiempos: Sacar una lista con todas las tareas que se desarrollarán en la iteración. (repeticion ?)
 
 -----------------------------------------------------------
+
+-
+
+-Quitar "editar" y solo poner "eliminar"
+
+-Crear proyecto => crear iteración => crear caso de uso =>
+=> asignar tareas => consultar esas tareas que se tienen en 
+esa iteracion
+
+-Formas para trabajar los casos de uso:
+1) Tener un bbanco de casos de uso que van asignando iteración
+
+2) Crearlas dentro de la iteración (opción más factible)
+
+-En botón "Caso de uso" cambiar nombre a "iteraciones", dentro 
+de iteraciones se debe de poder crear casos de uso y hacer la 
+asignación de tareas para cada caso de uso (hacer cruce con WBS)
+(usar checkboxes) y asignar puntos ágiles.
+
+-Sacar una lista que tenga todas las tareas que se realizaran 
+
+-Crear historias de usuario y por cada uno se puede seleccionar 
+que tareas se van a hacer , y ya que se seleccionen cada una de 
+esas tareas, se pueda consultar una lista
