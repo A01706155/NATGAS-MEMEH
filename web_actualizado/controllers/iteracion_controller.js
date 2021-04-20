@@ -62,3 +62,31 @@ exports.get = (request, response, next) => {
             console.log(err);
         });
 };
+
+exports.getModificarIteracion = (request, response, next) => {
+    const idIteracion = request.params.iteracion_id;
+ 
+    
+    Iteracion.fetchOne(idIteracion)
+        .then(([rows, fieldData]) => {
+            response.render('modificar_iteracion', { 
+                detalles_iteracion: rows,  
+                titulo: 'Modificar Iteracion',
+                csrfToken: request.csrfToken(),
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+exports.postModificarIteracion = (request, response, next) => {
+    console.log("Se esta modificando");
+    console.log(request.body);
+    Iteracion.modify(request.body.idProyecto, request.body.descripcion, request.body.fechaPlaneada, request.body.fechaEntrega, request.body.estado)
+        .then(() => {
+            response.redirect('/iteracion');
+        }).catch(err => console.log(err));
+
+}

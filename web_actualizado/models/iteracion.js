@@ -3,7 +3,8 @@ const db = require('../util/database');
 module.exports = class Iteracion {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(idProyecto, descripcion, fechaPlaneada, fechaEntrega, estadoIteracion) {
+    constructor(idIteracion, idProyecto, descripcion, fechaPlaneada, fechaEntrega, estadoIteracion) {
+        this.idIteracion = idIteracion;
         this.idProyecto = idProyecto;
         this.descripcion = descripcion;
         this.fechaPlaneada = fechaPlaneada;
@@ -33,10 +34,10 @@ module.exports = class Iteracion {
 
    /* static fetchByName(idIteracion) {
         return db.execute("SELECT * FROM `iteracion` WHERE `idIteracion` LIKE ? ", ['%'+idIteracion+'%']);
-    }
-
-    static modify(descripcion, fechaPlaneada, fechaEntrega, idProyecto) {
-        return db.execute('UPDATE iteracion SET descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idProyecto=?',
-        [ descripcion, fechaPlaneada, fechaEntrega, idProyecto]);
     }*/
+
+    static modify(idIteracion, descripcion, fechaPlaneada, fechaEntrega) {
+        return db.execute('UPDATE iteracion SET descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idIteracion=?',
+        [idIteracion, descripcion, fechaPlaneada, fechaEntrega]);
+    }
 }
