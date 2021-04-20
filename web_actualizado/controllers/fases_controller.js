@@ -43,6 +43,7 @@ exports.getProyectoFase = (request, response, next) => {
                 Fase: rows,
                 csrfToken: request.csrfToken(),
                 titulo: 'Fases',
+                idProyecto:  request.params.proyecto_id,
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
