@@ -1,6 +1,6 @@
 const db = require('../util/database');
 
-module.exports = class User {
+module.exports = class Tarea {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
     constructor(nombre, id_fase) {
