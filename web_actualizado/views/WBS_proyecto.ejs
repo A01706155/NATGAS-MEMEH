@@ -7,6 +7,13 @@
         <div style="margin-bottom: 0px;">
             
             <div class="white-text col md-12 sm-12 lg-9">
+
+                <div class="center">
+                    <a href="/fases/registrar-fase/<%= idProyecto %>" class="waves-effect waves-light btn-large"><i class="material-icons left">add_circle_outline</i>Agregar fase</a>
+                    <br><br>
+                    <a href="/proyectos/<%= idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>        
+                </div>
+
             <% for (let detalle of Fase) { %>
                 
                 <h4><%= detalle.nombreFase %> <a href="/fases/modificar-fase/<%= detalle.idFase %>" class="waves-effect waves-light yellow darken-4 btn"><i class="material-icons left">edit</i>Editar</a></h4> 
@@ -29,12 +36,6 @@
             <% } %>
 
                 <br><br>
-                
-                <div class="center">
-                    <a href="/fases/registrar-fase/<%= idProyecto %>" class="waves-effect waves-light btn-large"><i class="material-icons left">add_circle_outline</i>Agregar fase</a>
-                    <br><br>
-                    <a href="/proyectos/<%= idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>        
-                </div>
                 
             </div>
         </div>
