@@ -1,0 +1,25 @@
+Lo entendido por Manolo:
+
+No conexión con Airtable, cero gráficas
+
+Para cada historia de usuario seleccionar qué tareas vamos a hacer y ya seleccionadas las tareas consultar una lista. Sacar una lista con todas las tareas que se desarrollarán dentro de la iteración. (repeticion ?)
+
+Si hay cosas de editar, quítenlas, agregar y eliminar.
+
+Crear iteraciones
+
+Error en flujo:
+Tienes tu proyecto (detalles), cuando das click a casos de uso te manda a 'Iteraciones'
+
+Los casos de uso son un banco
+1. Tener un banco de casos de uso que van asignando iteraciones
+
+2. Podemos crearlas dentro de la iteración (opción más factible)
+
+Debemos tener la facultad de crear casos de uso, para caso de uso qué tareas debo yo poder desarrollar. 
+
+Lo que debemos de hacer: Meternos a la iteración y meternos a los casos de uso, 
+
+Podemos omitir los tiempos: Sacar una lista con todas las tareas que se desarrollarán en la iteración. (repeticion ?)
+
+-----------------------------------------------------------
