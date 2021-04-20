@@ -29,7 +29,7 @@ exports.postRegistrarTarea = (request, response, next) => {
             response.redirect('/proyectos');
         }).catch(err => console.log(err));
 }
-
+/*
 exports.getFaseTarea = (request, response, next) => {
     const id = request.params.proyecto_id;
     console.log("getFases");
@@ -50,9 +50,9 @@ exports.getFaseTarea = (request, response, next) => {
             console.log(err);
         });
 };
-
+*/
 exports.getModificarTarea = (request, response, next) => {
-    const id = request.params.fase_id;
+    const id = request.params.tarea_id;
     console.log("getModificar");
     console.log(id);
     Fase.fetchOneByFase(id)

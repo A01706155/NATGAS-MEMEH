@@ -9,7 +9,7 @@ module.exports = class Tarea {
     }
 
     save() {
-        return db.execute('INSERT INTO tarea (nombreFase, idFase) VALUES (?,?)',
+        return db.execute('INSERT INTO tarea (nombreTarea, idFase) VALUES (?,?)',
             [this.nombre, this.id_fase]
         );
     }
