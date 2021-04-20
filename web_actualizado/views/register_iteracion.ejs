@@ -5,14 +5,13 @@
     
     <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
         <h1 class="center white-text"><%= titulo %></h1>
-            
-            <form class="passcontent grey-text text-lighten-1" action="/iteracion/nueva-iteracion" method="POST">
+        <!-- <h1>ID: <%= idProyecto %></h1> -->
 
             <form class="passcontent grey-text text-lighten-1" action="/proyectos/nueva-iteracion" method="POST">
                 <!-- CSRF -->
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 
-                <!-- idProyecto, modificar el value después --> <input class="white-text" type="hidden" name="idproyecto" value="1" required><br>
+                <!-- idProyecto, modificar el value después --> <input class="white-text" type="hidden" name="idproyecto" value="<%= idProyecto %>" required><br>
 
                 <!-- Actual inputs -->
                 Descripcion<br>
@@ -29,7 +28,7 @@
                         <i class="material-icons right">send</i>
                     </button>
                     <p></p>
-                    <a href="/proyectos/iteracion" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
+                    <a href="/proyectos/iteracion/<%= idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
                 </div>
             </form>
 

@@ -22,7 +22,7 @@ router.get('/modificar-proyecto/:proyecto_id', isAuth, proyectosController.getMo
 
 router.post('/modificar-proyecto', isAuth, proyectosController.postModificarProyecto);
 
-router.get('/nueva-iteracion', isAuth, iteracionController.getRegistrarIteracion);
+router.get('/nueva-iteracion/:proyecto_id', isAuth, iteracionController.getRegistrarIteracion);
 
 router.post('/nueva-iteracion', isAuth, iteracionController.postRegistrarIteracion);
 

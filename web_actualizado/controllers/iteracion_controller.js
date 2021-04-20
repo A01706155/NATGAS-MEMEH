@@ -28,7 +28,7 @@ exports.getRegistrarIteracion = (request, response, next) => {
     response.render('register_iteracion', {
         csrfToken: request.csrfToken(),
         Iteracion: request.session.idIteracion,
-        idProyecto:  request.params.proyecto_id,
+        idProyecto: request.params.proyecto_id,
         titulo: 'Registrar iteracion',
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
@@ -36,7 +36,6 @@ exports.getRegistrarIteracion = (request, response, next) => {
 
 exports.postRegistrarIteracion = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
-    console.log(request.body.idIteracion);
     console.log(request.body.idproyecto);
     console.log(request.body.descripcion);
     console.log(request.body.fechaPlaneada);
@@ -45,7 +44,7 @@ exports.postRegistrarIteracion = (request, response, next) => {
     const nueva_iteracion = new Iteracion(request.body.idproyecto, request.body.descripcion, request.body.fechaPlaneada, request.body.fechaEntrega, request.body.estado);
     nueva_iteracion.save()
         .then(() => {
-            response.redirect('/proyectos/iteracion/'+request.body.idProyecto);
+            response.redirect('/proyectos/iteracion/'+request.body.idproyecto);
             response.setHeader('Set-Cookie', ['ultima_iteracion='+nueva_iteracion.idIteracion+'; HttpOnly']);
         }).catch(err => console.log(err));
 
@@ -58,7 +57,7 @@ exports.get = (request, response, next) => {
             response.render('iteracion', { 
                 lista_iteraciones: rows, 
                 titulo: 'Iteracion',
-                isLoggedIn: request.session.isLoggedIn === true ? true : false
+                isLoggedIn: request.session.isLoggedIn === true ? true : false,
             });
         })
         .catch(err => {
