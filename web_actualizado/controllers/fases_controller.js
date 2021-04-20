@@ -55,11 +55,11 @@ exports.getModificarFase = (request, response, next) => {
     const id = request.params.fase_id;
     console.log("getModificar");
     console.log(id);
-    Fase.fetchOne(id)
+    Fase.fetchOneByFase(id)
         .then(([rows, fieldData]) => {
             response.render('modificar_fase', { 
                 csrfToken: request.csrfToken(),
-                fase: rows,  
+                fase: rows,
                 titulo: 'Modificar fase',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
@@ -73,9 +73,8 @@ exports.postModificarFase = (request, response, next) => {
     const id_proyecto = request.body.idProyecto;
     console.log("Se esta modificando la fase");
     console.log(request.body);
-    Fase.modify(request.body.nombreFase, id_proyecto)
+    Fase.modify(request.body.nombreFase, request.body.idFase)
         .then(() => {
             response.redirect('/fases/' + id_proyecto);
         }).catch(err => console.log(err));
-
 }
