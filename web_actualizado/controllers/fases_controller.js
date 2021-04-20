@@ -1,6 +1,7 @@
 const session = require('express-session');
 const Proyecto = require('../models/proyecto');
 const Fase = require('../models/fase');
+const Tarea = require('../models/tarea');
 
 
 exports.getRegistrarFase = (request, response, next) => {

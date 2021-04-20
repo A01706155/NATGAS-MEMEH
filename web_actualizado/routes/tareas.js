@@ -17,7 +17,7 @@ router.get('/modificar-tarea/:tarea_id', tareasController.getModificarTarea);
 
 router.post('/modificar-tarea', tareasController.postModificarTarea);
 
-router.get('/:proyecto_id', isAuth, fasesController.getFaseTarea);
+//router.get('/:proyecto_id', isAuth, fasesController.getFaseTarea);
 
 
 module.exports = router;
