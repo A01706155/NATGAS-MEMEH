@@ -28,7 +28,6 @@ exports.postRegistrarFase = (request, response, next) => {
             response.setHeader('Set-Cookie', ['ultimo_proyecto='+nueva_fase.nombreFase+'; HttpOnly']);
             response.redirect('/fases/' + request.body.idProyecto);
         }).catch(err => console.log(err));
-
 }
 
 exports.getProyectoFase = (request, response, next) => {
@@ -41,6 +40,7 @@ exports.getProyectoFase = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('WBS_proyecto', { 
                 Fase: rows,
+                idProyecto: id,
                 csrfToken: request.csrfToken(),
                 titulo: 'Fases',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
