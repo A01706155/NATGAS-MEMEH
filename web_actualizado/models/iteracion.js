@@ -3,7 +3,8 @@ const db = require('../util/database');
 module.exports = class Iteracion {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(descripcion,fechaPlaneada,fechaEntrega, estadoIteracion) {
+    constructor(idProyecto, descripcion, fechaPlaneada, fechaEntrega, estadoIteracion) {
+        this.idProyecto = idProyecto;
         this.descripcion = descripcion;
         this.fechaPlaneada = fechaPlaneada;
         this.fechaEntrega = fechaEntrega;
@@ -12,8 +13,8 @@ module.exports = class Iteracion {
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        return db.execute('INSERT INTO iteracion (descripcion, fechaPlaneada, fechaEntrega, estadoIteracion) VALUES (?,?,?,?)',
-            [this.descripcion, this.fechaPlaneada, this.fechaEntrega, this.estadoIteracion]
+        return db.execute('INSERT INTO iteracion (idProyecto, descripcion, fechaPlaneada, fechaEntrega, estadoIteracion) VALUES (?,?,?,?,?)',
+            [this.idProyecto, this.descripcion, this.fechaPlaneada, this.fechaEntrega, this.estadoIteracion]
         );
     }
 

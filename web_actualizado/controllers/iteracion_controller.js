@@ -32,7 +32,12 @@ exports.getRegistrarIteracion = (request, response, next) => {
 
 exports.postRegistrarIteracion = (request, response, next) => {
     console.log(request.body.idIteracion);
-    const nueva_iteracion = new Iteracion(request.body.idIteracion,request.body.idProyecto,request.body.descripcion,request.body.fechaPlaneada,request.body.fechaEntrega,request.body.estadoIteracion);
+    console.log(request.body.idproyecto);
+    console.log(request.body.descripcion);
+    console.log(request.body.fechaPlaneada);
+    console.log(request.body.fechaEntrega);
+    console.log(request.body.estado);
+    const nueva_iteracion = new Iteracion(request.body.idproyecto, request.body.descripcion, request.body.fechaPlaneada, request.body.fechaEntrega, request.body.estado);
     nueva_iteracion.save()
         .then(() => {
             response.setHeader('Set-Cookie', ['ultima_iteracion='+nueva_iteracion.idIteracion+'; HttpOnly']);

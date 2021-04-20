@@ -7,15 +7,20 @@
         <h1 class="center white-text"><%= titulo %></h1>
 
             <form class="passcontent grey-text text-lighten-1" action="/proyectos/nueva-iteracion" method="POST">
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <!-- CSRF -->
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                
+                <!-- idProyecto, modificar el value después --> <input class="white-text" type="hidden" name="idproyecto" value="1" required><br>
+
+                <!-- Actual inputs -->
                 Descripcion<br>
                 <input class="white-text" type="text" name="descripcion" required><br>
                 Fecha de inicio<br>
-                <input type="date" name="fecha_inicio" class="datepicker white-text" required><br>
+                <input type="text" name="fechaPlaneada" class="datepicker white-text" required><br>
                 Fecha de finalización<br>
-                <input type="date" name="fecha_fin" class="datepicker white-text" required><br><br>
+                <input type="text" name="fechaEntrega" class="datepicker white-text" required><br><br>
 
-                <input type="hidden" name="estado" value="1"> 
+                <!-- estadoIteracion --> <input type="hidden" name="estado" value="1"> 
 
                 <div class="center">
                     <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Registrar iteracion
