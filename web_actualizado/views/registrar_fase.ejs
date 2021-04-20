@@ -6,17 +6,15 @@
     <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
         <h1 class="center white-text"><%= titulo %></h1>
 
-            <form class="passcontent grey-text text-lighten-1" action="/fases/registrar-fase" method="POST">
+            <form class="passcontent grey-text text-lighten-1" action="/proyectos/registrar-proyecto" method="POST">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                 Nombre de la Fase<br>
                 <input class="white-text" type="text" name="nombreFase" required><br>
 
-                <% for (let elemento of proyecto) { %> 
-                <input type="hidden" name="idProyecto" value="<%= elemento.idProyecto %>">
-                <% } %>
+                <input type="hidden" name="estado" value="1"> 
 
                 <div class="center">
-                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Registrar fase
+                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Registrar proyecto
                         <i class="material-icons right">send</i>
                     </button>
                     <p></p>
