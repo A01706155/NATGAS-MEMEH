@@ -18,7 +18,7 @@ router.post('/nueva-iteracion', isAuth, iteracionController.postRegistrarIteraci
 
 router.get('/iteracion', isAuth, iteracionController.get);
 
-router.get('/itercion/ver-iteracion/:iteracion_id', isAuth, iteracionController.getIteracion);
+router.get('/iteracion/ver-iteracion/:iteracion_id', isAuth, iteracionController.getIteracion);
 
 
 module.exports = router;

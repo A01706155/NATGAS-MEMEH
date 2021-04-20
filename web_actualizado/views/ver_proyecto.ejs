@@ -2,7 +2,8 @@
 <%- include('partials/navbar.ejs') %>
 
     <% for (let detalle of Proyecto) { %>
-    <h1 class="center white-text">Detalles del proyecto <%= detalle.nombreProyecto %></h1>
+    <h1 class="center white-text">Detalles del proyecto</h1>
+    <h5 class="center white-text"><%= detalle.nombreProyecto %></h5>
     <% } %>
 
     <div class="container highlight proyectContent">
@@ -12,7 +13,6 @@
                 
                 <table class="responsive-table">
                     <tr>
-                    <td>Id Proyecto</td>    
                     <td>Nombre</td>
                     <td>Descripcion</td>
                     <td>Fecha inicial</td>
@@ -22,7 +22,6 @@
                     <tr> 
                         <% for (let detalle of Proyecto) { %>
                             
-                            <td><%= detalle.idProyecto %></td>
                             <td><%= detalle.nombreProyecto %> </td>
                             <td><%= detalle.descripcion %></td>
                             <td><%= detalle.fechaPlaneada %> </td>
