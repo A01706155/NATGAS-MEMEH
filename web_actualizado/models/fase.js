@@ -1,6 +1,6 @@
 const db = require('../util/database');
 
-module.exports = class User {
+module.exports = class Fase {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
     constructor(nombre, id_proyecto) {
@@ -23,8 +23,12 @@ module.exports = class User {
         return db.execute('SELECT * FROM fase WHERE idProyecto=?', [id]);
     }
 
+    static fetchOneByFase(id) {
+        return db.execute('SELECT * FROM fase WHERE idFase=?', [id]);
+    }
+
     static modify(nombreFase, idFase) {
-        return db.execute('UPDATE proyecto SET nombreFase=?,  WHERE idFase=?',
+        return db.execute('UPDATE fase SET nombreFase=?  WHERE idFase=?',
         [nombreFase, idFase]);
     }
 }

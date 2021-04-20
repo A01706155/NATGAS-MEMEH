@@ -3,16 +3,15 @@ const Proyecto = require('../models/proyecto');
 const Fase = require('../models/fase');
 const Tarea = require('../models/tarea');
 
-
-exports.getRegistrarFase = (request, response, next) => {
-    const id = request.params.proyecto_id;
+exports.getRegistrarTarea = (request, response, next) => {
+    const id = request.params.fase_id;
     
-    Proyecto.fetchOne(id)
+    Fase.fetchOneByFase(id)
         .then(([rows, fieldData]) => {
-            response.render('registrar_fase', { 
-                proyecto: rows,
+            response.render('crear_tarea', { 
+                fase: rows,
                 csrfToken: request.csrfToken(),
-                titulo: 'Registrar nueva fase',
+                titulo: 'Crear tarea',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
@@ -21,17 +20,17 @@ exports.getRegistrarFase = (request, response, next) => {
         });
 };
 
-exports.postRegistrarFase = (request, response, next) => {
-    console.log(request.body.nombreFase);
-    const nueva_fase = new Fase(request.body.nombreFase, request.body.idProyecto);
-    nueva_fase.save()
+exports.postRegistrarTarea = (request, response, next) => {
+    console.log(request.body.nombreTarea);
+    const nueva_tarea = new Tarea(request.body.nombreTarea, request.body.idFase);
+    nueva_tarea.save()
         .then(() => {
-            response.setHeader('Set-Cookie', ['ultimo_proyecto='+nueva_fase.nombreFase+'; HttpOnly']);
-            response.redirect('/fases/' + request.body.idProyecto);
+            response.setHeader('Set-Cookie', ['ultima_tarea='+nueva_tarea.nombreTarea+'; HttpOnly']);
+            response.redirect('/proyectos');
         }).catch(err => console.log(err));
 }
-
-exports.getProyectoFase = (request, response, next) => {
+/*
+exports.getFaseTarea = (request, response, next) => {
     const id = request.params.proyecto_id;
     console.log("getFases");
     Fase.fetchOne(id);
@@ -51,9 +50,9 @@ exports.getProyectoFase = (request, response, next) => {
             console.log(err);
         });
 };
-
-exports.getModificarFase = (request, response, next) => {
-    const id = request.params.fase_id;
+*/
+exports.getModificarTarea = (request, response, next) => {
+    const id = request.params.tarea_id;
     console.log("getModificar");
     console.log(id);
     Fase.fetchOneByFase(id)
@@ -70,7 +69,7 @@ exports.getModificarFase = (request, response, next) => {
         });
 };
 
-exports.postModificarFase = (request, response, next) => {
+exports.postModificarTarea = (request, response, next) => {
     const id_proyecto = request.body.idProyecto;
     console.log("Se esta modificando la fase");
     console.log(request.body);

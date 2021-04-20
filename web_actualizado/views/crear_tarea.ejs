@@ -1,0 +1,35 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<main class="container">
+    
+    <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
+        <h1 class="center white-text"><%= titulo %></h1>
+
+            <form class="passcontent grey-text text-lighten-1" action="/tareas/registrar-tarea" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                Nombre de la tarea<br>
+                
+                <input class="white-text" type="text" name="nombreTarea" required><br>
+
+                <% for (let elemento of fase) { %>
+                <input type="hidden" name="idFase" value="<%= elemento.idFase %>">
+                <% } %>
+                
+
+                <div class="center">
+                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Registrar tarea
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <p></p>
+                    <a href="/fases/#" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+ 
+                </div>
+                
+                
+            </form>
+
+        </div>
+    </main>
+
+<%- include('partials/footer.ejs')  %>
