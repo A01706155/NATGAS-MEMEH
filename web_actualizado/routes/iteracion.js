@@ -24,5 +24,6 @@ router.get('/modificar-iteracion/:iteracion_id', isAuth, iteracionController.get
 
 router.post('/modificar-iteracion', isAuth, iteracionController.postModificarIteracion);
 
+router.post('/eliminar-iteracion', isAuth, iteracionController.postEliminarIteracion);
 
 module.exports = router;
