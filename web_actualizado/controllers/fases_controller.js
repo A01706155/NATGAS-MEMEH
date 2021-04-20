@@ -42,7 +42,6 @@ exports.getProyectoFase = (request, response, next) => {
             response.render('WBS_proyecto', { 
                 Fase: rows,
                 csrfToken: request.csrfToken(),
-                idProyecto: id,
                 titulo: 'Fases',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
@@ -56,7 +55,7 @@ exports.getModificarFase = (request, response, next) => {
     const id = request.params.fase_id;
     console.log("getModificar");
     console.log(id);
-    Fase.fetchOneByFase(id)
+    Fase.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('modificar_fase', { 
                 csrfToken: request.csrfToken(),
