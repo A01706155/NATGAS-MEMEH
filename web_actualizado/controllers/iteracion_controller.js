@@ -84,9 +84,12 @@ exports.getModificarIteracion = (request, response, next) => {
 exports.postModificarIteracion = (request, response, next) => {
     console.log("Se esta modificando");
     console.log(request.body);
-    Iteracion.modify(request.body.idProyecto, request.body.descripcion, request.body.fechaPlaneada, request.body.fechaEntrega, request.body.estado)
+    console.log("Empezamos bb");
+    const modificar_iteracion = new Iteracion(request.body.idProyecto, request.body.estadoIteracion, request.body.descripcion,
+        request.body.fechaPlaneada, request.body.fechaEntrega, request.body.idIteracion);
+    modificar_iteracion.modify2()
         .then(() => {
-            response.redirect('/iteracion');
+            response.redirect('/proyectos/iteracion/'+request.body.idProyecto);
         }).catch(err => console.log(err));
 
 }

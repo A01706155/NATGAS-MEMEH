@@ -36,8 +36,8 @@ module.exports = class Iteracion {
         return db.execute("SELECT * FROM `iteracion` WHERE `idIteracion` LIKE ? ", ['%'+idIteracion+'%']);
     }*/
 
-    static modify(idIteracion, descripcion, fechaPlaneada, fechaEntrega) {
-        return db.execute('UPDATE iteracion SET descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idIteracion=?',
-        [idIteracion, descripcion, fechaPlaneada, fechaEntrega]);
+     modify2() {
+        return db.execute('UPDATE iteracion SET idProyecto=?, estadoIteracion=?, descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idIteracion=?',
+        [this.idProyecto, this.estadoIteracion, this.descripcion, this.fechaPlaneada, this.fechaEntrega, this.idIteracion]);
     }
 }
