@@ -37,7 +37,21 @@
                     <% for (let detalle of detalles_iteracion) { %>
                     <a href="/iteracion/modificar-iteracion/<%= detalle.idIteracion%>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a>
                     <a href="/proyectos/iteracion/<%= detalle.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>        
-                    <% } %>     
+                      
+                    <form action="/iteracion/eliminar-iteracion" method="POST" id="eliminar_<%= detalle.idIteracion %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <input type="hidden" name="idIteracion" value="<%= detalle.idIteracion %>">
+                        <button type="submit" name="add">Borrar</button>
+                        <script> 
+                            document.getElementById("eliminar_<%= detalle.idIteracion %>").addEventListener('submit', (e) => {
+                              let c = confirm('¿Estás seguro de eliminar la iteracion?');
+                              if(!c){
+                                e.preventDefault();
+                              }  
+                            });
+                        </script>
+                    </form>
+                    <% } %>   
                 </div>
                 
             </div>

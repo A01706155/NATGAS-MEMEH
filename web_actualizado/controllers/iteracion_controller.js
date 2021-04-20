@@ -88,3 +88,18 @@ exports.postModificarIteracion = (request, response, next) => {
         }).catch(err => console.log(err));
 
 }
+
+exports.postEliminarIteracion = (request, response) => {
+    console.log("si llegue carnal")
+    const idIteracion = request.body.iteracion_id;
+    console.log(request.body);
+    Iteracion.EliminarIteracion(idIteracion)
+    .then(() => {
+        console.log("si entre carnal")
+        request.session.alerta = "Caso de uso eliminado exitosamente";
+        response.redirect('/proyectos/iteracion/'+request.body.idProyecto);
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}

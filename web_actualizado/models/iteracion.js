@@ -35,6 +35,10 @@ module.exports = class Iteracion {
         return db.execute("SELECT * FROM `iteracion` WHERE `idIteracion` LIKE ? ", ['%'+idIteracion+'%']);
     }*/
 
+    static EliminarIteracion(){
+        return db.execute('DELETE FROM iteracion WHERE idIteracion=?', [this.idIteracion]);
+    }
+
      static modify(idProyecto, estadoIteracion, descripcion, fechaPlaneada, fechaEntrega, idIteracion) {
         return db.execute('UPDATE iteracion SET idProyecto=?, estadoIteracion=?, descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idIteracion=?',
         [idProyecto, estadoIteracion, descripcion, fechaPlaneada, fechaEntrega, idIteracion]);
