@@ -108,3 +108,21 @@ exports.get = (request, response, next) => {
             console.log(err);
         });
 };
+
+exports.getCaso = (request, response, next) => {
+    const idProyecto = request.params.proyecto_id;
+    console.log(request.params);
+    Iteracion.fetchByProject(idProyecto)
+        .then(([rows, fieldData]) => {
+            response.render('iteracion', { 
+                rol: request.session.rol,
+                lista_iteraciones: rows, 
+                titulo: 'Casos de uso'  ,
+                idProyecto: idProyecto,
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};

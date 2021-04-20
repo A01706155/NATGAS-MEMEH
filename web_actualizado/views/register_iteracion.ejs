@@ -6,9 +6,9 @@
     <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
         <h1 class="center white-text"><%= titulo %></h1>
             
-            <form class="passcontent grey-text text-lighten-1" action="/proyectos/nueva-iteracion" method="POST">
+            <form class="passcontent grey-text text-lighten-1" action="/iteracion/nueva-iteracion" method="POST">
 
-                <input type="white-text" name="idProyecto" value="<%=idProyecto %>">
+                <input type="hidden" name="idProyecto" value="<%=idProyecto %>">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                 Descripcion<br>
                 <input class="white-text" type="text" name="descripcion" required><br>

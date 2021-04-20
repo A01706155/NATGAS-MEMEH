@@ -26,13 +26,15 @@ router.get('/nueva-iteracion', isAuth, iteracionController.getRegistrarIteracion
 
 router.post('/nueva-iteracion', isAuth, iteracionController.postRegistrarIteracion);
 
+router.get('/iteracion/:proyecto_id' , isAuth,  proyectosController.getCaso);
+
 router.get('/:proyecto_id', isAuth, proyectosController.getProyecto);
 
 router.post('/buscar', proyectosController.postBuscar);
 
-router.get('/iteracion/:proyecto_id', isAuth, iteracionController.getIteracion);
-
 router.get('/', isAuth,   proyectosController.get);
+
+
 
 
 module.exports = router;
