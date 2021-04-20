@@ -24,7 +24,7 @@ module.exports = class User {
     }
 
     static modify(nombreFase, idFase) {
-        return db.execute('UPDATE proyecto SET nombreFase=?,  WHERE idFase=?',
+        return db.execute('UPDATE fase SET nombreFase=?,  WHERE idFase=?',
         [nombreFase, idFase]);
     }
 }

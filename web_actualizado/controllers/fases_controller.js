@@ -26,13 +26,13 @@ exports.postRegistrarFase = (request, response, next) => {
 exports.getProyectoFase = (request, response, next) => {
     const id = request.params.proyecto_id;
     console.log("getFases");
-    Proyecto.fetchOne(id);
+    Fase.fetchOne(id);
     console.log(id);
     //console.log(request.session.rol);
-    Proyecto.fetchOne(id)
+    Fase.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('WBS_proyecto', { 
-                Proyecto: rows,
+                Fase: rows,
                 csrfToken: request.csrfToken(),
                 titulo: 'Fases',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
