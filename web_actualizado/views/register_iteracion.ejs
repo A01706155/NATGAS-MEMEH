@@ -5,27 +5,33 @@
     
     <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
         <h1 class="center white-text"><%= titulo %></h1>
+        <!-- <h1>ID: <%= idProyecto %></h1> -->
 
-            <form class="passcontent grey-text text-lighten-1" action="/proyectos/registrar-proyecto" method="POST">
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <form class="passcontent grey-text text-lighten-1" action="/proyectos/nueva-iteracion" method="POST">
+                <!-- CSRF -->
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                
+                <!-- idProyecto, modificar el value después --> <input class="white-text" type="hidden" name="idproyecto" value="<%= idProyecto %>" required><br>
+
+                <!-- Actual inputs -->
                 Descripcion<br>
                 <input class="white-text" type="text" name="descripcion" required><br>
                 Fecha de inicio<br>
-                <input type="date" name="fecha_inicio" class="datepicker white-text" required><br>
+                <input type="text" name="fechaPlaneada" class="datepicker white-text" required><br>
                 Fecha de finalización<br>
-                <input type="date" name="fecha_fin" class="datepicker white-text" required><br><br>
+                <input type="text" name="fechaEntrega" class="datepicker white-text" required><br><br>
 
-                <input type="hidden" name="estado" value="1"> 
+                <!-- estadoIteracion --> <input type="hidden" name="estado" value="1"> 
 
                 <div class="center">
                     <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Registrar iteracion
                         <i class="material-icons right">send</i>
                     </button>
                     <p></p>
-                    <a href="/iteracion" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
+                    <a href="/proyectos/iteracion/<%= idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
                 </div>
-                
             </form>
+
 
         </div>
     </main>

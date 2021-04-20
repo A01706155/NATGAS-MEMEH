@@ -10,11 +10,10 @@
        <!-- Botón para crear un nuevo proyecto-->
        <div class="row center">
         <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
-        <a href="/register_iteracion" id="new_iteracion" class="btn-large waves-effect waves-light green lighten-1">Crear nueva iteracion</a>
+        <a href="/proyectos/nueva-iteracion/<%= idProyecto %>" id="new_iteracion" class="btn-large waves-effect waves-light green lighten-1">Crear nueva iteracion</a>
     </div>
     
       <!-- Generar proyectos almacenados con tarjetas -->
-        <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>">
         <div class="input-field col s12">
           <i class="material-icons prefix">search</i>
           <input type="text" name="buscar" id="buscar" onkeyup="buscar()">
@@ -29,12 +28,13 @@
                     </div>
                     <div class="card-content">
                       <span class="card-title activator grey-text text-lighten-3">Iteracion <%= iteracion.idIteracion %>
-                        <i class="material-icons right">arrow_drop_down</i>                     
-                      <p><a href="/iteracion/<%=iteracion.idIteracion %>">Ver Iteracion</a></p>
+                        <i class="material-icons right">arrow_drop_down</i>     
+                        <div class="center card-action">
+                          <a class="waves-effect waves-light btn teal darken-2" href="/iteracion/ver-iteracion/<%= iteracion.idIteracion%>"><i class="material-icons left">visibility</i>Ver Iteracion</a>
+                        </div>                
                     </div>
                     </div>
                 </div>
-              </div>
             <% } %>
           </div>
 

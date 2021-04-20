@@ -1,17 +1,17 @@
 const session = require('express-session');
 const Iteracion = require('../models/iteracion');
+const Proyecto = require('../models/proyecto');
 
 
 exports.getIteracion = (request, response, next) => {
-    const id = request.params.proyecto_id;
+    const idIteracion = request.params.iteracion_id;
     console.log("getIteracion");
-    Iteracion.fetchOne(id);
-    console.log(id);
-    Iteracion.fetchOne(id)
+    Iteracion.fetchOne(idIteracion)
         .then(([rows, fieldData]) => {
-            response.render('iteracion', { 
-                lista_iteraciones: rows, 
-                Iteracion: rows,
+            response.render('ver_iteracion', { 
+                detalles_iteracion: rows, 
+                Iteracion: request.session.idIteracion,
+                idProyecto:  request.params.proyecto_id,
                 csrfToken: request.csrfToken(),
                 titulo: 'Trabajo del proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
@@ -23,39 +23,55 @@ exports.getIteracion = (request, response, next) => {
 };
 
 exports.getRegistrarIteracion = (request, response, next) => {
-    request.session.last = '/proyectos/nueva-iteracion';
     response.render('register_iteracion', {
         csrfToken: request.csrfToken(),
+        Iteracion: request.session.idIteracion,
+        idProyecto: request.params.proyecto_id,
         titulo: 'Registrar iteracion',
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };
 
 exports.postRegistrarIteracion = (request, response, next) => {
-    console.log(request.body.idIteracion);
-    const nueva_iteracion = new Iteracion(request.body.descripcion,request.body.fecha_inicio,request.body.fecha_fin,request.body.estadoIteracion);
+    const idProyecto = request.params.proyecto_id;
+    console.log(request.body.idproyecto);
+    console.log(request.body.descripcion);
+    console.log(request.body.fechaPlaneada);
+    console.log(request.body.fechaEntrega);
+    console.log(request.body.estado);
+    const nueva_iteracion = new Iteracion(request.body.idproyecto, request.body.descripcion, request.body.fechaPlaneada, request.body.fechaEntrega, request.body.estado);
     nueva_iteracion.save()
         .then(() => {
-            response.setHeader('Set-Cookie', ['ultimo_proyecto='+nueva_iteracion.idIteracion+'; HttpOnly']);
-            response.redirect('/iteracion');
+            response.redirect('/proyectos/iteracion/'+request.body.idproyecto);
+            response.setHeader('Set-Cookie', ['ultima_iteracion='+nueva_iteracion.idIteracion+'; HttpOnly']);
         }).catch(err => console.log(err));
 
 }
 
 exports.get = (request, response, next) => {
-    console.log('Cookie: ' + request.get('Cookie'));
-    //console.log(request.get('Cookie').split(';')[1].trim().split('=')[1]);
-    
-    //Con cookie-parser
-    console.log(request.cookies);
-    console.log(request.cookies.ultima_iteracion);
-
+    const idProyecto = request.params.proyecto_id;
     Iteracion.fetchAll()
         .then(([rows, fieldData]) => {
             response.render('iteracion', { 
-                user: request.session.usuario,
                 lista_iteraciones: rows, 
                 titulo: 'Iteracion',
+                isLoggedIn: request.session.isLoggedIn === true ? true : false,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+exports.getModificarIteracion = (request, response, next) => {
+    const idIteracion = request.params.iteracion_id;
+ 
+    
+    Iteracion.fetchOne(idIteracion)
+        .then(([rows, fieldData]) => {
+            response.render('modificar_iteracion', { 
+                detalles_iteracion: rows,  
+                titulo: 'Modificar Iteracion',
                 csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
@@ -64,3 +80,16 @@ exports.get = (request, response, next) => {
             console.log(err);
         });
 };
+
+exports.postModificarIteracion = (request, response, next) => {
+    console.log("Se esta modificando");
+    console.log(request.body);
+    console.log("Empezamos bb");
+    const modificar_iteracion = new Iteracion(request.body.idProyecto, request.body.estadoIteracion, request.body.descripcion,
+        request.body.fechaPlaneada, request.body.fechaEntrega, request.body.idIteracion);
+    modificar_iteracion.modify2()
+        .then(() => {
+            response.redirect('/proyectos/iteracion/'+request.body.idProyecto);
+        }).catch(err => console.log(err));
+
+}

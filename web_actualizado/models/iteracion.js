@@ -3,17 +3,19 @@ const db = require('../util/database');
 module.exports = class Iteracion {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(descripcion,fecha_inicio,fecha_fin, estadoIteracion) {
+    constructor(idIteracion, idProyecto, descripcion, fechaPlaneada, fechaEntrega, estadoIteracion) {
+        this.idIteracion = idIteracion;
+        this.idProyecto = idProyecto;
         this.descripcion = descripcion;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
+        this.fechaPlaneada = fechaPlaneada;
+        this.fechaEntrega = fechaEntrega;
         this.estadoIteracion = estadoIteracion;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        return db.execute('INSERT INTO iteracion (nombreProyecto, descripcion,fechaPlaneada, fechaEntrega, estadoIteracion) VALUES (?,?,?,?,?)',
-            [this.nombreProyecto, this.descripcion, this.fecha_inicio, this.fecha_fin, this.estadoIteracion]
+        return db.execute('INSERT INTO iteracion (idProyecto, descripcion, fechaPlaneada, fechaEntrega, estadoIteracion) VALUES (?,?,?,?,?)',
+            [this.idProyecto, this.descripcion, this.fechaPlaneada, this.fechaEntrega, this.estadoIteracion]
         );
     }
 
@@ -26,12 +28,16 @@ module.exports = class Iteracion {
         return db.execute('SELECT * FROM iteracion WHERE idIteracion=?', [id]);
     }
 
-    static fetchByName(idIteracion) {
-        return db.execute("SELECT * FROM `iteracion` WHERE `nombreProyecto` LIKE ? ", ['%'+idIteracion+'%']);
+    static fetchByProject(idProyecto) {
+        return db.execute('SELECT * FROM iteracion WHERE idProyecto=?', [idProyecto]);
     }
 
-    static modify(nombreProyecto, descripcion, fecha_inicio, fecha_fin, idProyecto) {
-        return db.execute('UPDATE iteracion SET nombreProyecto=?, descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idProyecto=?',
-        [nombreProyecto, descripcion, fecha_inicio, fecha_fin, idProyecto]);
+   /* static fetchByName(idIteracion) {
+        return db.execute("SELECT * FROM `iteracion` WHERE `idIteracion` LIKE ? ", ['%'+idIteracion+'%']);
+    }*/
+
+     modify2() {
+        return db.execute('UPDATE iteracion SET idProyecto=?, estadoIteracion=?, descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idIteracion=?',
+        [this.idProyecto, this.estadoIteracion, this.descripcion, this.fechaPlaneada, this.fechaEntrega, this.idIteracion]);
     }
 }
