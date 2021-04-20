@@ -27,6 +27,10 @@ module.exports = class Iteracion {
         return db.execute('SELECT * FROM iteracion WHERE idIteracion=?', [id]);
     }
 
+    static fetchByProject(idProyecto) {
+        return db.execute('SELECT * FROM iteracion WHERE idProyecto=?', [idProyecto]);
+    }
+
    /* static fetchByName(idIteracion) {
         return db.execute("SELECT * FROM `iteracion` WHERE `idIteracion` LIKE ? ", ['%'+idIteracion+'%']);
     }

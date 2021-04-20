@@ -15,3 +15,8 @@ const iteracionController = require('../controllers/iteracion_controller');
 router.get('/nueva-iteracion', isAuth, iteracionController.getRegistrarIteracion);
 
 router.post('/nueva-iteracion', isAuth, iteracionController.postRegistrarIteracion);
+
+router.get('/iteracion', isAuth, iteracionController.get);
+
+
+module.exports = router;

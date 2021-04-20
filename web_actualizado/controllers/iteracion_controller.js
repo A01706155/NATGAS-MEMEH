@@ -1,17 +1,19 @@
 const session = require('express-session');
 const Iteracion = require('../models/iteracion');
+const Proyecto = require('../models/proyecto');
 
 
 exports.getIteracion = (request, response, next) => {
-    const id = request.params.proyecto_id;
+    const idUseCase = request.params.casodeuso_id;
+    const idProyecto = request.params.proyecto_id;
     console.log("getIteracion");
-    Iteracion.fetchOne(id);
-    console.log(id);
-    Iteracion.fetchOne(id)
+    console.log(idUseCase);
+    Iteracion.fetchOne(idUseCase)
         .then(([rows, fieldData]) => {
-            response.render('iteracion', { 
+            response.render('ver_iteracion', { 
                 lista_iteraciones: rows, 
-                Iteracion: rows,
+                Iteracion: request.session.idIteracion,
+                idProyecto:  request.params.proyecto_id,
                 csrfToken: request.csrfToken(),
                 titulo: 'Trabajo del proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
@@ -25,12 +27,15 @@ exports.getIteracion = (request, response, next) => {
 exports.getRegistrarIteracion = (request, response, next) => {
     response.render('register_iteracion', {
         csrfToken: request.csrfToken(),
+        Iteracion: request.session.idIteracion,
+        idProyecto:  request.params.proyecto_id,
         titulo: 'Registrar iteracion',
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };
 
 exports.postRegistrarIteracion = (request, response, next) => {
+    const idProyecto = request.params.proyecto_id;
     console.log(request.body.idIteracion);
     console.log(request.body.idproyecto);
     console.log(request.body.descripcion);
@@ -40,27 +45,19 @@ exports.postRegistrarIteracion = (request, response, next) => {
     const nueva_iteracion = new Iteracion(request.body.idproyecto, request.body.descripcion, request.body.fechaPlaneada, request.body.fechaEntrega, request.body.estado);
     nueva_iteracion.save()
         .then(() => {
+            response.redirect('/proyectos/iteracion/'+request.body.idProyecto);
             response.setHeader('Set-Cookie', ['ultima_iteracion='+nueva_iteracion.idIteracion+'; HttpOnly']);
-            response.redirect('/iteracion');
         }).catch(err => console.log(err));
 
 }
 
 exports.get = (request, response, next) => {
-    console.log('Cookie: ' + request.get('Cookie'));
-    //console.log(request.get('Cookie').split(';')[1].trim().split('=')[1]);
-    
-    //Con cookie-parser
-    console.log(request.cookies);
-    console.log(request.cookies.ultima_iteracion);
-
+    const idProyecto = request.params.proyecto_id;
     Iteracion.fetchAll()
         .then(([rows, fieldData]) => {
             response.render('iteracion', { 
-                user: request.session.usuario,
                 lista_iteraciones: rows, 
                 titulo: 'Iteracion',
-                csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
