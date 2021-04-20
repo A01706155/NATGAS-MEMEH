@@ -8,6 +8,7 @@ exports.getIteracion = (request, response, next) => {
     console.log("getIteracion");
     Iteracion.fetchOne(idIteracion)
         .then(([rows, fieldData]) => {
+            console.log(rows);
             response.render('ver_iteracion', { 
                 detalles_iteracion: rows, 
                 Iteracion: request.session.idIteracion,
@@ -34,11 +35,6 @@ exports.getRegistrarIteracion = (request, response, next) => {
 
 exports.postRegistrarIteracion = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
-    console.log(request.body.idproyecto);
-    console.log(request.body.descripcion);
-    console.log(request.body.fechaPlaneada);
-    console.log(request.body.fechaEntrega);
-    console.log(request.body.estado);
     const nueva_iteracion = new Iteracion(request.body.idproyecto, request.body.descripcion, request.body.fechaPlaneada, request.body.fechaEntrega, request.body.estado);
     nueva_iteracion.save()
         .then(() => {
@@ -85,9 +81,8 @@ exports.postModificarIteracion = (request, response, next) => {
     console.log("Se esta modificando");
     console.log(request.body);
     console.log("Empezamos bb");
-    const modificar_iteracion = new Iteracion(request.body.idProyecto, request.body.estadoIteracion, request.body.descripcion,
-        request.body.fechaPlaneada, request.body.fechaEntrega, request.body.idIteracion);
-    modificar_iteracion.modify2()
+    Iteracion.modify(request.body.idProyecto, request.body.estadoIteracion, request.body.descripcion,
+        request.body.fechaPlaneada, request.body.fechaEntrega, request.body.idIteracion)
         .then(() => {
             response.redirect('/proyectos/iteracion/'+request.body.idProyecto);
         }).catch(err => console.log(err));
