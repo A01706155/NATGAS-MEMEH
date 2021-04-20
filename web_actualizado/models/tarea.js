@@ -9,8 +9,8 @@ module.exports = class Tarea {
     }
 
     save() {
-        return db.execute('INSERT INTO fase (nombreFase, idProyecto) VALUES (?,?)',
-            [this.nombre, this.id_proyecto]
+        return db.execute('INSERT INTO tarea (nombreFase, idFase) VALUES (?,?)',
+            [this.nombre, this.id_fase]
         );
     }
 
@@ -20,11 +20,11 @@ module.exports = class Tarea {
     }
 
     static fetchOne(id) {
-        return db.execute('SELECT * FROM fase WHERE idProyecto=?', [id]);
+        return db.execute('SELECT * FROM tarea WHERE idFase=?', [id]);
     }
 
-    static fetchOneByFase(id) {
-        return db.execute('SELECT * FROM fase WHERE idFase=?', [id]);
+    static fetchOneByTask(id) {
+        return db.execute('SELECT * FROM tarea WHERE idTarea=?', [id]);
     }
 
     static modify(nombreTarea, idFase) {
