@@ -1,6 +1,6 @@
-    DROP DATABASE IF EXISTS `NATGAS_MEMEH`;
-    CREATE DATABASE `NATGAS_MEMEH`; 
-    USE `NATGAS_MEMEH`;
+    DROP DATABASE IF EXISTS `NATGAS_MEMEH_EXPERIMENTAL`;
+    CREATE DATABASE `NATGAS_MEMEH_EXPERIMENTAL`; 
+    USE `NATGAS_MEMEH_EXPERIMENTAL`;
     
     SET NAMES utf8 ;
     SET character_set_client = utf8mb4 ;
@@ -91,6 +91,6 @@
         idCaso INT NOT NULL, 
         nombre VARCHAR(150), 
         PRIMARY KEY(idProyecto, idFase, idTarea, idCasos),
-        FOREIGN KEY(idProyecto, idFase, idTarea) REFERENCES Proyecto_Fase_Practica(idProyecto, idFase, idTarea),
+        FOREIGN KEY(idProyecto, idFase, idTarea) REFERENCES ProyectoFaseTarea(idProyecto, idFase, idTarea),
         FOREIGN KEY(idCasos) REFERENCES Casos_Uso(idCasos)
     );
