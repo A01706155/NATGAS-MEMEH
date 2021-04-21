@@ -2,8 +2,8 @@
     CREATE DATABASE `NATGAS_MEMEH_EXPERIMENTAL`; 
     USE `NATGAS_MEMEH_EXPERIMENTAL`;
     
-    SET NAMES utf8 ;
-    SET character_set_client = utf8mb4 ;
+    SET NAMES utf8;
+    SET character_set_client = utf8mb4;
 
     CREATE TABLE AP (
         idAP INT AUTO_INCREMENT NOT NULL,
@@ -23,13 +23,13 @@
     );
 
 
-    CREATE TABLE Iteracion(
+    CREATE TABLE Iteracion (
         idIteracion INT AUTO_INCREMENT NOT NULL,
         idProyecto INT NOT NULL,
         descripcion VARCHAR(1000),
         fechaPlaneada DATE,
         fechaEntrega DATE,
-        estadoIteracion INT
+        estadoIteracion INT,
         PRIMARY KEY(idIteracion),
         FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto)
     );
@@ -90,7 +90,7 @@
         idTarea INT NOT NULL, 
         idCaso INT NOT NULL, 
         nombre VARCHAR(150), 
-        PRIMARY KEY(idProyecto, idFase, idTarea, idCasos),
+        PRIMARY KEY(idProyecto, idFase, idTarea, idCaso),
         FOREIGN KEY(idProyecto, idFase, idTarea) REFERENCES ProyectoFaseTarea(idProyecto, idFase, idTarea),
-        FOREIGN KEY(idCasos) REFERENCES Casos_Uso(idCasos)
+        FOREIGN KEY(idCaso) REFERENCES Casos_Uso(idCaso)
     );
