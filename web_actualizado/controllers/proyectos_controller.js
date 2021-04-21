@@ -83,6 +83,15 @@ exports.postModificarProyecto = (request, response, next) => {
         .then(() => {
             response.redirect('/proyectos');
         }).catch(err => console.log(err));
+}
+
+exports.postEliminarProyecto = (request, response, next) => {
+    console.log("bye!!");
+    console.log(request.body.idProyecto);
+    Proyecto.delete(request.body.idProyecto)
+        .then(() => {
+            response.redirect('/proyectos');
+        }).catch(err => console.log(err));
 
 }
 
@@ -108,6 +117,8 @@ exports.get = (request, response, next) => {
             console.log(err);
         });
 };
+
+
 
 exports.getCaso = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;

@@ -28,6 +28,8 @@ router.post('/nueva-iteracion', isAuth, iteracionController.postRegistrarIteraci
 
 router.get('/iteracion/:proyecto_id' , isAuth,  proyectosController.getCaso);
 
+router.post('/eliminar-proyecto/:proyecto_id', isAuth, proyectosController.postEliminarProyecto);
+
 router.get('/:proyecto_id', isAuth, proyectosController.getProyecto);
 
 router.post('/buscar', proyectosController.postBuscar);

@@ -37,6 +37,6 @@ module.exports = class Proyecto {
     }
 
     static delete(idProyecto) {
-        return db.execute('DELETE proyecto from ')
+        return db.execute('DELETE FROM proyecto WHERE idProyecto=? ', [idProyecto]);
     }
 }
