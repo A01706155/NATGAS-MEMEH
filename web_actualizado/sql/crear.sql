@@ -18,7 +18,7 @@
         descripcion VARCHAR(1000),
         fechaPlaneada DATE,
         fechaEntrega DATE,
-        estadoProyecto BIT,
+        estadoProyecto INT,
         PRIMARY KEY(idProyecto)
     );
 
@@ -29,7 +29,7 @@
         descripcion VARCHAR(1000),
         fechaPlaneada DATE,
         fechaEntrega DATE,
-        estadoIteracion BIT,
+        estadoIteracion INT
         PRIMARY KEY(idIteracion),
         FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto)
     );
@@ -43,12 +43,11 @@
         PRIMARY KEY(idEmpleado)
     );
 
+
     CREATE TABLE Fase (
         idFase INT AUTO_INCREMENT NOT NULL,
         nombreFase VARCHAR(64),
-        idProyecto INT NOT NULL,
-        PRIMARY KEY(idFase),
-        FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto)
+        PRIMARY KEY(idFase)
     );
 
 
@@ -58,6 +57,16 @@
         idFase INT NOT NULL,
         PRIMARY KEY(idTarea),
         FOREIGN KEY(idFase) REFERENCES Fase(idFase)
+    );
+
+
+    CREATE TABLE ProyectoFaseTarea (
+        idProyecto INT NOT NULL,
+        idFase INT NOT NULL,
+        idTarea INT NOT NULL,
+        PRIMARY KEY(idProyecto, idFase, idTarea),
+        FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto),
+        FOREIGN KEY(idTarea) REFERENCES tarea(idTarea)
     );
 
 
@@ -72,4 +81,16 @@
         PRIMARY KEY(idCaso), 
         FOREIGN KEY(idAP) REFERENCES AP(idAP), 
         FOREIGN KEY(idIteracion) REFERENCES Iteracion(idIteracion)
+    );
+
+    
+    CREATE TABLE Entrega (
+        idProyecto INT NOT NULL,
+        idFase INT NOT NULL,
+        idTarea INT NOT NULL, 
+        idCaso INT NOT NULL, 
+        nombre VARCHAR(150), 
+        PRIMARY KEY(idProyecto, idFase, idTarea, idCasos),
+        FOREIGN KEY(idProyecto, idFase, idTarea) REFERENCES Proyecto_Fase_Practica(idProyecto, idFase, idTarea),
+        FOREIGN KEY(idCasos) REFERENCES Casos_Uso(idCasos)
     );

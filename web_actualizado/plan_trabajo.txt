@@ -44,7 +44,7 @@ Yo creo que la segunda opción es más fácil contando los tiempos que tienen ah
 	En donde dice casos de uso, quítenle ese nombre y pónganle iteraciones porque a fin de cuentas los va a mandar a iteraciones, no a casos de uso.
 	
 	Vista Actual - (Iteraciones):
-	En la iteración debes tener la facultad de crear casos de uso y hacer la asignación de: Ok. Para caso de uso, ¿qué tareas tengo qué desarrollar?. Ok?
+	En la iteración debes tener la facultad de crear casos de uso y hacer la asignación de: Ok. Para caso de uso, ¿qué tareas tengo qué desarrollar?.
 	
 No se me ocurre un MVP más chico porque apenas estamos cubriendo como la funcionalidad básica del objetivo del sistema.
 
