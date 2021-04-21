@@ -31,13 +31,12 @@ exports.postRegistrarFase = (request, response, next) => {
         }).catch(err => console.log(err));
 }
 
-exports.getProyectoFase = (request, response, next) => {
+exports.getFases = (request, response, next) => {
     const id = request.params.proyecto_id;
     console.log("getFases");
-    Fase.fetchOne(id);
-    console.log(id);
+    Fase.fetchAll();
     //console.log(request.session.rol);
-    Fase.fetchOne(id)
+    Fase.fetchAll()
         .then(([rows, fieldData]) => {
             response.render('WBS_proyecto', { 
                 Fase: rows,
@@ -69,13 +68,3 @@ exports.getModificarFase = (request, response, next) => {
             console.log(err);
         });
 };
-
-exports.postModificarFase = (request, response, next) => {
-    const id_proyecto = request.body.idProyecto;
-    console.log("Se esta modificando la fase");
-    console.log(request.body);
-    Fase.modify(request.body.nombreFase, request.body.idFase)
-        .then(() => {
-            response.redirect('/fases/' + id_proyecto);
-        }).catch(err => console.log(err));
-}

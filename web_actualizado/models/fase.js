@@ -5,12 +5,11 @@ module.exports = class Fase {
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
     constructor(nombre, id_proyecto) {
         this.nombre = nombre;
-        this.id_proyecto = id_proyecto;
     }
 
     save() {
-        return db.execute('INSERT INTO fase (nombreFase, idProyecto) VALUES (?,?)',
-            [this.nombre, this.id_proyecto]
+        return db.execute('INSERT INTO fase (nombreFase) VALUES (?)',
+            [this.nombre]
         );
     }
 
@@ -19,16 +18,7 @@ module.exports = class Fase {
         return db.execute('SELECT * FROM fase');
     }
 
-    static fetchOne(id) {
-        return db.execute('SELECT * FROM fase WHERE idProyecto=?', [id]);
-    }
-
     static fetchOneByFase(id) {
         return db.execute('SELECT * FROM fase WHERE idFase=?', [id]);
-    }
-
-    static modify(nombreFase, idFase) {
-        return db.execute('UPDATE fase SET nombreFase=?  WHERE idFase=?',
-        [nombreFase, idFase]);
     }
 }
