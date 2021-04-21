@@ -66,6 +66,7 @@
         idTarea INT NOT NULL,
         PRIMARY KEY(idProyecto, idFase, idTarea),
         FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto),
+        FOREIGN KEY(idFase) REFERENCES Fase(idFase),
         FOREIGN KEY(idTarea) REFERENCES tarea(idTarea)
     );
 
