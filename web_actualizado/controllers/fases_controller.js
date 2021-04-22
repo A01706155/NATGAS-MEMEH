@@ -68,3 +68,34 @@ exports.getModificarFase = (request, response, next) => {
             console.log(err);
         });
 };
+
+exports.getProyectoFase = (request, response, next) => {
+    const id = request.params.proyecto_id;
+    console.log("getFases");
+    Proyecto.fetchOne(id);
+    console.log(id);
+    //console.log(request.session.rol);
+    Proyecto.fetchOne(id)
+        .then(([rows, fieldData]) => {
+            response.render('WBS_proyecto', { 
+                Proyecto: rows,
+                csrfToken: request.csrfToken(),
+                titulo: 'Fases',
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+exports.postModificarFase = (request, response, next) => {
+    const id_proyecto = request.body.idProyecto;
+    console.log("Se esta modificando la fase");
+    console.log(request.body);
+    Fase.modify(request.body.nombreFase, id_proyecto)
+        .then(() => {
+            response.redirect('/fases/' + id_proyecto);
+        }).catch(err => console.log(err));
+
+}
