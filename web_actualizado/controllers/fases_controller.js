@@ -73,7 +73,6 @@ exports.getModificarFase = (request, response, next) => {
 exports.getProyectoFase = (request, response, next) => {
     const id = request.params.proyecto_id;
     console.log("getFases");
-    Proyecto.fetchOne(id);
     console.log(id);
     //console.log(request.session.rol);
     Fase.fetchOne(id)

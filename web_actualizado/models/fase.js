@@ -25,4 +25,5 @@ module.exports = class Fase {
     static fetchOneByFase(id) {
         return db.execute('SELECT * FROM fase WHERE idFase=?', [id]);
     }
+
 }
