@@ -15,7 +15,9 @@ router.post('/registrar-fase', isAuth, fasesController.postRegistrarFase);
 
 router.get('/modificar-fase/:fase_id', fasesController.getModificarFase);
 
-router.get('/:proyecto_id', isAuth, fasesController.getFases);
+router.post('/modificar-fase', fasesController.postModificarFase);
+
+router.get('/:proyecto_id', isAuth, fasesController.getProyectoFase);
 
 
 module.exports = router;

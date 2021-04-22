@@ -26,7 +26,7 @@ const rutasUsers = require('./routes/users');
 const rutasIteracion = require('./routes/iteracion');
 //const rutasFases = require('./routes/fases');
 //const rutasIteracion = require('./routes/iteracion');
-const rutasFases = require('./routes/fases');
+//const rutasFases = require('./routes/fases');
 const rutasTareas = require('./routes/tareas');
 
 //const rutasPersonajes = require('./routes/personajes');
@@ -60,7 +60,7 @@ app.use((request, response, next) => {
 app.use('/proyectos', rutasProyectos);
 app.use('/users', rutasUsers);
 app.use('/iteracion', rutasIteracion);
-app.use('/fases', rutasFases);
+//app.use('/fases', rutasFases);
 app.use('/tareas', rutasTareas);
 //app.use('/iteracion', rutasIteracion);
 
