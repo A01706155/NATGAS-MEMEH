@@ -13,6 +13,10 @@ module.exports = class Fase {
         );
     }
 
+    static fetchOne(id) {
+        return db.execute('SELECT * FROM fase WHERE idProyecto=?', [id]);
+    }
+
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
         return db.execute('SELECT * FROM fase');

@@ -11,6 +11,7 @@ exports.getRegistrarFase = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('registrar_fase', { 
                 proyecto: rows,
+                idProyecto: id,
                 csrfToken: request.csrfToken(),
                 titulo: 'Registrar nueva fase',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
@@ -75,11 +76,12 @@ exports.getProyectoFase = (request, response, next) => {
     Proyecto.fetchOne(id);
     console.log(id);
     //console.log(request.session.rol);
-    Proyecto.fetchOne(id)
+    Fase.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('WBS_proyecto', { 
-                Proyecto: rows,
+                Fase: rows,
                 csrfToken: request.csrfToken(),
+                idProyecto: id,
                 titulo: 'Fases',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
