@@ -2,19 +2,21 @@
 <%- include('partials/navbar.ejs') %>
 
 <main class="container">
-    
+
     <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
         <h1 class="center white-text"><%= titulo %></h1>
 
             <form class="passcontent grey-text text-lighten-1" action="/iteracion/nuevo-casodeuso" method="POST">
                 <!-- CSRF -->
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+
+
                 
-                <input class="white-text" type="hidden" name="idAP" value="<%= idAP %>" required><br>
                 <input class="white-text" type="hidden" name="idIteracion" value="<%= idIteracion%>" required><br>
 
                 <!-- Actual inputs -->
-                yo_como<br>
+                yo_como
                 <input class="white-text" type="text" name="yo_como" required><br>
                 quiero<br>
                 <input class="white-text" type="text" name="quiero" required><br>
@@ -23,9 +25,18 @@
                 comentario<br>
                 <input class="white-text" type="text" name="comentario" required><br>
 
+                AP<br>
+                
+                <select name="idAP" class="white-text" required>
+                    <option value="" disabled selected >Choose your option</option>
+                    <% for (let ap of rows)  {%>
+                        <option value="<%= ap.idAP %>" class="white-text"> <%= ap.idAP %> </option>                    
+                    <%} %>
+                </select>
+
 
                 <div class="center">
-                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Registrar iteracion
+                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Registrar Caso de Uso
                         <i class="material-icons right">send</i>
                     </button>
                     <p></p>

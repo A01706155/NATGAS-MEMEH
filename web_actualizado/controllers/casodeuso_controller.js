@@ -2,6 +2,7 @@ const session = require('express-session');
 const Iteracion = require('../models/iteracion');
 const Proyecto = require('../models/proyecto');
 const Casodeuso = require('../models/casodeuso');
+const AgilP = require('../models/ap');
 
 
 exports.getCasodeUso = (request, response, next) => {
@@ -25,18 +26,28 @@ exports.getCasodeUso = (request, response, next) => {
 };
 
 exports.getRegistrarCasodeuso = (request, response, next) => {
-    response.render('register_casodeuso', {
-        csrfToken: request.csrfToken(),
-        Casodeuso: request.session.idCaso,
-        idIteracion: request.params.iteracion_id,
-        idAP: request.params.ap_id,
-        titulo: 'Registrar Caso de uso',
-        isLoggedIn: request.session.isLoggedIn === true ? true : false
-    });
+    AgilP.fetchAll()
+        .then(([rows, fieldData]) => {
+            response.render('register_casodeuso', {
+                csrfToken: request.csrfToken(),
+                Casodeuso: request.session.idCaso,
+                idIteracion: request.params.iteracion_id,
+                rows: rows,
+                idAP: request.session.idCaso,
+                titulo: 'Registrar Caso de uso',
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+
 };
 
 exports.postRegistrarCasodeuso = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
+    console.log(request.body);
     const nuevo_casodeuso = new Casodeuso(request.body.idIteracion, request.body.idAP, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario);
     nuevo_casodeuso.save()
         .then(() => {
