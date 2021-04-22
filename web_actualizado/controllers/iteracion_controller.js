@@ -1,4 +1,5 @@
 const session = require('express-session');
+const Casodeuso = require('../models/casodeuso');
 const Iteracion = require('../models/iteracion');
 const Proyecto = require('../models/proyecto');
 
@@ -103,3 +104,21 @@ exports.postEliminarIteracion = (request, response) => {
         console.log(err);
     });
 }
+
+exports.getCasoUso = (request, response, next) => {
+    const idIteracion = request.params.iteracion_id;
+    console.log(request.params);
+    Casodeuso.fetchByIteracion(idIteracion)
+        .then(([rows, fieldData]) => {
+            response.render('casodeuso', { 
+                rol: request.session.rol,
+                lista_casodeuso: rows, 
+                titulo: 'Casos de uso'  ,
+                idIteracion: idIteracion,
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};

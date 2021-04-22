@@ -20,6 +20,8 @@ router.post('/nueva-iteracion', isAuth, iteracionController.postRegistrarIteraci
 
 router.get('/ver-iteracion/:iteracion_id', isAuth, iteracionController.getIteracion);
 
+router.get('/casosdeuso/:iteracion_id' , isAuth,  iteracionController.getCasoUso);
+
 router.get('/modificar-iteracion/:iteracion_id', isAuth, iteracionController.getModificarIteracion);
 
 router.post('/modificar-iteracion', isAuth, iteracionController.postModificarIteracion);
