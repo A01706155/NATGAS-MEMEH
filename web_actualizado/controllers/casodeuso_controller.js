@@ -24,26 +24,27 @@ exports.getCasodeUso = (request, response, next) => {
         });
 };
 
-/*exports.getRegistrarIteracion = (request, response, next) => {
-    response.render('register_iteracion', {
+exports.getRegistrarCasodeuso = (request, response, next) => {
+    response.render('register_casodeuso', {
         csrfToken: request.csrfToken(),
-        Iteracion: request.session.idIteracion,
-        idProyecto: request.params.proyecto_id,
-        titulo: 'Registrar iteracion',
+        Casodeuso: request.session.idCaso,
+        idIteracion: request.params.iteracion_id,
+        idAP: request.params.ap_id,
+        titulo: 'Registrar Caso de uso',
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };
 
-exports.postRegistrarIteracion = (request, response, next) => {
+exports.postRegistrarCasodeuso = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
-    const nueva_iteracion = new Iteracion(request.body.idproyecto, request.body.descripcion, request.body.fechaPlaneada, request.body.fechaEntrega, request.body.estado);
-    nueva_iteracion.save()
+    const nuevo_casodeuso = new Casodeuso(request.body.idIteracion, request.body.idAP, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario);
+    nuevo_casodeuso.save()
         .then(() => {
-            response.redirect('/proyectos/iteracion/'+request.body.idproyecto);
-            response.setHeader('Set-Cookie', ['ultima_iteracion='+nueva_iteracion.idIteracion+'; HttpOnly']);
+            response.redirect('/iteracion/casosdeuso/'+request.body.idIteracion);
+            response.setHeader('Set-Cookie', ['ultimo_casodeuso='+nuevo_casodeuso.idCaso+'; HttpOnly']);
         }).catch(err => console.log(err));
 
-}*/
+}
 exports.get = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
     Casodeuso.fetchAll()
