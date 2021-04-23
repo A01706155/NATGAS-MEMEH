@@ -53,7 +53,8 @@
 
     CREATE TABLE Estado (
         idEstado INT AUTO_INCREMENT NOT NULL,
-        Estado INT (1)
+        Estado INT (1),
+        PRIMARY KEY(idEstado)
     );
 
     
