@@ -1,0 +1,35 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<main class="container">
+    
+    <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
+        <h1 class="center white-text"><%= titulo %></h1>
+
+            <form class="passcontent grey-text text-lighten-1" action="/fases/registrar-fase" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                Nombre de la Fase<br>
+                <% for (let elemento of proyecto) { %>
+                <input class="white-text" type="text" name="nombreFase" value="<%= elemento.nombreFase %>" required><br>
+
+                <input type="hidden" name="idProyecto" value="<%= elemento.idProyecto %>">
+                <% } %>
+                
+
+                <div class="center">
+                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Registrar fase
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <p></p>
+                    <% for (let elemento of proyecto) { %>
+                    <a href="/fases/<%= elemento.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+                    <% } %>   
+                </div>
+                
+                
+            </form>
+
+        </div>
+    </main>
+
+<%- include('partials/footer.ejs')  %>

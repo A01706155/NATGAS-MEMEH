@@ -1,0 +1,9 @@
+git checkout develop
+git pull
+git checkout -b nombre/feature
+git add -A 
+git commit -m "Cambio"
+git checkout develop
+git pull
+git merge nombre/feature
+git push
