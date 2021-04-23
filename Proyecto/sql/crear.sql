@@ -53,7 +53,8 @@
 
     CREATE TABLE Estado (
         idEstado INT AUTO_INCREMENT NOT NULL,
-        Estado INT (1)
+        Estado INT (1),
+        PRIMARY KEY(idEstado)
     );
 
     
@@ -61,7 +62,7 @@
         idReporte INT AUTO_INCREMENT NOT NULL,
         idTarea INT NOT NULL, 
         idHistoria INT NOT NULL,
-        idEstado,
+        idEstado INT NOT NULL,
         nombre VARCHAR(150), 
         PRIMARY KEY(idReporte),
         FOREIGN KEY(idHistoria) REFERENCES HistoriaUsuario(idHistoria),
