@@ -25,6 +25,7 @@ exports.getCasodeUso = (request, response, next) => {
 };
 
 exports.getRegistrarCasodeuso = (request, response, next) => {
+    console.log("proyecto: " + request.params.proyecto_id)
     Historiausuario.fetchAll()
     .then(([rows, fieldData]) => {
             response.render('register_casodeuso', {
@@ -43,10 +44,11 @@ exports.getRegistrarCasodeuso = (request, response, next) => {
 exports.postRegistrarCasodeuso = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
     console.log(request.body);
-    const nuevo_casodeuso = new Historiausuario(request.body.idProyecto, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario, request.body.AP);
+    const nuevo_casodeuso = new Historiausuario(request.body.idProyecto, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario, request.body.ap);
     nuevo_casodeuso.save()
         .then(() => {
-            response.redirect('casodeuso/'+request.body.idProyecto);
+            console.log(idProyecto);
+            response.redirect('casodeuso/'+ request.body.idProyecto);
             response.setHeader('Set-Cookie', ['ultimo_casodeuso='+nuevo_casodeuso.idCaso+'; HttpOnly']);
         }).catch(err => console.log(err));
 

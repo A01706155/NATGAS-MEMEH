@@ -3,19 +3,19 @@ const db = require('../util/database');
 module.exports = class Historiausuario {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(AP,yo_como, quiero, para,comentario, idProyecto) {
+    constructor(ap,yo_como, quiero, para,comentario, idProyecto) {
         this.idProyecto = idProyecto;
         this.yo_como = yo_como;
         this.quiero = quiero;
         this.para = para;
-        this.AP = AP;
+        this.ap = ap;
         this.comentario = comentario;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
         return db.execute('INSERT INTO historiausuario (AP, yo_como, quiero, para, comentario, idProyecto) VALUES (?,?,?,?,?,?)',
-            [this.AP, this.yo_como, this.quiero, this.para, this.comentario, this.idProyecto]
+            [this.ap, this.yo_como, this.quiero, this.para, this.comentario, this.idProyecto]
         );
     }
 

@@ -6,14 +6,13 @@
     <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
         <h1 class="center white-text"><%= titulo %></h1>
 
-            <form class="passcontent grey-text text-lighten-1" action="/proyectos/nuevo-casodeuso" method="POST">
+            <form class="passcontent grey-text text-lighten-1" action="/proyectos/nuevo-casodeuso/ method="POST">
                 <!-- CSRF -->
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input class="white-text" type="hidden" name="idProyecto" value="<%= idProyecto%>" required><br>
 
 
 
-                AP<br>
-                <input class="white-text" type="text" name="AP" required><br>
                 
 
                 <!-- Actual inputs -->
@@ -25,8 +24,9 @@
                 <input class="white-text" type="text" name="para" required><br>
                 comentario<br>
                 <input class="white-text" type="text" name="comentario" required><br>
-
-                <input class="white-text" type="hidden" name="idProyecto" value="<%= idProyecto%>" required><br>
+                AP<br>
+                <input class="white-text" type="text" name="ap" required><br>
+                
 
 
                 <div class="center">
