@@ -1,16 +1,9 @@
-    DROP DATABASE IF EXISTS `NATGAS_MEMEH_EXPERIMENTAL`;
-    CREATE DATABASE `NATGAS_MEMEH_EXPERIMENTAL`; 
-    USE `NATGAS_MEMEH_EXPERIMENTAL`;
+    DROP DATABASE IF EXISTS `NATGAS_MEMEH`;
+    CREATE DATABASE `NATGAS_MEMEH`; 
+    USE `NATGAS_MEMEH`;
     
     SET NAMES utf8;
     SET character_set_client = utf8mb4;
-
-    CREATE TABLE AP (
-        idAP INT AUTO_INCREMENT NOT NULL,
-        AP INT,
-        PRIMARY KEY(idAP)
-    );
-
 
     CREATE TABLE Proyecto (
         idProyecto INT AUTO_INCREMENT NOT NULL,
@@ -18,20 +11,7 @@
         descripcion VARCHAR(1000),
         fechaPlaneada DATE,
         fechaEntrega DATE,
-        estadoProyecto INT,
         PRIMARY KEY(idProyecto)
-    );
-
-
-    CREATE TABLE Iteracion (
-        idIteracion INT AUTO_INCREMENT NOT NULL,
-        idProyecto INT NOT NULL,
-        descripcion VARCHAR(1000),
-        fechaPlaneada DATE,
-        fechaEntrega DATE,
-        estadoIteracion INT,
-        PRIMARY KEY(idIteracion),
-        FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto)
     );
 
 
@@ -51,7 +31,7 @@
     );
 
 
-    CREATE TABLE tarea (
+    CREATE TABLE Tarea (
         idTarea INT AUTO_INCREMENT NOT NULL,
         nombreTarea VARCHAR(64),
         idFase INT NOT NULL,
@@ -60,38 +40,30 @@
     );
 
 
-    CREATE TABLE ProyectoFaseTarea (
-        idProyecto INT NOT NULL,
-        idFase INT NOT NULL,
-        idTarea INT NOT NULL,
-        PRIMARY KEY(idProyecto, idFase, idTarea),
-        FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto),
-        FOREIGN KEY(idFase) REFERENCES Fase(idFase),
-        FOREIGN KEY(idTarea) REFERENCES tarea(idTarea)
-    );
-
-
-    CREATE TABLE Casos_Uso(
-        idCaso INT AUTO_INCREMENT NOT NULL, 
+    CREATE TABLE HistoriaUsuario(
+        idHistoria INT AUTO_INCREMENT NOT NULL, 
         idAP INT NOT NULL, 
-        idIteracion INT NOT NULL,
         yo_como VARCHAR(64),
         quiero VARCHAR(255), 
         para VARCHAR(255), 
         comentario VARCHAR(255), 
-        PRIMARY KEY(idCaso), 
-        FOREIGN KEY(idAP) REFERENCES AP(idAP), 
-        FOREIGN KEY(idIteracion) REFERENCES Iteracion(idIteracion)
+        AP INT(3),
+        PRIMARY KEY(idHistoria)
+    );
+
+    CREATE TABLE Estado (
+        idEstado INT AUTO_INCREMENT NOT NULL,
+        Estado INT (1)
     );
 
     
-    CREATE TABLE Entrega (
-        idProyecto INT NOT NULL,
-        idFase INT NOT NULL,
+    CREATE TABLE Reporte (
+        idReporte INT AUTO_INCREMENT NOT NULL,
         idTarea INT NOT NULL, 
-        idCaso INT NOT NULL, 
+        idHistoria INT NOT NULL,
+        idEstado,
         nombre VARCHAR(150), 
-        PRIMARY KEY(idProyecto, idFase, idTarea, idCaso),
-        FOREIGN KEY(idProyecto, idFase, idTarea) REFERENCES ProyectoFaseTarea(idProyecto, idFase, idTarea),
-        FOREIGN KEY(idCaso) REFERENCES Casos_Uso(idCaso)
+        PRIMARY KEY(idReporte),
+        FOREIGN KEY(idHistoria) REFERENCES HistoriaUsuario(idHistoria),
+        FOREIGN KEY(idEstado) REFERENCES Estado(idEstado)
     );
