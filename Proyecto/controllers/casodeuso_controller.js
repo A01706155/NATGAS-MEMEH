@@ -44,7 +44,7 @@ exports.getRegistrarCasodeuso = (request, response, next) => {
 exports.postRegistrarCasodeuso = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
     console.log(request.body);
-    const nuevo_casodeuso = new Historiausuario(request.body.idProyecto, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario, request.body.ap);
+    const nuevo_casodeuso = new Historiausuario(request.body.ap, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario, request.body.idProyecto);
     nuevo_casodeuso.save()
         .then(() => {
             console.log(idProyecto);
