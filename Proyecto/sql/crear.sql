@@ -42,12 +42,11 @@
 
     CREATE TABLE HistoriaUsuario(
         idHistoria INT AUTO_INCREMENT NOT NULL, 
-        idAP INT NOT NULL, 
+        AP INT NOT NULL, 
         yo_como VARCHAR(64),
         quiero VARCHAR(255), 
         para VARCHAR(255), 
         comentario VARCHAR(255), 
-        AP INT(3),
         idProyecto INT,
         PRIMARY KEY(idHistoria),
         FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto)
