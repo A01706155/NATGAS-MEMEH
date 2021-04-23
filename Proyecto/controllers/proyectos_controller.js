@@ -1,7 +1,7 @@
 const session = require('express-session');
 const Proyecto = require('../models/proyecto');
 const Iteracion = require('../models/iteracion');
-const Casodeuso = require('../models/casodeuso');
+const Historiausuario = require('../models/casodeuso');
 
 
 exports.getRegistrarProyecto = (request, response, next) => {
@@ -110,14 +110,14 @@ exports.get = (request, response, next) => {
         });
 };
 
-exports.getCasoUso = (request, response, next) => {
+exports.getCaso = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
     console.log(request.params);
-    Casodeuso.fetchByProyect(request.params.proyecto_id)
+    Historiausuario.fetchByProject(idProyecto)
         .then(([rows, fieldData]) => {
             response.render('casodeuso', { 
                 rol: request.session.rol,
-                lista_casodeuso: rows, 
+                lista_historias: rows, 
                 titulo: 'Casos de uso'  ,
                 idProyecto: idProyecto,
                 isLoggedIn: request.session.isLoggedIn === true ? true : false

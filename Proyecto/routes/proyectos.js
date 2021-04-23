@@ -22,11 +22,11 @@ router.get('/modificar-proyecto/:proyecto_id', isAuth, proyectosController.getMo
 
 router.post('/modificar-proyecto', isAuth, proyectosController.postModificarProyecto);
 
+router.get('/casodeuso/:proyecto_id',  proyectosController.getCaso);
+
 router.get('/nuevo-casodeuso/:proyecto_id', isAuth, casodeusoController.getRegistrarCasodeuso);
 
 router.post('/nuevo-casodeuso', isAuth, casodeusoController.postRegistrarCasodeuso);
-
-router.get('/casodeuso/:proyecto_id' , isAuth,  proyectosController.getCasoUso);
 
 router.get('/:proyecto_id', isAuth, proyectosController.getProyecto);
 
