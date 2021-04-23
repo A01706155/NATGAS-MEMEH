@@ -48,7 +48,9 @@
         para VARCHAR(255), 
         comentario VARCHAR(255), 
         AP INT(3),
-        PRIMARY KEY(idHistoria)
+        idProyecto INT,
+        PRIMARY KEY(idHistoria),
+        FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto)
     );
 
     CREATE TABLE Estado (

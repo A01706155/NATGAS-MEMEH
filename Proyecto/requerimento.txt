@@ -1,0 +1,19 @@
+1. Tenemos que hacer un administrador de proyectos que nos genere un reporte de lo que se va a hacer.
+
+	a) Tenemos que registrar un proyecto, este contiene un id, nombre, descripción Fecha Inicio, Fecha Planeada
+	b) Dentro del proyecto tenemos un WBS e Iteraciones, para ambos existen dos funcionalidades
+		
+		WBS: El WBS consiste de Fases y Tareas
+		
+			I) Fases: Debemos añadirlas antes que las tareas y los únicos que contiene la Fase para identificarse son un id y un nombre. (Cada fase depende del id del proyecto)
+			
+			II) Tareas: Debemos crear tareas dentro de cada fase existente y los datos que cada tarea contiene son un id y el nombre de la tarea (Cada tarea depende del id de la fase)
+		
+		Iteraciones: Las iteraciones contienen iteraciones (valga la redundancia) y casos de uso.
+		
+			I) Iteraciones: Las iteraciones son como partes del proyecto y contienen id y nombre (cada iteración depende del id del proyecto)
+			
+			II) Casos de uso: Los casos de uso son como las acciones a tomar por una persona del proyecto y contienen los siguientes datos: id, yo_como, quiero, para, comentario
+			
+	
+	d) Ya teniendo
