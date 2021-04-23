@@ -8,13 +8,13 @@
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <% for (let elemento of proyecto) { %> 
                 
-                Nombre <br>
+                Nombre del proyecto <br>
                 <input class="white-text" type="text" name="nombreProyecto" value="<%= elemento.nombreProyecto %>" required>
-                Descripcion <br>
+                Descripción <br>
                 <input class="white-text" type="text" name="descripcion" value="<%= elemento.descripcion %>" required>
                 Fecha inicio <br>
                 <input class="datepicker white-text" type="date" name="fecha_inicio" value="<%= elemento.fechaPlaneada %>" required>
-                Fecha fin <br>
+                Fecha de finalización <br>
                 <input class="datepicker white-text" type="date" name="fecha_fin" value="<%= elemento.fechaEntrega %>" required>
 
                 <input type="hidden" name="idProyecto" value="<%= elemento.idProyecto %>">
