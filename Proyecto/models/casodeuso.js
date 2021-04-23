@@ -1,35 +1,35 @@
 const db = require('../util/database');
 
-module.exports = class Casodeuso {
+module.exports = class Historiausuario {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(idIteracion, idAP, yo_como, quiero, para, comentario) {
-        this.idIteracion = idIteracion;
-        this.idAP = idAP;
+    constructor(AP,yo_como, quiero, para,comentario, idProyecto) {
+        this.idProyecto = idProyecto;
         this.yo_como = yo_como;
         this.quiero = quiero;
         this.para = para;
+        this.AP = AP;
         this.comentario = comentario;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        return db.execute('INSERT INTO casos_uso (idIteracion, idAP, yo_como, quiero, para, comentario) VALUES (?,?,?,?,?,?)',
-            [this.idIteracion, this.idAP, this.yo_como, this.quiero, this.para, this.comentario]
+        return db.execute('INSERT INTO historiausuario (AP, yo_como, quiero, para, comentario, idProyecto) VALUES (?,?,?,?,?,?)',
+            [this.AP, this.yo_como, this.quiero, this.para, this.comentario, this.idProyecto]
         );
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-        return db.execute('SELECT * FROM casos_uso');
+        return db.execute('SELECT * FROM historiausuario');
     }
 
     static fetchOne(id) {
-        return db.execute('SELECT * FROM casos_uso WHERE idCaso=?', [id]);
+        return db.execute('SELECT * FROM historiausuario WHERE idHistoria=?', [id]);
     }
 
-    static fetchByIteracion(idIteracion) {
-        return db.execute('SELECT * FROM casos_uso WHERE idIteracion=?', [idIteracion]);
+    static fetchByProject(idProyecto) {
+        return db.execute('SELECT * FROM historiausuario WHERE idProyecto=?', [idProyecto]);
     }
 
    /* static fetchByName(idIteracion) {

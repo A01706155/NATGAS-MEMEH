@@ -4,14 +4,14 @@
 <main class="container">
     <!-- Titulo -->
     <h1 class="header center white-text">Casos de uso</h1>
-    <h6 class="header center white-text">Iteracion: <%= idIteracion %> </h6>
+    <h6 class="header center white-text">Proyecto: <%= idProyecto %> </h6>
     
     <!-- Para que se vea bonito-->
     <div style="backdrop-filter: blur(10px) contrast(70%); padding:20px; border-radius: 20px; margin-bottom: 6%;">
        <!-- Botón para crear un nuevo proyecto-->
        <div class="row center">
-        <a href="/iteracion" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
-        <a href="/iteracion/nuevo-casodeuso/<%= idIteracion %>" id="new_iteracion" class="btn-large waves-effect waves-light green lighten-1">Crear nuevo Caso de Uso</a>
+        <a href="/proyecto" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+        <a href="/proyectos/nuevo-casodeuso/<%= idProyecto %>" id="new_iteracion" class="btn-large waves-effect waves-light green lighten-1">Crear nuevo Caso de Uso</a>
     </div>
     
       <!-- Generar proyectos almacenados con tarjetas -->
@@ -20,17 +20,17 @@
           <input type="text" name="buscar" id="buscar" onkeyup="buscar()">
         </div>  
         <div class="row" id="resultados">
-            <% for (let caso of lista_casodeuso) { %>
+            <% for (let caso of lista_historias) { %>
                 <div class="col s12 m4 l3">
                     <div class="card small grey darken-4">
                         <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="https://blogs.encamina.com/piensa-en-software-desarrolla-en-colores/wp-content/uploads/sites/21/2019/02/QA-Caso-de-uso.png">
                         </div>
                         <div class="card-content">
-                        <span class="card-title activator grey-text text-lighten-3">Caso de Uso <%= caso.idCaso %>
+                        <span class="card-title activator grey-text text-lighten-3">Caso de Uso <%= caso.idHistoria %>
                             <i class="material-icons right">arrow_drop_down</i>     
                             <div class="center card-action">
-                            <a class="waves-effect waves-light btn teal darken-2" href="/iteracion/ver-iteracion/<%= caso.idCaso%>"><i class="material-icons left">visibility</i>Ver Caso de Uso</a>
+                            <a class="waves-effect waves-light btn teal darken-2" href="/casodeuso/ver-casodeuso/<%= caso.idCaso%>"><i class="material-icons left">visibility</i>Ver Caso de Uso</a>
                             </div>                
                         </div>
                         </div>

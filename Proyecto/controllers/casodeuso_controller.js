@@ -1,19 +1,18 @@
 const session = require('express-session');
 const Iteracion = require('../models/iteracion');
 const Proyecto = require('../models/proyecto');
-const Casodeuso = require('../models/casodeuso');
+const Historiausuario = require('../models/casodeuso');
 const AgilP = require('../models/ap');
 
 
 exports.getCasodeUso = (request, response, next) => {
-    const idCaso = request.params.casodeuso_id;
+    const idHistoria = request.params.historia_id;
     console.log("getCasodeUso");
-    Casodeuso.fetchOne(idCaso)
+    Historiausuario.fetchOne(idCaso)
         .then(([rows, fieldData]) => {
             console.log(rows);
             response.render('ver_casodeuso', { 
                 lista_casodeuso: rows, 
-                idIteracion: request.session.idIteracion,
                 idProyecto:  request.params.proyecto_id,
                 csrfToken: request.csrfToken(),
                 titulo: 'Trabajo del proyecto',
@@ -26,42 +25,38 @@ exports.getCasodeUso = (request, response, next) => {
 };
 
 exports.getRegistrarCasodeuso = (request, response, next) => {
-    AgilP.fetchAll()
-        .then(([rows, fieldData]) => {
+    Historiausuario.fetchAll()
+    .then(([rows, fieldData]) => {
             response.render('register_casodeuso', {
                 csrfToken: request.csrfToken(),
-                Casodeuso: request.session.idCaso,
-                idIteracion: request.params.iteracion_id,
-                rows: rows,
-                idAP: request.session.idCaso,
-                titulo: 'Registrar Caso de uso',
+                idHistoria: request.session.idHistoria,
+                idProyecto: request.params.proyecto_id,
+                titulo: 'Registrar Historia',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
         .catch(err => {
             console.log(err);
         });
-
-
 };
 
 exports.postRegistrarCasodeuso = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
     console.log(request.body);
-    const nuevo_casodeuso = new Casodeuso(request.body.idIteracion, request.body.idAP, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario);
+    const nuevo_casodeuso = new Historiausuario(request.body.idProyecto, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario, request.body.AP);
     nuevo_casodeuso.save()
         .then(() => {
-            response.redirect('/iteracion/casosdeuso/'+request.body.idIteracion);
+            response.redirect('casodeuso/'+request.body.idProyecto);
             response.setHeader('Set-Cookie', ['ultimo_casodeuso='+nuevo_casodeuso.idCaso+'; HttpOnly']);
         }).catch(err => console.log(err));
 
 }
 exports.get = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
-    Casodeuso.fetchAll()
+    Historiausuario.fetchAll()
         .then(([rows, fieldData]) => {
             response.render('casodeuso', { 
-                lista_casodeuso: rows, 
+                lista_historias: rows, 
                 titulo: 'Caso de Uso',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false,
             });

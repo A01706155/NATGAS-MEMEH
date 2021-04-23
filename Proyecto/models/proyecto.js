@@ -3,18 +3,17 @@ const db = require('../util/database');
 module.exports = class Proyecto {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(nombreProyecto,descripcion,fecha_inicio,fecha_fin, estadoProyecto) {
+    constructor(nombreProyecto,descripcion,fecha_inicio,fecha_fin) {
         this.nombreProyecto = nombreProyecto;
         this.descripcion = descripcion;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
-        this.estadoProyecto = estadoProyecto;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        return db.execute('INSERT INTO proyecto (nombreProyecto, descripcion,fechaPlaneada, fechaEntrega, estadoProyecto) VALUES (?,?,?,?,?)',
-            [this.nombreProyecto, this.descripcion, this.fecha_inicio, this.fecha_fin, this.estadoProyecto]
+        return db.execute('INSERT INTO proyecto (nombreProyecto, descripcion,fechaPlaneada, fechaEntrega) VALUES (?,?,?,?)',
+            [this.nombreProyecto, this.descripcion, this.fecha_inicio, this.fecha_fin]
         );
     }
 
@@ -32,7 +31,7 @@ module.exports = class Proyecto {
     }
 
     static modify(nombreProyecto, descripcion, fecha_inicio, fecha_fin, estado, idProyecto) {
-        return db.execute('UPDATE proyecto SET nombreProyecto=?, descripcion=?, fechaPlaneada=?, fechaEntrega=?, estadoProyecto=? WHERE idProyecto=?',
-        [nombreProyecto, descripcion, fecha_inicio, fecha_fin, estado, idProyecto]);
+        return db.execute('UPDATE proyecto SET nombreProyecto=?, descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idProyecto=?',
+        [nombreProyecto, descripcion, fecha_inicio, fecha_fin, idProyecto]);
     }
 }
