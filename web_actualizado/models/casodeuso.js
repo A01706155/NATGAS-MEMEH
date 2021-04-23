@@ -1,52 +1,47 @@
 const db = require('../util/database');
 
-
-module.exports = class CasoDeUso {
+module.exports = class Casodeuso {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(idCasoUso, nombre, descripcion, idProyecto, dificultad, iteracion) {
-        this.idCasoUso = idCasoUso;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.idProyecto = idProyecto;
-        this.dificultad = dificultad;
-        this.iteracion = iteracion;
+    constructor(idIteracion, idAP, yo_como, quiero, para, comentario) {
+        this.idIteracion = idIteracion;
+        this.idAP = idAP;
+        this.yo_como = yo_como;
+        this.quiero = quiero;
+        this.para = para;
+        this.comentario = comentario;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        console.log( this.nombre, this.descripcion, this.idProyecto, this.dificultad, 'NULL', 'NULL', this.iteracion);
-        return db.execute('INSERT INTO usecase ( nombre, descripcion, idProyecto, dificultad, tiempoMax, tiempoMin, iteracion) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                          [ this.nombre, this.descripcion, this.idProyecto, this.dificultad, 'NULL', 'NULL', this.iteracion]
+        return db.execute('INSERT INTO casos_uso (idIteracion, idAP, yo_como, quiero, para, comentario) VALUES (?,?,?,?,?,?)',
+            [this.idIteracion, this.idAP, this.yo_como, this.quiero, this.para, this.comentario]
         );
     }
 
-    //cu 10
-    actualizar() {
-        return db.execute(
-            "UPDATE  usecase SET nombre=?, descripcion=?, idProyecto =?, dificultad=?, iteracion=? WHERE idCasoUso =? ",
-            [ this.nombre, this.descripcion, this.idProyecto, this.dificultad, this.iteracion, this.idCasoUso ]
-            );
-    }
- 
-    
-
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-        return db.execute('SELECT * FROM  usecase');
-    }
-    
-    static fetchOne(idCasoUso) {
-        return db.execute('SELECT * FROM  usecase WHERE idCasoUso=?', [idCasoUso]);
+        return db.execute('SELECT * FROM casos_uso');
     }
 
-    static fetchByProject(idProyecto) {
-        return db.execute('SELECT * FROM  usecase WHERE idProyecto=? ORDER BY iteracion ASC', [idProyecto]);
+    static fetchOne(id) {
+        return db.execute('SELECT * FROM casos_uso WHERE idCaso=?', [id]);
     }
-    
-    static EliminarCasoDeUso(idCasoUso){
-        return db.execute('DELETE FROM  usecase WHERE idCasoUso=?', [idCasoUso]);
-    }        
 
+    static fetchByIteracion(idIteracion) {
+        return db.execute('SELECT * FROM casos_uso WHERE idIteracion=?', [idIteracion]);
+    }
 
+   /* static fetchByName(idIteracion) {
+        return db.execute("SELECT * FROM `iteracion` WHERE `idIteracion` LIKE ? ", ['%'+idIteracion+'%']);
+    }*/
+
+    static EliminarCasodeuso(){
+        return db.execute('DELETE FROM casos_uso WHERE idCaso=?', [this.idCaso]);
+    }
+
+     /*static modify(idProyecto, estadoIteracion, descripcion, fechaPlaneada, fechaEntrega, idIteracion) {
+        return db.execute('UPDATE iteracion SET idProyecto=?, estadoIteracion=?, descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idIteracion=?',
+        [idProyecto, estadoIteracion, descripcion, fechaPlaneada, fechaEntrega, idIteracion]);
+    }*/
 }
