@@ -41,7 +41,6 @@ exports.getFases = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('WBS_proyecto', { 
                 Fase: rows,
-                idProyecto: id,
                 csrfToken: request.csrfToken(),
                 titulo: 'Fases',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
@@ -75,14 +74,21 @@ exports.getProyectoFase = (request, response, next) => {
     console.log("getFases");
     console.log(id);
     //console.log(request.session.rol);
-    Fase.fetchOne(id)
+    Fase.fetchAll()
         .then(([rows, fieldData]) => {
-            response.render('WBS_proyecto', { 
-                Fase: rows,
-                csrfToken: request.csrfToken(),
-                idProyecto: id,
-                titulo: 'Fases',
-                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            Fase.fetchTarea()
+            .then(([rows2, fieldData]) => {
+                console.log(rows2);
+                response.render('WBS_proyecto', { 
+                    Fase: rows,
+                    csrfToken: request.csrfToken(),
+                    idProyecto: id,
+                    titulo: 'Fases',
+                    isLoggedIn: request.session.isLoggedIn === true ? true : false
+                })
+            })
+            .catch(err => {
+                console.log(err);
             });
         })
         .catch(err => {

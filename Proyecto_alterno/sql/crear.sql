@@ -1,6 +1,6 @@
-    DROP DATABASE IF EXISTS `NATGAS_MEMEH`;
-    CREATE DATABASE `NATGAS_MEMEH`; 
-    USE `NATGAS_MEMEH`;
+    DROP DATABASE IF EXISTS `NATGAS_MEMEH_N`;
+    CREATE DATABASE `NATGAS_MEMEH_N`; 
+    USE `NATGAS_MEMEH_N`;
     
     SET NAMES utf8;
     SET character_set_client = utf8mb4;
@@ -35,8 +35,10 @@
         idTarea INT AUTO_INCREMENT NOT NULL,
         nombreTarea VARCHAR(64),
         idFase INT NOT NULL,
+        idProyecto INT NOT NULL,
         PRIMARY KEY(idTarea),
-        FOREIGN KEY(idFase) REFERENCES Fase(idFase)
+        FOREIGN KEY(idFase) REFERENCES Fase(idFase),
+        FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto)
     );
 
 
@@ -52,20 +54,11 @@
         FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto)
     );
 
-    CREATE TABLE Estado (
-        idEstado INT AUTO_INCREMENT NOT NULL,
-        Estado INT (1),
-        PRIMARY KEY(idEstado)
-    );
-
     
     CREATE TABLE Reporte (
         idReporte INT AUTO_INCREMENT NOT NULL,
         idTarea INT NOT NULL, 
         idHistoria INT NOT NULL,
-        idEstado INT NOT NULL,
-        nombre VARCHAR(150), 
         PRIMARY KEY(idReporte),
-        FOREIGN KEY(idHistoria) REFERENCES HistoriaUsuario(idHistoria),
-        FOREIGN KEY(idEstado) REFERENCES Estado(idEstado)
+        FOREIGN KEY(idHistoria) REFERENCES HistoriaUsuario(idHistoria)
     );

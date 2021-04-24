@@ -25,7 +25,6 @@ const rutasCasosdeuso = require('./routes/casodeuso');
 const rutasUsers = require('./routes/users');
 const rutasFases = require('./routes/fases');
 //const rutasIteracion = require('./routes/iteracion');
-//const rutasFases = require('./routes/fases');
 const rutasTareas = require('./routes/tareas');
 
 //const rutasPersonajes = require('./routes/personajes');
@@ -59,6 +58,7 @@ app.use((request, response, next) => {
 app.use('/proyectos', rutasProyectos);
 app.use('/users', rutasUsers);
 app.use('/casodeuso', rutasCasosdeuso);
+app.use('/fases', rutasFases);
 
 // Página de login
 app.get('/', (request, response, next) => {
