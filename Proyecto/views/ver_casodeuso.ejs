@@ -39,39 +39,7 @@
 
                         <% } %>          
                     </tr>      
-                </table>   
-    <!-- Detalles Fases y Tareas -->  
-    <div class="container highlight proyectContent">
-        <div style="margin-bottom: 0px;">
-             
-            <div class="white-text col md-12 sm-12 lg-9">
-                
-                <table class="responsive-table">
-                    <h6 class="header center white-text">Fases y tareas </h6>
-                    <tr>
-
-                    <td>Caso de Uso (quiero)</td>
-                    <td>Fase</td>
-                    <td>Tareas</td>
-                    <td>Estado</td>
-                    
-                    
-                    </tr>
-                    <tr> 
-                        <% for (let caso of lista_historias) { %>
-                            
-                            <td><%= caso.quiero %></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>   
-
-                        <% } %>          
-                    </tr>      
-                </table>  
-                <br><br>
-            </div>
-        </div>
-    </div>  
+                </table>    
     <div class="center">
         <% for (let caso of lista_historias) { %>
             <a href="/proyectos/casodeuso/<%= caso.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
