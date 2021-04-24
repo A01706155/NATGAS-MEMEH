@@ -1,0 +1,50 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+    <% for (let detalle of Proyecto) { %>
+    <h1 class="center white-text">Detalles del proyecto</h1>
+    <h5 class="center white-text"><%= detalle.nombreProyecto %></h5>
+    <% } %>
+
+    <div class="container highlight proyectContent">
+        <div style="margin-bottom: 0px;">
+             
+            <div class="white-text col md-12 sm-12 lg-9">
+                
+                <table class="responsive-table">
+                    <tr>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                    <td>Fecha inicial</td>
+                    <td>Fecha Final</td>
+                    </tr>
+                    <tr> 
+                        <% for (let detalle of Proyecto) { %>
+                            
+                            <td><%= detalle.nombreProyecto %> </td>
+                            <td><%= detalle.descripcion %></td>
+                            <td><%= detalle.fechaPlaneada %> </td>
+                            <td><%= detalle.fechaEntrega %></td>
+
+                        <% } %>          
+                    </tr>      
+                </table>   
+
+                <br><br>
+                
+                <div class="center">
+                    <% for (let detalle of Proyecto) { %>
+                    <a href="/proyectos/modificar-proyecto/<%= detalle.idProyecto %>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a>
+                    <a href="/fases/<%= detalle.idProyecto %>" class="waves-effect waves-light pink darken-4 btn-large"><i class="material-icons left">grid_view</i>WBS</a>
+                    <a href="/proyectos/casodeuso/<%= detalle.idProyecto %>" class="waves-effect waves-light btn-large"><i class="material-icons left">border_all</i>Caso de Uso</a>
+                    <br><br>
+                    <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>        
+                    <% } %>     
+                </div>
+                
+            </div>
+        </div>
+    </div>    
+
+
+<%- include('partials/footer.ejs') %>

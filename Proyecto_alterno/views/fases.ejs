@@ -1,0 +1,42 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+    <h1 class="center white-text">Fases de proyectos</h1>
+
+    <div class="container highlight proyectContent">
+        <div style="margin-bottom: 0px;">
+             
+            <div class="white-text col md-12 sm-12 lg-9">
+                
+                <table class="responsive-table">
+                    <tr>
+                    <td>Id Fase</td>    
+                    <td>Numero de fase</td>
+                    <td>Nombre de fase</td>
+                    <td>Id Proyecto</td>
+                    </tr>
+                    <tr> 
+                        <% for (let detalle of lista_fases) { %>
+                            
+                            <td><%= detalle.idFase %> </td>
+                            <td><%= detalle.numFase %></td>
+                            <td><%= detalle.nombreFase %> </td>
+                            <td><%= detalle.idProyecto %></td>
+
+                        <% } %>          
+                    </tr>      
+                </table>   
+
+                <br><br>
+                
+                <div class="center">
+                    <br><br>
+                    <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>           
+                </div>
+                
+            </div>
+        </div>
+    </div>    
+
+
+<%- include('partials/footer.ejs') %>

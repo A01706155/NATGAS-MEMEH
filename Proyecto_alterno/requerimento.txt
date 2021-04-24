@@ -1,0 +1,33 @@
+Objetivo: Tenemos que hacer una aplicación web con node.js y sql utilizando el modelo vista, modelo, controlador. La aplicación debe ser un administrador de proyectos que nos genere un reporte con una lista de tareas que se harán dependiendo de la selección hecha por una Historia de Usuario
+
+    ¿Cómo debería funcionar el sistema? (Lo que entendemos)
+
+	a) Tenemos que registrar un proyecto, este contiene un id, nombre, descripción Fecha Inicio, Fecha Planeada
+	b) Dentro del proyecto tenemos manejamos un WBS e Historias de Usuario
+		
+		WBS: El WBS consiste de Fases y Tareas
+		
+			I) Fases: Son partes predefinidas del un proyecto que contienen tareas. Para identificarse tienen un idFase y un nombre.
+			
+			II) Tareas: Debemos crear tareas dentro de cada fase existente y los datos que cada tarea contiene son un idTarea y el nombre de la tarea (Cada tarea depende del id de la fase)
+		
+		Historias de Usuario: Los historias de usuario son como las acciones que una persona toma en un proyecto y contienen los siguientes datos: idHistoria, yo_como, quiero, para, comentario
+	
+	d) Ya teniendo todo registrado, tenemos una tabla Reporte que pensamos que nos ayudará a seleccionar qué tareas se realizarán dependiendo de un caso de uso mediante checkboxes. La tabla contiene los datos idReporte, idTarea, idHistoria, idEstado
+
+    e) Para complementar la tabla Reporte y hacer la funcionalidad planeada de 'checkboxes', tenemos otra tabla que se llama Estado, con los datos idEstado y Estado
+
+
+1. Debemos crear un proyecto
+2. Debemos meter tareas dentro de cada fase del proyecto
+3. Debemos crear historias de usuario
+4. Dentro de cada historia de usuario, debemos definir mediante checkboxes qué tareas se harán dependiendo del requerimento que tenga la historia de usuario.
+5. Debemos generar un reporte donde por ejemplo tengamos
+
+Datos a tomar: 
+idProyecto, como(de la tabla Historias de Usuario), nombre de la tarea, nombre de la fase
+
+Salida:
+1 - consultar preaprobación con el método FICO - Test Cases (Análisis)
+(otro ejemplo)
+1 - consultar preaprobación con el método FICO - Modelo DB (Implementación)
