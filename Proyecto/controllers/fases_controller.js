@@ -6,29 +6,22 @@ const Tarea = require('../models/tarea');
 
 exports.getRegistrarFase = (request, response, next) => {
     const id = request.params.proyecto_id;
-    
-    Proyecto.fetchOne(id)
-        .then(([rows, fieldData]) => {
-            response.render('registrar_fase', { 
-                proyecto: rows,
-                idProyecto: id,
-                csrfToken: request.csrfToken(),
-                titulo: 'Registrar nueva fase',
-                isLoggedIn: request.session.isLoggedIn === true ? true : false
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    response.render('registrar_fase', { 
+        idProyecto: id,
+        csrfToken: request.csrfToken(),
+        titulo: 'Registrar nueva fase',
+        isLoggedIn: request.session.isLoggedIn === true ? true : false
+    });
+
 };
 
 exports.postRegistrarFase = (request, response, next) => {
     console.log(request.body.nombreFase);
-    const nueva_fase = new Fase(request.body.nombreFase, request.body.idProyecto);
+    const nueva_fase = new Fase(request.body.nombreFase);
     nueva_fase.save()
         .then(() => {
             response.setHeader('Set-Cookie', ['ultimo_proyecto='+nueva_fase.nombreFase+'; HttpOnly']);
-            response.redirect('/fases/' + request.body.idProyecto);
+            response.redirect('/fases/' + request.params.proyecto_id);
         }).catch(err => console.log(err));
 }
 
