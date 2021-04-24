@@ -30,8 +30,10 @@
                     <body>
                         <tr> 
                             <% for (let tarea of Tareas) { %>
-                                <td><%= tarea.nombreTarea %></td>
-                                <td>boton eliminar</td>  
+                                <% if (tarea.idFase == detalle.idFase) { %>
+                                    <td><%= tarea.nombreTarea %></td>
+                                    <td>boton eliminar</td>
+                                <% } %>  
                             <% } %>
                         </tr>
                     </body>      
@@ -40,7 +42,7 @@
             <% } %>
 
                 <br><br>
-                
+
             </div>
         </div>
     </div>    

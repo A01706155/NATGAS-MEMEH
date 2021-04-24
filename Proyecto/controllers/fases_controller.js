@@ -34,6 +34,7 @@ exports.getFases = (request, response, next) => {
         .then(([rows, fieldData]) => {
             Tarea.fetchAll()
                 .then(([rows2, fieldData]) => {
+                    console.log(rows2);
                     response.render('WBS_proyecto', { 
                         Fase: rows,
                         Tareas: rows2,
