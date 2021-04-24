@@ -57,7 +57,7 @@ exports.postRegistrarCasodeuso = (request, response, next) => {
 }
 
 exports.getModificarCasodeuso = (request, response, next) => {
-    const id = request.params.proyecto_id;
+    const id = request.params.casodeuso_id;
  
     
     Historiausuario.fetchOne(id)
