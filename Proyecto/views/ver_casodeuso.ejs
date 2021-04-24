@@ -10,7 +10,7 @@
     <div style="backdrop-filter: blur(10px) contrast(70%); padding:20px; border-radius: 20px; margin-bottom: 6%;">
         <!-- Botón para crear un nuevo proyecto-->
         <div class="row center">
-         <a href="/proyectos/casodeuso/<%= detalle.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+         
      </div>
      <% } %>       
      <!-- Detalles Caso de Uso-->
@@ -72,8 +72,13 @@
             </div>
         </div>
     </div>  
-
-
+    <div class="center">
+        <% for (let caso of lista_historias) { %>
+            <a href="/proyectos/casodeuso/<%= caso.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+            <a href="/casodeuso/reporte/<%= caso.idHistoria %>" class="waves-effect waves-light pink darken-4 btn-large"><i class="material-icons left">assessment</i>Reporte</a>
+            <% } %>   
+    </div>
+      
 
 
 

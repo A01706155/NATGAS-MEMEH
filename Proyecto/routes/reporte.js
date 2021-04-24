@@ -13,9 +13,5 @@ const proyectosController = require('../controllers/proyectos_controller');
 const casodeusoController = require('../controllers/casodeuso_controller');
 
 
-router.get('/ver-casodeuso/:casodeuso_id', isAuth, casodeusoController.getCasodeUso);
-
-
-router.get('/reporte/:casodeuso_id',  casodeusoController.getReporte);
 
 module.exports = router;

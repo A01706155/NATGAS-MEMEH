@@ -2,6 +2,7 @@ const session = require('express-session');
 const Proyecto = require('../models/proyecto');
 const Iteracion = require('../models/iteracion');
 const Historiausuario = require('../models/casodeuso');
+const Reporte = require('../models/reporte');
 
 
 exports.getRegistrarProyecto = (request, response, next) => {
@@ -119,6 +120,24 @@ exports.getCaso = (request, response, next) => {
                 rol: request.session.rol,
                 lista_historias: rows, 
                 titulo: 'Casos de uso'  ,
+                idProyecto: idProyecto,
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+exports.getReporte = (request, response, next) => {
+    const idProyecto = request.params.proyecto_id;
+    console.log(request.params);
+    Reporte.fetchByProject(idProyecto)
+        .then(([rows, fieldData]) => {
+            response.render('reporte', { 
+                rol: request.session.rol,
+                lista_reportes: rows, 
+                titulo: 'Reportes'  ,
                 idProyecto: idProyecto,
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });

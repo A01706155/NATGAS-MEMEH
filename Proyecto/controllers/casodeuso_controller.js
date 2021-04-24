@@ -2,7 +2,7 @@ const session = require('express-session');
 const Iteracion = require('../models/iteracion');
 const Proyecto = require('../models/proyecto');
 const Historiausuario = require('../models/casodeuso');
-const AgilP = require('../models/ap');
+const Reporte = require('../models/reporte');
 
 
 exports.getCasodeUso = (request, response, next) => {
@@ -63,6 +63,24 @@ exports.get = (request, response, next) => {
                 lista_historias: rows, 
                 titulo: 'Caso de Uso',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+exports.getReporte = (request, response, next) => {
+    const idHistoria = request.params.casodeuso_id;
+    console.log(request.params);
+    Reporte.fetchByProject(idHistoria)
+        .then(([rows, fieldData]) => {
+            response.render('reporte', { 
+                rol: request.session.rol,
+                lista_reportes: rows, 
+                titulo: 'Reportes'  ,
+                idHistoria: idHistoria,
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
         .catch(err => {
