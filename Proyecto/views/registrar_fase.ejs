@@ -9,11 +9,7 @@
             <form class="passcontent grey-text text-lighten-1" action="/fases/registrar-fase" method="POST">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                 Nombre de la Fase<br>
-                <% for (let elemento of proyecto) { %>
-                <input class="white-text" type="text" name="nombreFase" value="<%= elemento.nombreFase %>" required><br>
-
-                <input type="hidden" name="idProyecto" value="<%= elemento.idProyecto %>">
-                <% } %>
+                <input class="white-text" type="text" name="nombreFase" required><br>
                 
 
                 <div class="center">
@@ -21,9 +17,7 @@
                         <i class="material-icons right">send</i>
                     </button>
                     <p></p>
-                    <% for (let elemento of proyecto) { %>
-                    <a href="/fases/<%= elemento.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
-                    <% } %>   
+                    <a href="/fases/<%= idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
                 </div>
                 
                 

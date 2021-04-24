@@ -61,6 +61,8 @@ app.use('/proyectos', rutasProyectos);
 app.use('/users', rutasUsers);
 app.use('/casodeuso', rutasCasosdeuso);
 app.use('/reporte', rutasReportes);
+app.use('/fases', rutasFases);
+app.use('/tareas', rutasTareas);
 // Página de login
 app.get('/', (request, response, next) => {
     console.log('Bienvenido');
