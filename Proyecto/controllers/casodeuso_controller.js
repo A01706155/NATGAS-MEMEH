@@ -55,6 +55,36 @@ exports.postRegistrarCasodeuso = (request, response, next) => {
         }).catch(err => console.log(err));
 
 }
+
+exports.getModificarCasodeuso = (request, response, next) => {
+    const id = request.params.casodeuso_id;
+ 
+    
+    Historiausuario.fetchOne(id)
+        .then(([rows, fieldData]) => {
+            response.render('modificar_casodeuso', { 
+                
+                proyecto: rows,  
+                titulo: 'Modificar Caso de Uso',
+                csrfToken: request.csrfToken(),
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+exports.postModificarCasodeuso = (request, response, next) => {
+    console.log("Se esta modificando el caso de uso");
+    console.log(request.body);
+    Historiausuario.modify(request.body.ap, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario, request.body.idHistoria)
+        .then(() => {
+            response.redirect('casodeuso/');
+        }).catch(err => console.log(err));
+
+}
+
 exports.get = (request, response, next) => {
     const idProyecto = request.params.proyecto_id;
     Historiausuario.fetchAll()

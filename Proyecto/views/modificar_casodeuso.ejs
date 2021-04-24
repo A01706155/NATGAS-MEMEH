@@ -1,0 +1,40 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+    <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
+        <h1 class="center white-text"><%= titulo %></h1>
+        
+        <form class="passcontent grey-text text-lighten-1" action="/casodeuso/modificar-casodeuso" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <% for (let elemento of casodeuso) { %> 
+
+
+                yo_como
+                <input class="white-text" type="text" name="yo_como" value="<%= elemento.yo_como %>" required><br>
+                quiero<br>
+                <input class="white-text" type="text" name="quiero" value="<%= elemento.quiero %>" required><br>
+                para<br>
+                <input class="white-text" type="text" name="para" value="<%= elemento.para %>" required><br>
+                comentario<br>
+                <input class="white-text" type="text" name="comentario" value="<%= elemento.comentario %>" required><br>
+                AP<br>
+                <input class="white-text" type="text" name="ap" value="<%= elemento.ap %>" required><br>
+                
+                <input type="hidden" name="idHistoria" value="<%= elemento.idHistoria %>">
+                <br><br>
+                <br>  
+
+                <div class="center">
+                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Modificar caso de uso
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <p></p>
+                    <a href="/casodeuso/<%= elemento.idHistoria %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
+                </div>
+            </form>
+            <% } %>
+        
+
+    </div>    
+
+<%- include('partials/footer.ejs')  %>

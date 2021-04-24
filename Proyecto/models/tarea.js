@@ -16,7 +16,7 @@ module.exports = class Tarea {
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-        return db.execute('SELECT * FROM tarea');
+        return db.execute('SELECT * FROM tarea ORDER BY idFase');
     }
 
     static fetchOne(id) {
@@ -25,6 +25,10 @@ module.exports = class Tarea {
 
     static fetchOneByTask(id) {
         return db.execute('SELECT * FROM tarea WHERE idTarea=?', [id]);
+    }
+
+    static fetchByFase(id) {
+        return db.execute('SELECT * FROM tarea WHERE idFase=?', [id]);
     }
 
     static modify(nombreTarea, idFase) {
