@@ -44,8 +44,8 @@ module.exports = class Historiausuario {
         return db.execute('DELETE FROM casos_uso WHERE idCaso=?', [this.idCaso]);
     }
 
-     /*static modify(idProyecto, estadoIteracion, descripcion, fechaPlaneada, fechaEntrega, idIteracion) {
-        return db.execute('UPDATE iteracion SET idProyecto=?, estadoIteracion=?, descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idIteracion=?',
-        [idProyecto, estadoIteracion, descripcion, fechaPlaneada, fechaEntrega, idIteracion]);
-    }*/
+    static modify(ap, yo_como, quiero, para, comentario, idHistoria) {
+        return db.execute('UPDATE iteracion SET AP=?, yo_como=?, quiero=?, para=?, comentario=? WHERE idHistoria=?',
+        [ap, yo_como, quiero, para, comentario, idHistoria]);
+    }
 }
