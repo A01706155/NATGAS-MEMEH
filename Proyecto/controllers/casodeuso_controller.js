@@ -6,14 +6,16 @@ const AgilP = require('../models/ap');
 
 
 exports.getCasodeUso = (request, response, next) => {
-    const idHistoria = request.params.historia_id;
+    const idHistoria = request.params.casodeuso_id;
     console.log("getCasodeUso");
-    Historiausuario.fetchOne(idCaso)
+    console.log(request.body);
+    Historiausuario.fetchOne(idHistoria)
         .then(([rows, fieldData]) => {
             console.log(rows);
             response.render('ver_casodeuso', { 
-                lista_casodeuso: rows, 
-                idProyecto:  request.params.proyecto_id,
+                idHistoria: request.params.casodeuso_id,
+                lista_historias: rows, 
+                idProyecto:  request.body.idProyecto,
                 csrfToken: request.csrfToken(),
                 titulo: 'Trabajo del proyecto',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false

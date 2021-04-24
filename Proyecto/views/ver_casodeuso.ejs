@@ -1,0 +1,88 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<main class="container">
+    <!-- Titulo -->
+    <h1 class="header center white-text">Casos de uso: <%= idHistoria %> </h1>
+    <% for (let detalle of lista_historias) { %>
+    <h6 class="header center white-text">Proyecto: <%= detalle.idProyecto %> </h6>
+    
+    <div style="backdrop-filter: blur(10px) contrast(70%); padding:20px; border-radius: 20px; margin-bottom: 6%;">
+        <!-- Botón para crear un nuevo proyecto-->
+        <div class="row center">
+         <a href="/proyectos/casodeuso/<%= detalle.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+     </div>
+     <% } %>       
+
+    <div class="container highlight proyectContent">
+        <div style="margin-bottom: 0px;">
+             
+            <div class="white-text col md-12 sm-12 lg-9">
+                
+                <table class="responsive-table">
+                    <h6 class="header center white-text">Detalles del caso de uso: <%= idHistoria %> </h6>
+                    <tr>
+                    <td>AP</td>
+                    <td>yo_como</td>
+                    <td>quiero</td>
+                    <td>para</td>
+                    <td>comentario</td>
+                    </tr>
+                    <tr> 
+                        <% for (let detalle of lista_historias) { %>
+                            
+                            <td><%= detalle.AP %> </td>
+                            <td><%= detalle.yo_como %></td>
+                            <td><%= detalle.quiero %> </td>
+                            <td><%= detalle.para %></td>
+                            <td><%= detalle.comentario %></td>
+
+                        <% } %>          
+                    </tr>      
+                </table>   
+
+    <div class="container highlight proyectContent">
+        <div style="margin-bottom: 0px;">
+             
+            <div class="white-text col md-12 sm-12 lg-9">
+                
+                <table class="responsive-table">
+                    <h6 class="header center white-text">Fases y tareas </h6>
+                    <tr>
+
+                    <td>Caso de Uso (quiero)</td>
+                    <td>Fase</td>
+                    <td>Tareas</td>
+                    <td>Estado</td>
+                    
+                    
+                    </tr>
+                    <tr> 
+                        <% for (let caso of lista_historias) { %>
+                            
+                            <td><%= caso.quiero %></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>   
+
+                        <% } %>          
+                    </tr>      
+                </table>  
+                <br><br>
+            </div>
+        </div>
+    </div>  
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
+<%- include('partials/footer.ejs') %>
