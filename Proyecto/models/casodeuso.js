@@ -24,6 +24,10 @@ module.exports = class Historiausuario {
         return db.execute('SELECT * FROM historiausuario');
     }
 
+    static fetchAllTables() {
+        return db.execute('SELECT * FROM historiausuario, reporte, tarea, estado');
+    }
+    
     static fetchOne(id) {
         return db.execute('SELECT * FROM historiausuario WHERE idHistoria=?', [id]);
     }
