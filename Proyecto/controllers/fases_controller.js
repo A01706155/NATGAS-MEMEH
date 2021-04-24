@@ -75,7 +75,7 @@ exports.getProyectoFase = (request, response, next) => {
     console.log("getFases");
     console.log(id);
     //console.log(request.session.rol);
-    Fase.fetchOne(id)
+    Fase.fetchAll()
         .then(([rows, fieldData]) => {
             response.render('WBS_proyecto', { 
                 Fase: rows,
