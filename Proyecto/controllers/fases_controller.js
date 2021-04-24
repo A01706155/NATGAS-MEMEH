@@ -28,12 +28,12 @@ exports.postRegistrarFase = (request, response, next) => {
 exports.getFases = (request, response, next) => {
     const id = request.params.proyecto_id;
     console.log("getFases");
-    Fase.fetchAll();
     //console.log(request.session.rol);
     Fase.fetchAll()
         .then(([rows, fieldData]) => {
             Tarea.fetchAll()
                 .then(([rows2, fieldData]) => {
+                    console.log(rows);
                     console.log(rows2);
                     response.render('WBS_proyecto', { 
                         Fase: rows,
