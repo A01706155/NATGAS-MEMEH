@@ -46,7 +46,8 @@ exports.getReporte = (request, response, next) => {
                                 csrfToken: request.csrfToken(),
                                 titulo: 'Crear reporte',
                                 isLoggedIn: request.session.isLoggedIn === true ? true : false
-                            })
+                            });
+                        })
                         .catch(err => {
                                 console.log(err);
                         });
