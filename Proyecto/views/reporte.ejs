@@ -25,10 +25,7 @@
                     <tr> 
                         <% // for (let caso of lista_historias) { %>
                             
-                            <td><%// = caso.quiero %></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>   
+ 
 
                         <% // } %>          
                     </tr>      
@@ -38,7 +35,12 @@
                 <% for (let fases of Fase) { %>
                     <% for (let tarea of Tareas) { %>
                         <% if (tarea.idFase == fases.idFase) { %>
-                            <% for (let historia of ) { %>
+                            <% for (let historia of Historia) { %>
+                                <td><%= idProyecto %></td>
+                                <td><%= historia.quiero %></td>
+                                <td><%= tarea.nombreTarea %></td>
+                                <td><%= fases.nombreFase %></td>  
+                            <% } %>
                         <% } %>  
                     <% } %>
                 <% } %>
