@@ -9,7 +9,7 @@ const path = require('path');
 const tareasController = require('../controllers/tareas_controller');
 
 
-router.get('/registrar-tarea/:fase_id', isAuth, tareasController.getRegistrarTarea);
+router.get('/registrar-tarea/:proyecto_id/:fase_id', isAuth, tareasController.getRegistrarTarea);
 
 router.post('/registrar-tarea', isAuth, tareasController.postRegistrarTarea);
 

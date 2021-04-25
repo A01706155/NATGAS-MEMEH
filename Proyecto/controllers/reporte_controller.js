@@ -33,16 +33,23 @@ exports.getReporte = (request, response, next) => {
         .then(([rows, fieldData]) => {
             Tarea.fetchAll()
                 .then(([rows2, fieldData]) => {
-                    console.log(rows);
-                    console.log(rows2);
-                    response.render('reporte', { 
-                        Fase: rows,
-                        Tareas: rows2,
-                        idProyecto: id,
-                        csrfToken: request.csrfToken(),
-                        titulo: 'Crear reporte',
-                        isLoggedIn: request.session.isLoggedIn === true ? true : false
-                    });
+                    Historiausuario.fetchAll()
+                        .then(([rows3, fieldData]) => {
+                            console.log(rows);
+                            console.log(rows2);
+                            console.log(rows3);
+                            response.render('reporte', { 
+                                Fase: rows,
+                                Tareas: rows2,
+                                Historia: rows3,
+                                idProyecto: id,
+                                csrfToken: request.csrfToken(),
+                                titulo: 'Crear reporte',
+                                isLoggedIn: request.session.isLoggedIn === true ? true : false
+                            })
+                        .catch(err => {
+                                console.log(err);
+                        });
                 })
                 .catch(err => {
                     console.log(err);

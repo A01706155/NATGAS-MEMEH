@@ -4,12 +4,14 @@ const Fase = require('../models/fase');
 const Tarea = require('../models/tarea');
 
 exports.getRegistrarTarea = (request, response, next) => {
-    const id = request.params.fase_id;
+    const proyecto_id = request.params.proyecto_id;
+    const fase_id = request.params.fase_id;
     
     Fase.fetchOneByFase(id)
         .then(([rows, fieldData]) => {
             response.render('crear_tarea', { 
                 fase: rows,
+                idProyecto: proyecto_id,
                 csrfToken: request.csrfToken(),
                 titulo: 'Crear tarea',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
