@@ -17,7 +17,7 @@ router.get('/nuevo-casodeuso/:iteracion_id', isAuth, casodeusoController.getRegi
 
 router.post('/nuevo-casodeuso', isAuth, casodeusoController.postRegistrarCasodeuso);
 
-router.get('/modificar-casodeuso/:proyecto_id', isAuth, proyectosController.getModificarProyecto);
+router.get('/modificar-casodeuso/:casodeuso_id', isAuth, proyectosController.getModificarProyecto);
 
 router.post('/modificar-casodeuso', isAuth, proyectosController.postModificarProyecto);
 
