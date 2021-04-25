@@ -36,10 +36,12 @@
                     <% for (let tarea of Tareas) { %>
                         <% if (tarea.idFase == fases.idFase) { %>
                             <% for (let historia of Historia) { %>
+                                <tr>
                                 <td><%= idProyecto %></td>
                                 <td><%= historia.quiero %></td>
                                 <td><%= tarea.nombreTarea %></td>
                                 <td><%= fases.nombreFase %></td>  
+                                </tr>
                             <% } %>
                         <% } %>  
                     <% } %>
