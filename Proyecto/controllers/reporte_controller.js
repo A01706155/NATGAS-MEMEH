@@ -3,10 +3,9 @@ const Iteracion = require('../models/iteracion');
 const Proyecto = require('../models/proyecto');
 const Historiausuario = require('../models/casodeuso');
 const AgilP = require('../models/ap');
+const Fase = require('../models/fase');
+const Tarea = require('../models/tarea');
 const Reporte = require('../models/ap');
-
-
-
 
 
 
@@ -26,17 +25,28 @@ exports.get = (request, response, next) => {
 };
 
 exports.getReporte = (request, response, next) => {
-    const idProyecto = request.params.casodeuso_id;
-    console.log(request.params);
-    Reporte.fetchByProject(idProyecto)
+    const casodeuso = request.params.casodeuso_id;
+    const id = request.params.proyecto_id;
+    console.log(request.params.proyecto_id);
+    console.log(request.params.casodeuso_id);
+    Fase.fetchAll()
         .then(([rows, fieldData]) => {
-            response.render('reporte', { 
-                rol: request.session.rol,
-                lista_reportes: rows, 
-                titulo: 'Reportes'  ,
-                idProyecto: idProyecto,
-                isLoggedIn: request.session.isLoggedIn === true ? true : false
-            });
+            Tarea.fetchAll()
+                .then(([rows2, fieldData]) => {
+                    console.log(rows);
+                    console.log(rows2);
+                    response.render('reporte', { 
+                        Fase: rows,
+                        Tareas: rows2,
+                        idProyecto: id,
+                        csrfToken: request.csrfToken(),
+                        titulo: 'Crear reporte',
+                        isLoggedIn: request.session.isLoggedIn === true ? true : false
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         })
         .catch(err => {
             console.log(err);
