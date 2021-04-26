@@ -41,7 +41,7 @@
                                         <div class="switch">
                                             <label>
                                             Off
-                                            <input type="checkbox" checked>
+                                            <input type="checkbox" name="<%= tarea.idTarea %>" checked>
                                             <span class="lever"></span>
                                             On
                                             </label>
@@ -56,9 +56,7 @@
                 <br>
                 
                 <div class="center">
-                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Guardar
-                        <i class="material-icons right">save</i>
-                    </button>
+                    <input class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action" value="Guardar">
                     <p></p>
                     <a href="/fases/<%= idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
  

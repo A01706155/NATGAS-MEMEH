@@ -27,17 +27,17 @@ exports.get = (request, response, next) => {
 exports.getReporte = (request, response, next) => {
     const caso_id = request.params.casodeuso_id;
     const id = request.params.proyecto_id;
-    console.log(request.params.proyecto_id);
-    console.log(request.params.casodeuso_id);
+    //console.log(request.params.proyecto_id);
+    //console.log(request.params.casodeuso_id);
     Fase.fetchAll()
         .then(([rows, fieldData]) => {
             Tarea.fetchAll()
                 .then(([rows2, fieldData]) => {
                     Historiausuario.fetchAll()
                         .then(([rows3, fieldData]) => {
-                            console.log(rows);
-                            console.log(rows2);
-                            console.log(rows3);
+                            //console.log(rows);
+                            //console.log(rows2);
+                            //console.log(rows3);
                             response.render('reporte', { 
                                 Fase: rows,
                                 Tareas: rows2,
@@ -61,3 +61,16 @@ exports.getReporte = (request, response, next) => {
             console.log(err);
         });
 };
+
+exports.postReporte = (request, response, next) => {
+    console.log(request.body);
+    //for (let id of request.body) {
+        //console.log("Post de Reporte");
+        //console.log(request.body);
+        //let reporte = new Reporte(
+        //    reporte.save()
+        //)
+    //}
+
+    response.redirect('/casodeuso/ver-casodeuso/'+ request.params.proyecto_id);
+}

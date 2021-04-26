@@ -14,7 +14,7 @@ const reportesController = require('../controllers/reporte_controller')
 
 router.get('/elegir-tareas/:proyecto_id/:casodeuso_id/', isAuth, reportesController.getReporte);
 
-router.post('/elegir-tareas/:proyecto_id/:casodeuso_id/', isAuth, reportesController.getReporte);
+router.post('/elegir-tareas/:proyecto_id/:casodeuso_id/', isAuth, reportesController.postReporte);
 
 // router.post('/crear-reporte/:proyecto_id/:casodeuso_id/', isAuth, tareasController.postRegistrarTarea);
 
