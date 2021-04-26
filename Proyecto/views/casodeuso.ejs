@@ -25,7 +25,7 @@
             <!-- Card creation -->
             <% for (let caso of lista_historias) { %>
                 <div class="col s12 m4 l3">
-                    <div class="card small grey darken-4">
+                    <div class="card medium grey darken-4">
                         
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator" src="/images/clock.jpg">
@@ -45,13 +45,12 @@
                                     <li><a class="white-text" href="/reporte/elegir-tareas/<%= caso.idProyecto %>/<%= caso.idHistoria %>"><i class="material-icons">assignment</i>Elegir Tareas</a></li>
                                     <li><a class="white-text" href="#"><i class="material-icons">summarize</i>Ver Reporte</a></li>
                                     <li class="divider" tabindex="-1"></li>
-                                    <li><a class="red-text text-lighten-2" href="#!"><i class="material-icons">delete</i>Eliminar</a></li>
                                 
                                     <li>
                                         <form action="/casodeuso/eliminarHistoria/" method="POST" id="eliminar_<%= caso.idHistoria %>">
                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="hidden" name="idHistoria" value="<%= caso.idHistoria %>">
-                                         <button type="submit" name="add" class="waves-effect waves-light red  btn"><i class="material-icons left">delete</i>Borrar</button>
+                                        <li><button type="submit" name="add" class="red-text text-lighten-2" href="#!"><i class="material-icons">delete</i>Borrar</button></li>
                                          <script> 
                                            document.getElementById("eliminar_<%= caso.idHistoria   %>").addEventListener('submit', (e) => {
                                              let confirmacion = confirm('¿Estás seguro de eliminar la Historia de Usuario??');
