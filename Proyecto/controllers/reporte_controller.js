@@ -64,13 +64,13 @@ exports.getReporte = (request, response, next) => {
 
 exports.postReporte = (request, response, next) => {
     console.log(request.body);
-    //for (let id of request.body) {
+    for (let id of request.body) {
         //console.log("Post de Reporte");
-        //console.log(request.body);
+        console.log(id);
         //let reporte = new Reporte(
         //    reporte.save()
         //)
-    //}
+    }
 
-    response.redirect('/casodeuso/ver-casodeuso/'+ request.params.proyecto_id);
+    response.redirect('/proyectos/casodeuso/'+ request.params.proyecto_id);
 }
