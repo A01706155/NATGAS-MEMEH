@@ -40,7 +40,7 @@ exports.getFases = (request, response, next) => {
                         Tareas: rows2,
                         idProyecto: id,
                         csrfToken: request.csrfToken(),
-                        titulo: 'Fases',
+                        titulo: 'Fases y Tareas',
                         isLoggedIn: request.session.isLoggedIn === true ? true : false
                     });
                 })
