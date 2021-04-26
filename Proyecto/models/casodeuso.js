@@ -45,7 +45,7 @@ module.exports = class Historiausuario {
     }
 
     static modify(ap, yo_como, quiero, para, comentario, idHistoria) {
-        return db.execute('UPDATE iteracion SET AP=?, yo_como=?, quiero=?, para=?, comentario=? WHERE idHistoria=?',
+        return db.execute('UPDATE historiausuario SET AP=?, yo_como=?, quiero=?, para=?, comentario=? WHERE idHistoria=?',
         [ap, yo_como, quiero, para, comentario, idHistoria]);
     }
 }

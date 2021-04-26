@@ -63,7 +63,7 @@ exports.getModificarCasodeuso = (request, response, next) => {
             response.render('modificar_casodeuso', { 
                 
                 Historiausuario: rows,  
-                titulo: 'Modificar Caso de Uso',
+                titulo: 'Modificar Historias de usuario',
                 csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
@@ -78,7 +78,7 @@ exports.postModificarCasodeuso = (request, response, next) => {
     console.log(request.body);
     Historiausuario.modify(request.body.ap, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario, request.body.idHistoria)
         .then(() => {
-            response.redirect('casodeuso/');
+            response.redirect('/casodeuso');
         }).catch(err => console.log(err));
 
 }
