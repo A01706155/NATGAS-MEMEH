@@ -9,41 +9,62 @@
         <div style="margin-bottom: 0px;">
              
             <div class="white-text col md-12 sm-12 lg-9">
-                
-                <table class="responsive-table">
-                    <h6 class="header center white-text">Elige las tareas que quieres hacer para esta historia de usuario. </h6><br>
+            <form action="/reporte/elegir-tareas/<%= idProyecto %>/<%= id_historia %>" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <table class="centered highlight">
+                    <h6 class="header center grey-text text-lighten-1">Elige las tareas que quieres hacer para esta historia de usuario: </h6>
+
+                    <h5 class="center white-text">
+                        <% for (let historia of Historia) { %>
+                            <% if (historia.idHistoria == id_historia) { %>
+                                <%= historia.quiero %> 
+                            <% } %>
+                        <% } %>
+                    </h5>
+
                     <tr>
-                    
-                    <td>Caso de Uso (quiero)</td>
+
                     <td>Fase</td>
                     <td>Tareas</td>
                     <td>Check</td>
-                    
                     
                     
                     </tr>
                     <% for (let fases of Fase) { %>
                         <% for (let tarea of Tareas) { %>
                             <% if (tarea.idFase == fases.idFase) { %>
-                                <% for (let historia of Historia) { %>
-                                    <tr>
-                                    <td><%= historia.quiero %></td>                                    
+                                    <tr>                                   
                                     <td><%= fases.nombreFase %></td>
                                     <td><%= tarea.nombreTarea %></td>
-                                    <td>Checkbox</td>  
+                                    <td>
+                                          <!-- Switch -->
+                                        <div class="switch">
+                                            <label>
+                                            Off
+                                            <input type="checkbox" checked>
+                                            <span class="lever"></span>
+                                            On
+                                            </label>
+                                        </div>
+                                    </td>  
                                     </tr>
-                                <% } %>
                             <% } %>  
                         <% } %>
                     <% } %>
-                </table>  
+                </table>
+                
+                <br>
+                
+                <div class="center">
+                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Guardar
+                        <i class="material-icons right">save</i>
+                    </button>
+                    <p></p>
+                    <a href="/fases/<%= idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+ 
+                </div>
 
-
-
-
-
-
-
+            </form>
                 <br><br>
             </div>
         </div>
