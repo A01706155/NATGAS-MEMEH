@@ -9,29 +9,43 @@
             <div class="white-text col md-12 sm-12 lg-9">
 
                 <div class="center">
-                    <a href="/fases/registrar-fase/<%= idProyecto %>" class="waves-effect waves-light btn-large"><i class="material-icons left">add_circle_outline</i>Agregar fase</a>
+                    <a href="/fases/registrar-fase" class="waves-effect waves-light btn-large"><i class="material-icons left">add_circle_outline</i>Agregar fase</a>
                     <br><br>
                     <a href="/proyectos/<%= idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>        
                 </div>
 
             <% for (let detalle of Fase) { %>
 
-                <h4><%= detalle.nombreFase %>
-                    <br><br> 
-                    <a href="/tareas/registrar-tarea/<%= idProyecto %>/<%= detalle.idFase %>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">add_box</i>Agregar tarea</a></h4>
-                    <form action="/fases/eliminarFase/" method="POST" id="eliminar_<%= detalle.idFase %>">
-                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                        <input type="hidden" name="idFase" value="<%= detalle.idFase %>">
-                         <button type="submit" name="add" class="waves-effect waves-light red  btn"><i class="material-icons left">delete</i>Borrar Fase</button>
-                         <script> 
-                           document.getElementById("eliminar_<%= detalle.idFase   %>").addEventListener('submit', (e) => {
-                             let confirmacion = confirm('¿Estás seguro de eliminar la fase?');
-                             if(!confirmacion){
-                               e.preventDefault();
-                             }  
-                           });
-                        </script>
-                    </form>  
+                <h3><%= detalle.nombreFase %>‏‏‎ ‎‏‏‎ ‎‏‏‎
+                    <!-- Dropdown Trigger -->
+
+                    <!-- data-tatget debe ser igual a ul id, nos saca de problemas -->
+                    <a class="dropdown-trigger waves-effect waves-light btn-large indigo darken-1" data-target='<%= detalle.idFase %>' style="width: 12rem;"><i class="material-icons left">list</i>Acciones</a>
+                </h3>
+                
+                    <!-- Dropdown Structure -->
+
+                    <!-- Dropdown id debe de ser igual a data-tatget -->
+                    <ul id='<%= detalle.idFase %>' class='dropdown-content black'>
+                        <li><a class="white-text" href="/tareas/registrar-tarea/<%= idProyecto %>/<%= detalle.idFase %>"><i class="material-icons">add</i>Agregar tarea</a></li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li>
+                            <form action="/fases/eliminarFase/" method="POST" id="eliminar_<%= detalle.idFase %>">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <input type="hidden" name="idFase" value="<%= detalle.idFase %>">
+                                <button class="transparent" style="border-color: rgba(255, 255, 255, 0);"><li><a type="submit" name="add" class="red-text text-lighten-1"><i class="material-icons left">delete</i><strong>Borrar Fase</strong></a></li></button>
+                                <script> 
+                                document.getElementById("eliminar_<%= detalle.idFase%>").addEventListener('submit', (e) => {
+                                    let confirmacion = confirm('¿Estás seguro de eliminar la fase?');
+                                    if(!confirmacion){
+                                    e.preventDefault();
+                                    }  
+                                });
+                                </script>
+                                
+                            </form>
+                        </li>
+                    </ul>
                 <br>
                 <table class="responsive-table">
                     <head>
