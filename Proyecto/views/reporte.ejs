@@ -11,10 +11,9 @@
             <div class="white-text col md-12 sm-12 lg-9">
                 
                 <table class="responsive-table">
-                    <h6 class="header center white-text">Fases y tareas </h6>
+                    <h6 class="header center white-text">Elige las tareas que quieres hacer para esta historia de usuario. </h6><br>
                     <tr>
                     
-                    <td>id Proyecto</td>
                     <td>Caso de Uso (quiero)</td>
                     <td>Fase</td>
                     <td>Tareas</td>
@@ -28,7 +27,6 @@
                             <% if (tarea.idFase == fases.idFase) { %>
                                 <% for (let historia of Historia) { %>
                                     <tr>
-                                    <td><%= idProyecto %></td>
                                     <td><%= historia.quiero %></td>
                                     <td><%= tarea.nombreTarea %></td>
                                     <td><%= fases.nombreFase %></td>
