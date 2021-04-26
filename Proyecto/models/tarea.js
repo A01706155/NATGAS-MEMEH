@@ -27,6 +27,10 @@ module.exports = class Tarea {
         return db.execute('SELECT * FROM tarea WHERE idTarea=?', [id]);
     }
 
+    static fetchOne(id) {
+        return db.execute('SELECT * FROM tarea WHERE idTarea=?', [id]);
+    }
+
     static fetchByFase(id) {
         return db.execute('SELECT * FROM tarea WHERE idFase=?', [id]);
     }
@@ -37,10 +41,10 @@ module.exports = class Tarea {
     }
 
     static EliminarConexionTareasReporte(idTarea) {
-        return db.execute('DELETE FROM reporte WHERE IdTarea=?', [idTarea]);
+        return db.execute('DELETE FROM reporte WHERE idTarea=?', [idTarea]);
     }
 
     static EliminarTarea(idTarea) {
-        return db.execute('DELETE FROM tarea WHERE IdTarea=?', [idTarea]);
+        return db.execute('DELETE FROM tarea WHERE idTarea=?', [idTarea]);
     }
 }
