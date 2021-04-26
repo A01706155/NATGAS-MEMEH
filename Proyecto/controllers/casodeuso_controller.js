@@ -58,13 +58,11 @@ exports.postRegistrarCasodeuso = (request, response, next) => {
 
 exports.getModificarCasodeuso = (request, response, next) => {
     const id = request.params.casodeuso_id;
- 
-    
     Historiausuario.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('modificar_casodeuso', { 
                 
-                proyecto: rows,  
+                Historiausuario: rows,  
                 titulo: 'Modificar Caso de Uso',
                 csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false

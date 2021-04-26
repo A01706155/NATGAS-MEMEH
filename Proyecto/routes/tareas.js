@@ -17,6 +17,8 @@ router.get('/modificar-tarea/:tarea_id', tareasController.getModificarTarea);
 
 router.post('/modificar-tarea', tareasController.postModificarTarea);
 
+router.post('/EliminarTarea', tareasController.postEliminarTarea);
+
 //router.get('/', isAuth, fasesController.getFaseTarea);
 
 

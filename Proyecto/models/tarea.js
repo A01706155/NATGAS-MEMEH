@@ -35,4 +35,12 @@ module.exports = class Tarea {
         return db.execute('UPDATE tarea SET nombreTarea=?  WHERE idFase=?',
         [nombreTarea, idFase]);
     }
+
+    static EliminarConexionTareasReporte(idTarea) {
+        return db.execute('DELETE FROM reporte WHERE IdTarea=?', [idTarea]);
+    }
+
+    static EliminarTarea(idTarea) {
+        return db.execute('DELETE FROM tarea WHERE IdTarea=?', [idTarea]);
+    }
 }
