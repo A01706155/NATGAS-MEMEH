@@ -39,10 +39,14 @@ module.exports = class Historiausuario {
    /* static fetchByName(idIteracion) {
         return db.execute("SELECT * FROM `iteracion` WHERE `idIteracion` LIKE ? ", ['%'+idIteracion+'%']);
     }*/
-
-    static EliminarCasodeuso(){
-        return db.execute('DELETE FROM casos_uso WHERE idCaso=?', [this.idCaso]);
+    static EliminarConexionHistoriaReporte(idHistoria) {
+        return db.execute('DELETE FROM reporte WHERE idHistoria=?', [idHistoria]);
     }
+
+    static EliminarHistoria(idHistoria){
+        return db.execute('DELETE FROM historiausuario WHERE idHistoria=?', [idHistoria]);
+    }
+
 
     static modify(ap, yo_como, quiero, para, comentario, idHistoria) {
         return db.execute('UPDATE historiausuario SET AP=?, yo_como=?, quiero=?, para=?, comentario=? WHERE idHistoria=?',
