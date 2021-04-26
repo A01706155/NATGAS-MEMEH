@@ -6,7 +6,7 @@
         
         <form class="passcontent grey-text text-lighten-1" action="/casodeuso/modificar-casodeuso" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
-            <% for (let elemento of historiausuario) { %> 
+            <% for (let elemento of Historiausuario) { %> 
 
 
                 yo_como
@@ -25,7 +25,7 @@
                 <br>  
 
                 <div class="center">
-                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Modificar caso de uso
+                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Modificar Historias de usuario
                         <i class="material-icons right">send</i>
                     </button>
                     <p></p>
