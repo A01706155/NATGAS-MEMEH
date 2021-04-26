@@ -2,10 +2,9 @@ const session = require('express-session');
 const Iteracion = require('../models/iteracion');
 const Proyecto = require('../models/proyecto');
 const Historiausuario = require('../models/casodeuso');
-const AgilP = require('../models/ap');
 const Fase = require('../models/fase');
 const Tarea = require('../models/tarea');
-const Reporte = require('../models/ap');
+const Reporte = require('../models/reporte');
 
 
 
@@ -64,12 +63,18 @@ exports.getReporte = (request, response, next) => {
 
 exports.postReporte = (request, response, next) => {
     console.log(request.body);
-    for (let id of request.body) {
+    for (let id of request.body.tarea) {
         //console.log("Post de Reporte");
         console.log(id);
-        //let reporte = new Reporte(
-        //    reporte.save()
-        //)
+        let reporte = new Reporte(
+            id,
+            request.params.casodeuso_id
+        );
+        reporte.save()
+        .then()
+        .catch(err =>{
+            console.log(err);
+        });
     }
 
     response.redirect('/proyectos/casodeuso/'+ request.params.proyecto_id);
