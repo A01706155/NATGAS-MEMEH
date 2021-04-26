@@ -18,69 +18,70 @@
 
                 <h3><%= detalle.nombreFase %>‏‏‎ ‎‏‏‎ ‎‏‏‎
                     <!-- Dropdown Trigger -->
-
                     <!-- data-tatget debe ser igual a ul id, nos saca de problemas -->
                     <a class="dropdown-trigger waves-effect waves-light btn-large indigo darken-1" data-target='<%= detalle.idFase %>' style="width: 12rem;"><i class="material-icons left">list</i>Acciones</a>
                 </h3>
                 
-                    <!-- Dropdown Structure -->
-
-                    <!-- Dropdown id debe de ser igual a data-tatget -->
-                    <ul id='<%= detalle.idFase %>' class='dropdown-content black'>
-                        <li><a class="white-text" href="/tareas/registrar-tarea/<%= idProyecto %>/<%= detalle.idFase %>"><i class="material-icons">add</i>Agregar tarea</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li>
-                            <form action="/fases/eliminarFase/" method="POST" id="eliminar_<%= detalle.idFase %>">
-                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                <input type="hidden" name="idFase" value="<%= detalle.idFase %>">
-                                <button class="transparent" style="border-color: rgba(255, 255, 255, 0);"><li><a type="submit" name="add" class="red-text text-lighten-1"><i class="material-icons left">delete</i><strong>Borrar Fase</strong></a></li></button>
-                                <script> 
-                                document.getElementById("eliminar_<%= detalle.idFase%>").addEventListener('submit', (e) => {
-                                    let confirmacion = confirm('¿Estás seguro de eliminar la fase?');
-                                    if(!confirmacion){
-                                    e.preventDefault();
-                                    }  
-                                });
-                                </script>
-                                
-                            </form>
-                        </li>
-                    </ul>
+                <!-- Dropdown Structure -->
+                <!-- Dropdown id debe de ser igual a data-tatget -->
+                <ul id='<%= detalle.idFase %>' class='dropdown-content black'>
+                    <li><a class="white-text" href="/tareas/registrar-tarea/<%= idProyecto %>/<%= detalle.idFase %>"><i class="material-icons">add</i>Agregar tarea</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                    <li>
+                        <form action="/fases/eliminarFase/" method="POST" id="eliminar_<%= detalle.idFase %>">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <input type="hidden" name="idFase" value="<%= detalle.idFase %>">
+                            <button class="transparent" style="border-color: rgba(255, 255, 255, 0);">
+                                <li>
+                                    <a type="submit" name="add" class="red-text text-lighten-1">
+                                        <i class="material-icons left">delete</i><strong>Borrar Fase</strong>
+                                    </a>
+                                </li>
+                            </button>
+                            <script> 
+                            document.getElementById("eliminar_<%= detalle.idFase%>").addEventListener('submit', (e) => {
+                                let confirmacion = confirm('¿Estás seguro de eliminar la fase?');
+                                if(!confirmacion){
+                                e.preventDefault();
+                                }  
+                            });
+                            </script>
+                        </form>
+                    </li>
+                </ul>
+                
                 <br>
+
                 <table class="responsive-table">
-                    <head>
-                        <tr>
+                    <tr>
                         <th>Tareas</th>
                         <th>Acciones</th>
-                        </tr>
-                    </head>
-
-                    <body>                        
-                            <% for (let tarea of Tareas) { %>
-                                <% if (tarea.idFase == detalle.idFase) { %>
-                                    <tr>
+                    </tr>
+                    
+                        <% for (let tarea of Tareas) { %>
+                            <% if (tarea.idFase == detalle.idFase) { %>
+                                <tr>
                                     <td><%= tarea.nombreTarea %></td>
                                     <td>
                                         <form action="/tareas/eliminarTarea/" method="POST" id="eliminar_<%= tarea.idTarea %>">
                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="hidden" name="idTarea" value="<%= tarea.idTarea %>">
-                                         <button type="submit" name="add" class="waves-effect waves-light red darken-4 btn-small"><i class="material-icons left">delete</i>Borrar Tarea</button>
-                                         <script> 
-                                           document.getElementById("eliminar_<%= tarea.idTarea   %>").addEventListener('submit', (e) => {
-                                             let confirmacion = confirm('¿Estás seguro de eliminar la tarea?');
-                                             if(!confirmacion){
-                                               e.preventDefault();
-                                             }  
-                                           });
-                                         </script>
+                                            <button type="submit" name="add" class="waves-effect waves-light red darken-4 btn-small"><i class="material-icons left">delete</i>Borrar Tarea</button>
+                                            <script> 
+                                            document.getElementById("eliminar_<%= tarea.idTarea   %>").addEventListener('submit', (e) => {
+                                                let confirmacion = confirm('¿Estás seguro de eliminar la tarea?');
+                                                if(!confirmacion){
+                                                e.preventDefault();
+                                                }  
+                                            });
+                                            </script>
                                         </form> 
                                     </td>
-                                    
-                                    </tr>
-                                <% } %>  
-                            <% } %>
-                    </body>      
-                </table>   
+                                </tr>
+                            <% } %>  
+                        <% } %>    
+                </table>
+
                 <br><br>
             <% } %>
 

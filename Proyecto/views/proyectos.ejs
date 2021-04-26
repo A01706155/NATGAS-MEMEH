@@ -38,20 +38,20 @@
               </div>
               <div class="center card-action">
                 <!-- Dropdown Trigger -->
-                <a class='dropdown-trigger btn' href='#' data-target='<%= proyecto.idProyecto %>'>Ver Proyecto</a>
+                <a class='dropdown-trigger btn' data-target='<%= proyecto.idProyecto %>' style="width: 80%;">Ver Proyecto</a>
 
                 <!-- Dropdown Structure -->
                 <ul id='<%= proyecto.idProyecto %>' class='dropdown-content'>
-                    <li><a href="/proyectos/modificar-proyecto/<%= proyecto.idProyecto %>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a>
-                    <li><a href="/fases/<%= proyecto.idProyecto %>" class="waves-effect waves-light pink darken-4 btn-large"><i class="material-icons left">grid_view</i>WBS</a>
-                      <a href="/proyectos/casodeuso/<%= proyecto.idProyecto %>" class="waves-effect waves-light btn-large"><i class="material-icons left">border_all</i>Historia de Usuario</a>
+                    <li><a href="/proyectos/modificar-proyecto/<%= proyecto.idProyecto %>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a></li>
+                    <li><a href="/fases/<%= proyecto.idProyecto %>" class="waves-effect waves-light pink darken-4 btn-large"><i class="material-icons left">grid_view</i>WBS</a></li>
+                    <li><a href="/proyectos/casodeuso/<%= proyecto.idProyecto %>" class="waves-effect waves-light btn-large"><i class="material-icons left">border_all</i>Historia de Usuario</a></li>  
                     <li class="divider" tabindex="-1"></li>
                 
                     <li>
                       <form action="/casodeuso/eliminarHistoria" method="POST" id="eliminar_<%= proyecto.idHistoria %>">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                         <input type="hidden" name="idHistoria" value="<%= proyecto.idHistoria %>">
-                         <button type="submit" name="add" class="waves-effect waves-light red  btn"><i class="material-icons left">delete</i>Borrar</button>
+                        <button class="transparent" style="border-color: rgba(255, 255, 255, 0);"><li><a type="submit" name="add" class="waves-effect waves-light red"><i class="material-icons left">delete</i>Borrar</a></li></button>
                          <script> 
                            document.getElementById("eliminar_<%= proyecto.idHistoria   %>").addEventListener('submit', (e) => {
                              let confirmacion = confirm('¿Estás seguro de eliminar la Historia de Usuario??');
