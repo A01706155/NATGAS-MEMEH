@@ -12,7 +12,9 @@ const casodeusoController = require('../controllers/casodeuso_controller');
 
 const reportesController = require('../controllers/reporte_controller')
 
-router.get('/crear-reporte/:proyecto_id/:casodeuso_id/', isAuth, reportesController.getReporte);
+router.get('/elegir-tareas/:proyecto_id/:casodeuso_id/', isAuth, reportesController.getReporte);
+
+router.post('/elegir-tareas/:proyecto_id/:casodeuso_id/', isAuth, reportesController.getReporte);
 
 // router.post('/crear-reporte/:proyecto_id/:casodeuso_id/', isAuth, tareasController.postRegistrarTarea);
 

@@ -25,7 +25,7 @@ exports.get = (request, response, next) => {
 };
 
 exports.getReporte = (request, response, next) => {
-    const casodeuso = request.params.casodeuso_id;
+    const caso_id = request.params.casodeuso_id;
     const id = request.params.proyecto_id;
     console.log(request.params.proyecto_id);
     console.log(request.params.casodeuso_id);
@@ -42,6 +42,7 @@ exports.getReporte = (request, response, next) => {
                                 Fase: rows,
                                 Tareas: rows2,
                                 Historia: rows3,
+                                id_historia: caso_id,
                                 idProyecto: id,
                                 csrfToken: request.csrfToken(),
                                 titulo: 'Elegir tareas',
