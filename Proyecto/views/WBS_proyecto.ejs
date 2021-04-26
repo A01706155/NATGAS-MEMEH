@@ -17,7 +17,7 @@
             <% for (let detalle of Fase) { %>
                 
                 <h4><%= detalle.nombreFase %> <a href="/fases/modificar-fase/<%= detalle.idFase %>" class="waves-effect waves-light yellow darken-4 btn"><i class="material-icons left">edit</i>Editar</a>
-                    <a href="/tareas/registrar-tarea/<%= detalle.idFase %>" class="waves-effect waves-light yellow darken-4 btn"><i class="material-icons left">add_box</i>Agregar tarea</a></h4> 
+                    <a href="/tareas/registrar-tarea/<%= idProyecto %>/<%= detalle.idFase %>" class="waves-effect waves-light yellow darken-4 btn"><i class="material-icons left">add_box</i>Agregar tarea</a></h4> 
                 
                 <table class="responsive-table">
                     <head>
