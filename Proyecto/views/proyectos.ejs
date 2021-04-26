@@ -48,13 +48,13 @@
                     <li class="divider" tabindex="-1"></li>
                 
                     <li>
-                      <form action="/casodeuso/eliminarHistoria" method="POST" id="eliminar_<%= proyecto.idHistoria %>">
+                      <form action="/proyectos/eliminarProyecto" method="POST" id="eliminar_<%= proyecto.idProyecto %>">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                        <input type="hidden" name="idHistoria" value="<%= proyecto.idHistoria %>">
+                        <input type="hidden" name="idProyecto" value="<%= proyecto.idProyecto %>">
                          <button type="submit" name="add" class="waves-effect waves-light red  btn"><i class="material-icons left">delete</i>Borrar</button>
                          <script> 
-                           document.getElementById("eliminar_<%= proyecto.idHistoria   %>").addEventListener('submit', (e) => {
-                             let confirmacion = confirm('¿Estás seguro de eliminar la Historia de Usuario??');
+                           document.getElementById("eliminar_<%= proyecto.idProyecto   %>").addEventListener('submit', (e) => {
+                             let confirmacion = confirm('¿Estás seguro de eliminar el Proyecto?');
                              if(!confirmacion){
                                e.preventDefault();  
                              }  
