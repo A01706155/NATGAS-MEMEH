@@ -26,4 +26,12 @@ module.exports = class Fase {
         return db.execute('SELECT * FROM fase WHERE idFase=?', [id]);
     }
 
+    static EliminarConexionFaseTareas(idFase) {
+        return db.execute('DELETE FROM tarea WHERE idFase=?', [idFase]);
+    }
+
+    static EliminarFase(idFase) {
+        return db.execute('DELETE FROM fase WHERE idFase=?', [idFase]);
+    }
+
 }

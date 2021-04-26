@@ -102,3 +102,18 @@ exports.postModificarFase = (request, response, next) => {
 
 }
 
+exports.postEliminarFase = (request, response) => {
+    
+    const idFase = request.body.idFase;
+    const id_proyecto = request.body.proyecto_id;
+    console.log("aquiiiiii" + idFase)
+        Fase.EliminarConexionFaseTareas(idFase)
+        Fase.EliminarFase(idFase)
+        .then(() => {
+            request.session.alerta = "Tarea eliminada exitosamente";
+            response.redirect('/fases/2');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};

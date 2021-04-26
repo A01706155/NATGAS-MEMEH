@@ -16,7 +16,20 @@
 
             <% for (let detalle of Fase) { %>
                 
-                <h4><%= detalle.nombreFase %> <a href="/fases/modificar-fase/<%= detalle.idFase %>" class="waves-effect waves-light yellow darken-4 btn"><i class="material-icons left">edit</i>Editar</a>
+                <h4><%= detalle.nombreFase %> 
+                    <form action="/fases/eliminarFase/" method="POST" id="eliminar_<%= detalle.idFase %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <input type="hidden" name="idFase" value="<%= detalle.idFase %>">
+                         <button type="submit" name="add">Eliminar</button>
+                         <script> 
+                           document.getElementById("eliminar_<%= detalle.idFase   %>").addEventListener('submit', (e) => {
+                             let confirmacion = confirm('¿Estás seguro de eliminar la fase?');
+                             if(!confirmacion){
+                               e.preventDefault();
+                             }  
+                           });
+                        </script>
+                    </form> 
                     <a href="/tareas/registrar-tarea/<%= idProyecto %>/<%= detalle.idFase %>" class="waves-effect waves-light yellow darken-4 btn"><i class="material-icons left">add_box</i>Agregar tarea</a></h4> 
                 
                 <table class="responsive-table">
