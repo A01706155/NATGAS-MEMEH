@@ -7,11 +7,8 @@
         margin: auto; min-width:50%; max-width:max-content;">
             <h1 class="center white-text"><%= titulo %></h1>
 
-
-
-
-
             <form class="passcontent" action="/users/register" method="POST">
+                
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                 <label for="nombre">Nombre</label> <input class="white-text" type="text" name="nombre" required>
                 <br><br>
@@ -21,9 +18,11 @@
                 <br><br>
                
                 <div class="center card-action">
-                    <a class="waves-effect waves-light btn red darken-2" href="/login"><i class="material-icons left">undo</i>Regresar</a>
-                    <input class="waves-effect waves-light btn" type="submit" value="Ingresar">
-                  </div>
+                    <a class="waves-effect waves-light btn-large green" type="submit"><i class="material-icons left">add</i>Registrar</a>
+                    <p></p>
+                    <a class="waves-effect waves-light btn red darken-2" href="/proyectos"><i class="material-icons left">undo</i>Regresar</a>
+                </div>
+
             </form>
         </div>
 
