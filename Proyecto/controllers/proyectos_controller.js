@@ -129,3 +129,17 @@ exports.getCaso = (request, response, next) => {
         });
 };
 
+exports.postEliminarProyecto = (request, response) => {
+    const idProyecto = request.body.idProyecto;
+    const id_proyecto = request.body.proyecto_id;
+    console.log("idProyecto: " + idProyecto)
+        Proyecto.EliminarConexionProyectoHistoriaUsuario(idProyecto)
+        Proyecto.EliminarProyecto(idProyecto)
+        .then(() => {
+            request.session.alerta = "Proyecto eliminado exitosamente";
+            response.redirect('/proyectos');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};

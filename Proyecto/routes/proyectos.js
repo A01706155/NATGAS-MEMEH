@@ -33,6 +33,8 @@ router.get('/:proyecto_id', isAuth, proyectosController.getProyecto);
 
 router.post('/buscar', proyectosController.postBuscar);
 
+router.post('/eliminarProyecto', proyectosController.postEliminarProyecto);
+
 router.get('/', isAuth,   proyectosController.get);
 
 

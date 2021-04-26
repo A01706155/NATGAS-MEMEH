@@ -30,6 +30,14 @@ module.exports = class Proyecto {
         return db.execute("SELECT * FROM `proyecto` WHERE `nombreProyecto` LIKE ? ", ['%'+nombreProyecto+'%']);
     }
 
+    static EliminarConexionProyectoHistoriaUsuario(idProyecto) {
+        return db.execute('DELETE FROM historiausuario WHERE idProyecto=?', [idProyecto]);
+    }
+
+    static EliminarProyecto(idProyecto){
+        return db.execute('DELETE FROM proyecto WHERE idProyecto=?', [idProyecto]);
+    }
+
     static modify(nombreProyecto, descripcion, fecha_inicio, fecha_fin, idProyecto) {
         return db.execute('UPDATE proyecto SET nombreProyecto=?, descripcion=?, fechaPlaneada=?, fechaEntrega=? WHERE idProyecto=?',
         [nombreProyecto, descripcion, fecha_inicio, fecha_fin, idProyecto]);
