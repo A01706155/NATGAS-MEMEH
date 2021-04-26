@@ -7,11 +7,12 @@ exports.getRegistrarTarea = (request, response, next) => {
     const proyecto_id = request.params.proyecto_id;
     const fase_id = request.params.fase_id;
     
-    Fase.fetchOneByFase(id)
+    Fase.fetchOneByFase(fase_id)
         .then(([rows, fieldData]) => {
             response.render('crear_tarea', { 
                 fase: rows,
                 idProyecto: proyecto_id,
+                idFase: fase_id,
                 csrfToken: request.csrfToken(),
                 titulo: 'Crear tarea',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
@@ -28,7 +29,7 @@ exports.postRegistrarTarea = (request, response, next) => {
     nueva_tarea.save()
         .then(() => {
             response.setHeader('Set-Cookie', ['ultima_tarea='+nueva_tarea.nombreTarea+'; HttpOnly']);
-            response.redirect('/proyectos');
+            response.redirect('/fases/' + request.body.idProyecto);
         }).catch(err => console.log(err));
 }
 /*
