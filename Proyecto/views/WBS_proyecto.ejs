@@ -15,13 +15,14 @@
                 </div>
 
             <% for (let detalle of Fase) { %>
-                
-                <h4><%= detalle.nombreFase %> 
-                    
+
+                <h4><%= detalle.nombreFase %>
+                    <br><br> 
+                    <a href="/tareas/registrar-tarea/<%= idProyecto %>/<%= detalle.idFase %>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">add_box</i>Agregar tarea</a></h4>
                     <form action="/fases/eliminarFase/" method="POST" id="eliminar_<%= detalle.idFase %>">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                         <input type="hidden" name="idFase" value="<%= detalle.idFase %>">
-                         <button type="submit" name="add">Eliminar</button>
+                         <button type="submit" name="add" class="waves-effect waves-light red  btn"><i class="material-icons left">delete</i>Borrar Fase</button>
                          <script> 
                            document.getElementById("eliminar_<%= detalle.idFase   %>").addEventListener('submit', (e) => {
                              let confirmacion = confirm('¿Estás seguro de eliminar la fase?');
@@ -30,10 +31,8 @@
                              }  
                            });
                         </script>
-                    </form> 
-
-                    <a href="/tareas/registrar-tarea/<%= idProyecto %>/<%= detalle.idFase %>" class="waves-effect waves-light yellow darken-4 btn"><i class="material-icons left">add_box</i>Agregar tarea</a></h4> 
-                
+                    </form>  
+                <br>
                 <table class="responsive-table">
                     <head>
                         <tr>
@@ -51,7 +50,7 @@
                                         <form action="/tareas/eliminarTarea/" method="POST" id="eliminar_<%= tarea.idTarea %>">
                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="hidden" name="idTarea" value="<%= tarea.idTarea %>">
-                                         <button type="submit" name="add">Eliminar</button>
+                                         <button type="submit" name="add" class="waves-effect waves-light red  btn-small"><i class="material-icons left">delete</i>Borrar Tarea</button>
                                          <script> 
                                            document.getElementById("eliminar_<%= tarea.idTarea   %>").addEventListener('submit', (e) => {
                                              let confirmacion = confirm('¿Estás seguro de eliminar la tarea?');
