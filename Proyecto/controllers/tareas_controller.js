@@ -83,15 +83,18 @@ exports.postModificarTarea = (request, response, next) => {
 }
 
 exports.postEliminarTarea = (request, response) => {
-    const idTarea = request.body.IdTarea;
-    console.log("Id", request.body.IdTarea)
-    Tarea.EliminarConexionTareasReporte(idTarea)
-    Tarea.EliminarTarea(idTarea)
+    
+    const idTarea = request.body.idTarea;
+    const id_proyecto = request.body.proyecto_id;
+    console.log("aquiiiiii" + idTarea)
+        Tarea.EliminarConexionTareasReporte(idTarea)
+        Tarea.EliminarTarea(idTarea)
+        
         .then(() => {
             request.session.alerta = "Tarea eliminada exitosamente";
-            response.redirect('/fases/' + id_proyecto);
+            response.redirect('/fases/2');
         })
         .catch(err => {
             console.log(err);
         });
-}
+};
