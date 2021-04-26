@@ -17,6 +17,7 @@
             <% for (let detalle of Fase) { %>
                 
                 <h4><%= detalle.nombreFase %> 
+                    
                     <form action="/fases/eliminarFase/" method="POST" id="eliminar_<%= detalle.idFase %>">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                         <input type="hidden" name="idFase" value="<%= detalle.idFase %>">
@@ -30,6 +31,7 @@
                            });
                         </script>
                     </form> 
+
                     <a href="/tareas/registrar-tarea/<%= idProyecto %>/<%= detalle.idFase %>" class="waves-effect waves-light yellow darken-4 btn"><i class="material-icons left">add_box</i>Agregar tarea</a></h4> 
                 
                 <table class="responsive-table">
