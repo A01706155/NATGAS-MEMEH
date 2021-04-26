@@ -27,9 +27,9 @@
                             <% if (tarea.idFase == fases.idFase) { %>
                                 <% for (let historia of Historia) { %>
                                     <tr>
-                                    <td><%= historia.quiero %></td>
-                                    <td><%= tarea.nombreTarea %></td>
+                                    <td><%= historia.quiero %></td>                                    
                                     <td><%= fases.nombreFase %></td>
+                                    <td><%= tarea.nombreTarea %></td>
                                     <td>Checkbox</td>  
                                     </tr>
                                 <% } %>
