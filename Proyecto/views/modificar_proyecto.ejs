@@ -1,37 +1,54 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
 
-    <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
-        <h1 class="center white-text"><%= titulo %></h1>
-        
-        <form class="passcontent grey-text text-lighten-1" action="/proyectos/modificar-proyecto" method="POST">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
-            <% for (let elemento of proyecto) { %> 
-                
-                Nombre del proyecto <br>
-                <input class="white-text" type="text" name="nombreProyecto" value="<%= elemento.nombreProyecto %>" required>
-                Descripción <br>
-                <input class="white-text" type="text" name="descripcion" value="<%= elemento.descripcion %>" required>
-                Fecha inicio <br>
-                <input class="datepicker white-text" type="date" name="fecha_inicio" value="<%= elemento.fechaPlaneada %>" required>
-                Fecha de finalización <br>
-                <input class="datepicker white-text" type="date" name="fecha_fin" value="<%= elemento.fechaEntrega %>" required>
+    <main class="container">
 
-                <input type="hidden" name="idProyecto" value="<%= elemento.idProyecto %>">
-                <br><br>
-                <br>  
+        <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
+            <h1 class="center white-text"><%= titulo %></h1>
+            
+            <form class="passcontent grey-text text-lighten-1" action="/proyectos/modificar-proyecto" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <% for (let elemento of proyecto) { %> 
+                    
+                    Nombre del proyecto <br>
+                    <input class="white-text" type="text" name="nombreProyecto" value="<%= elemento.nombreProyecto %>" required>
+                    Descripción <br>
+                    <input class="white-text" type="text" name="descripcion" value="<%= elemento.descripcion %>" required>
+                    Fecha inicio <br>
+                    <input class="datepicker white-text" type="text" name="fecha_inicio" value="<%= elemento.fechaPlaneada %>" required>
+                    Fecha de finalización <br>
+                    <input class="datepicker white-text" type="text" name="fecha_fin" value="<%= elemento.fechaEntrega %>" required>
 
+<<<<<<< HEAD
+                    <input type="hidden" name="idProyecto" value="<%= elemento.idProyecto %>">
+                    <br><br>
+                    <br>  
+=======
                 <div class="center">
                     <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Modificar proyecto
                         <i class="material-icons right">send</i>
                     </button>
                     <p></p>
-                    <a href="/proyectos/<%= elemento.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
+                    <a href="/proyectos/<%= elemento.idProyecto %>" class="waves-effect waves-light red btn" style="width:14rem;"><i class="material-icons left">undo</i>Regresar</a>   
                 </div>
             </form>
             <% } %>
         
+>>>>>>> f1c04935770d3c54a31640fffd8a296cf5529461
 
-    </div>    
+                    <div class="center">
+                        <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Modificar proyecto
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <p></p>
+                        <a href="/proyectos/<%= elemento.idProyecto %>" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
+                    </div>
+                </form>
+                <% } %>
+            
+
+        </div>   
+        
+    </main>
 
 <%- include('partials/footer.ejs')  %>

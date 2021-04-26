@@ -11,8 +11,8 @@ module.exports = class Reporte {
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        return db.execute('INSERT INTO reporte (idTarea, idHistoria, idEstado) VALUES (?,?,?)',
-            [this.idTarea, this.idHistoria, this.idEstado]
+        return db.execute('INSERT INTO reporte (idTarea, idHistoria, idEstado) VALUES (?,?,1)',
+            [this.idTarea, this.idHistoria]
         );
     }
 

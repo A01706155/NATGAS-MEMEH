@@ -10,10 +10,9 @@
     <div style="backdrop-filter: blur(10px) contrast(70%); padding:20px; border-radius: 20px; margin-bottom: 6%;">
        <!-- Botón para crear un nuevo proyecto-->
        <div class="row center">
-        <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
         <a href="/proyectos/nuevo-casodeuso/<%= idProyecto %>" id="new_iteracion" class="btn-large waves-effect waves-light green lighten-1">Crear nueva Historia de Usuario</a>
         <br><br>
-        <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>
+        <a href="/proyectos" class="waves-effect waves-light red btn" style="width:14rem;"><i class="material-icons left">undo</i>Regresar</a>
     </div>
     
       <!-- Generar proyectos almacenados con tarjetas -->
@@ -22,13 +21,18 @@
           <input type="text" name="buscar" id="buscar" onkeyup="buscar()">
         </div>  
         <div class="row" id="resultados">
+            
+            <!-- Card creation -->
             <% for (let caso of lista_historias) { %>
                 <div class="col s12 m4 l3">
-                    <div class="card small grey darken-4">
+                    <div class="card medium grey darken-4">
+                        
                         <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="https://blogs.encamina.com/piensa-en-software-desarrolla-en-colores/wp-content/uploads/sites/21/2019/02/QA-Caso-de-uso.png">
+                            <img class="activator" src="/images/clock.jpg">
                         </div>
+                        
                         <div class="card-content">
+<<<<<<< HEAD
                         <span class="card-title activator grey-text text-lighten-3">Historia de usuario <%= caso.idHistoria %>  
                             <div class="center card-action">
                             
@@ -39,13 +43,27 @@
                                 <ul id='<%= caso.idHistoria %>' class='dropdown-content'>
                                     <li><a href="/casodeuso/modificar-casodeuso/<%= caso.idHistoria %>"><i class="material-icons">edit</i>Editar</a></li>
                                     <li><a href="/reporte/elegir-tareas/<%= caso.idProyecto %>/<%= caso.idHistoria %>"><i class="material-icons">assignment</i>Elegir Tareas</a></li>
+=======
+                        <span class="card-title activator grey-text text-lighten-3">Historia de usuario <%= caso.idHistoria %>   
+                            
+                            <div class="center card-action">
+                            
+                              <!-- Dropdown Trigger -->
+                                <a class='dropdown-trigger btn' href='#' data-target='dropdown4' style="width: 90%;">Acciones</a>
+
+                                <!-- Dropdown Structure -->
+                                <ul id='dropdown4' class='dropdown-content black'>
+                                    <li><a class="white-text" href="/casodeuso/modificar-casodeuso/<%= caso.idHistoria %>"><i class="material-icons">edit</i>Editar</a></li>
+                                    <li><a class="white-text" href="/reporte/elegir-tareas/<%= caso.idProyecto %>/<%= caso.idHistoria %>"><i class="material-icons">assignment</i>Elegir Tareas</a></li>
+                                    <li><a class="white-text" href="#"><i class="material-icons">summarize</i>Ver Reporte</a></li>
+>>>>>>> b66251c4ed003f74276bb2a2c5858405832e6e26
                                     <li class="divider" tabindex="-1"></li>
                                 
                                     <li>
                                         <form action="/casodeuso/eliminarHistoria" method="POST" id="eliminar_<%= caso.idHistoria %>">
                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="hidden" name="idHistoria" value="<%= caso.idHistoria %>">
-                                         <button type="submit" name="add" class="waves-effect waves-light red  btn"><i class="material-icons left">delete</i>Borrar</button>
+                                        <li><button type="submit" name="add" class="red-text text-lighten-2" href="#!"><i class="material-icons">delete</i>Borrar</button></li>
                                          <script> 
                                            document.getElementById("eliminar_<%= caso.idHistoria   %>").addEventListener('submit', (e) => {
                                              let confirmacion = confirm('¿Estás seguro de eliminar la Historia de Usuario??');
@@ -57,13 +75,32 @@
                                         </form>  
                                     </li>
 
+<<<<<<< HEAD
                                     </ul>
                 
                             </div>                
+=======
+                                </ul>
+
+                            </div>   
+>>>>>>> b66251c4ed003f74276bb2a2c5858405832e6e26
                         </div>
+
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Historia de usuario <%= caso.idHistoria %><i class="material-icons right">close</i></span>
+                            <br>
+                            <strong>Yo como:</strong> <%= caso.yo_como %><br><br>
+                            <strong>Quiero:</strong> <%= caso.quiero %><br><br>
+                            <strong>Para:</strong> <%= caso.para %><br><br>
+                            <strong>AP:</strong> <%= caso.AP %><br>
+                            <br>
+                            <strong>Comentario:</strong> <%= caso.comentario %><br>
                         </div>
+
                     </div>
-                <% } %>
+                </div>
+            <% } %>
+
         </div>
     </div>
 </main>

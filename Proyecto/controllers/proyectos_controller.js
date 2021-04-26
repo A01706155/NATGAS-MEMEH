@@ -62,12 +62,11 @@ exports.getProyecto = (request, response, next) => {
 exports.getModificarProyecto = (request, response, next) => {
     const id = request.params.proyecto_id;
  
-    
     Proyecto.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('modificar_proyecto', { 
                 
-                proyecto: rows,  
+                proyecto: rows,
                 titulo: 'Modificar proyecto',
                 csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
@@ -81,7 +80,7 @@ exports.getModificarProyecto = (request, response, next) => {
 exports.postModificarProyecto = (request, response, next) => {
     console.log("Se esta modificando");
     console.log(request.body);
-    Proyecto.modify(request.body.nombreProyecto, request.body.descripcion, request.body.fecha_inicio, request.body.fecha_fin, request.body.estado, request.body.idProyecto)
+    Proyecto.modify(request.body.nombreProyecto, request.body.descripcion, request.body.fecha_inicio, request.body.fecha_fin, request.body.idProyecto)
         .then(() => {
             response.redirect('/proyectos');
         }).catch(err => console.log(err));
