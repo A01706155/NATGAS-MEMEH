@@ -44,7 +44,7 @@ exports.getReporte = (request, response, next) => {
                                 Historia: rows3,
                                 idProyecto: id,
                                 csrfToken: request.csrfToken(),
-                                titulo: 'Crear reporte',
+                                titulo: 'Elegir tareas',
                                 isLoggedIn: request.session.isLoggedIn === true ? true : false
                             });
                         })
