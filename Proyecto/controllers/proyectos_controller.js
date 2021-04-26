@@ -81,7 +81,7 @@ exports.getModificarProyecto = (request, response, next) => {
 exports.postModificarProyecto = (request, response, next) => {
     console.log("Se esta modificando");
     console.log(request.body);
-    Proyecto.modify(request.body.nombreProyecto, request.body.descripcion, request.body.fecha_inicio, request.body.fecha_fin, request.body.idProyecto)
+    Proyecto.modify(request.body.nombreProyecto, request.body.descripcion, request.body.fecha_inicio, request.body.fecha_fin, request.body.estado, request.body.idProyecto)
         .then(() => {
             response.redirect('/proyectos');
         }).catch(err => console.log(err));
@@ -120,6 +120,7 @@ exports.getCaso = (request, response, next) => {
                 rol: request.session.rol,
                 lista_historias: rows, 
                 titulo: 'Casos de uso'  ,
+                csrfToken: request.csrfToken(),
                 idProyecto: idProyecto,
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
@@ -129,20 +130,3 @@ exports.getCaso = (request, response, next) => {
         });
 };
 
-exports.getReporte = (request, response, next) => {
-    const idProyecto = request.params.proyecto_id;
-    console.log(request.params);
-    Reporte.fetchByProject(idProyecto)
-        .then(([rows, fieldData]) => {
-            response.render('reporte', { 
-                rol: request.session.rol,
-                lista_reportes: rows, 
-                titulo: 'Reportes'  ,
-                idProyecto: idProyecto,
-                isLoggedIn: request.session.isLoggedIn === true ? true : false
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
-};

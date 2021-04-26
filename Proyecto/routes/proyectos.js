@@ -28,7 +28,6 @@ router.get('/nuevo-casodeuso/:proyecto_id', isAuth, casodeusoController.getRegis
 
 router.post('/nuevo-casodeuso/', isAuth, casodeusoController.postRegistrarCasodeuso);
 
-router.get('/reporte/:proyecto_id',  proyectosController.getReporte);
 
 router.get('/:proyecto_id', isAuth, proyectosController.getProyecto);
 

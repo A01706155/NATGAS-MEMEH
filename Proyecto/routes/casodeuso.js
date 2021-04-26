@@ -23,4 +23,6 @@ router.post('/modificar-casodeuso', isAuth, casodeusoController.postModificarCas
 
 router.get('/reporte/:casodeuso_id',  casodeusoController.getReporte);
 
+router.post('/eliminarHistoria', casodeusoController.postEliminarHistoria);
+
 module.exports = router;
