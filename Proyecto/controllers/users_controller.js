@@ -68,7 +68,7 @@ exports.getRegister = (request, response, next) => {
 };
 
 exports.postRegister = (request, response, next) => {
-    const nuevo_usuario = new Usuario(request.body.nombre, request.body.usuario, request.body.password);
+    const nuevo_usuario = new Usuario(request.body.nombre, request.body.usuario, request.body.password, request.body.rol);
     nuevo_usuario.save()
         .then(() => {
             request.session.isLoggedIn = true;
