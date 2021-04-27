@@ -49,13 +49,6 @@ module.exports = class Historiausuario {
 
 
     static modify(yo_como, quiero, para, comentario, AP, idHistoria) {
-        console.log("AAAAAAAAAAAAAAAAAAAA");
-        console.log(yo_como);
-        console.log(quiero);
-        console.log(para);
-        console.log(comentario);
-        console.log(AP);
-        console.log(idHistoria);
         return db.execute('UPDATE historiausuario SET yo_como=?, quiero=?, para=?, comentario=?, AP=? WHERE idHistoria=?',
         [yo_como, quiero, para, comentario, AP, idHistoria]);
     }

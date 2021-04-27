@@ -7,18 +7,18 @@
         <form class="passcontent grey-text text-lighten-1" action="/casodeuso/modificar-casodeuso/<%= idCasoUso %>/<%= idProyecto %>" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <% for (let elemento of Historiausuario) { %> 
-                yo_como
+                Yo como
                 <input class="white-text" type="text" name="yo_como" value="<%= elemento.yo_como %>" required><br>
-                quiero<br>
+                Quiero<br>
                 <input class="white-text" type="text" name="quiero" value="<%= elemento.quiero %>" required><br>
-                para<br>
+                Para<br>
                 <input class="white-text" type="text" name="para" value="<%= elemento.para %>" required><br>
-                comentario<br>
+                Comentario<br>
                 <input class="white-text" type="text" name="comentario" value="<%= elemento.comentario %>" required><br>
                 AP<br>
                 <div class="input-field col s12 white-text" style="max-width: 35%;">
                     <select class="browser-default transparent" id="name" name="ap" style="border-color: rgba(255, 255, 255, 0.322); color: rgb(255, 255, 255);" required>
-                      <option class="black" value="<%= elemento.AP %>" disabled selected><%= elemento.AP %></option>
+                      <option class="black" value="<%= elemento.ap %>" disabled selected>Selecciona</option>
                       <option class="black" value="1">1</option>
                       <option class="black" value="2">2</option>
                       <option class="black" value="3">3</option>
