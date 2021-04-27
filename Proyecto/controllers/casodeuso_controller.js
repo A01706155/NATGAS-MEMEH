@@ -63,7 +63,7 @@ exports.getModificarCasodeuso = (request, response, next) => {
             response.render('modificar_casodeuso', { 
                 
                 Historiausuario: rows,  
-                titulo: 'Modificar Historias de usuario',
+                titulo: 'Modificar Historia de usuario',
                 csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
