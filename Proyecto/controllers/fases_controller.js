@@ -9,7 +9,7 @@ exports.getRegistrarFase = (request, response, next) => {
     response.render('registrar_fase', { 
         idProyecto: id,
         csrfToken: request.csrfToken(),
-        titulo: 'Registrar nueva fase',
+        titulo: 'Registrar fase',
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 

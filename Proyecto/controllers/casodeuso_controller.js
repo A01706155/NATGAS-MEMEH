@@ -34,7 +34,7 @@ exports.getRegistrarCasodeuso = (request, response, next) => {
                 csrfToken: request.csrfToken(),
                 idHistoria: request.session.idHistoria,
                 idProyecto: request.params.proyecto_id,
-                titulo: 'Registrar Historia',
+                titulo: 'Registrar Historia de usuario',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
         })
@@ -63,7 +63,7 @@ exports.getModificarCasodeuso = (request, response, next) => {
             response.render('modificar_casodeuso', { 
                 
                 Historiausuario: rows,  
-                titulo: 'Modificar Historias de usuario',
+                titulo: 'Modificar Historia de usuario',
                 csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
