@@ -27,7 +27,7 @@ function buscar() {
                   '</div>'
                   
                   '<div class="card-content">'
-                  '<span class="card-title activator grey-text text-lighten-3">Proyecto:'+ proyecto.nombreProyecto +   
+                  '<span class="card-title activator grey-text text-lighten-3">Proyecto:'+ proyecto.nombreProyecto +    
                       
                     '<div class="center card-action">'
                       '<!-- Dropdown Trigger -->'
