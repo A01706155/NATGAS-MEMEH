@@ -1,0 +1,48 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+    <main class="container">
+
+        <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
+            <h1 class="center white-text"><%= titulo %></h1>
+            
+            <form class="passcontent grey-text text-lighten-1" action="/users/modificar-empleado" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <% for (let elemento of lista_empleados) { %> 
+                    <input type="hidden" name="idEmpleado" value="<%= elemento.idEmpleado %>">
+                    
+                    Usuario <br>
+                    <input class="white-text" type="text" name="usuario" value="<%= elemento.usuario %>" required>
+                
+                    Nombre <br>
+                    <input class="white-text" type="text" name="nombre" value="<%= elemento.nombre %>" required>
+                    Cambiar Password <br>
+                    <input class="white-text" type="text" name="password" value="<%= elemento.password %>" required>
+                    Rol <br>
+                    <div class="input-field col s12 white-text" style="max-width: 35%;">
+                        <select class="browser-default transparent" id="name" name="rol" style="border-color: rgba(255, 255, 255, 0.322); color: rgb(255, 255, 255);" required>
+                          <option class="black" value="1">1</option>
+                          <option class="black" value="2">2</option>
+                        </select>
+                    </div>
+
+                    
+                    <br><br>
+                    <br>  
+
+                    <div class="center">
+                        <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Modificar Empleado
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <p></p>
+                        <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
+                    </div>
+                </form>
+                <% } %>
+            
+
+        </div>   
+        
+    </main>
+
+<%- include('partials/footer.ejs')  %>

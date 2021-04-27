@@ -19,4 +19,8 @@ router.post('/register', usersController.postRegister);
 
 router.get('/modificar_empleado', usersController.getEmpleado);
 
+router.get('/modificar/:empleado_id', usersController.getModificarEmpleado); //modificar
+
+router.post('/modificar', usersController.postModificarEmpleado); 
+
 module.exports = router;

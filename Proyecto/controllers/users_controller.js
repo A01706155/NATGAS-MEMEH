@@ -94,3 +94,31 @@ exports.getEmpleado = (request, response, next) => {
             console.log(err);
         });
 };
+
+exports.getModificarEmpleado = (request, response, next) => {
+    const username = request.params.empleado_id;
+    console.log(" Modificar EMpleado HD")
+    console.log(username)
+    Usuario.fetchTwo(username)
+        .then(([rows, fieldData]) => {
+            response.render('modificar-empleado', { 
+                lista_empleados: rows,
+                titulo: 'Modificar empleado',
+                csrfToken: request.csrfToken(),
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+exports.postModificarEmpleado = (request, response, next) => {
+    console.log("Se esta modificando");
+    console.log(request.body);
+    Usuario.modify(request.body.nombre, request.body.username, request.body.password, request.body.rol, request.body.idEmpleado)
+        .then(() => {
+            response.redirect('/users/modificar-empleado');
+        }).catch(err => console.log(err));
+
+}

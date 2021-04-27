@@ -31,7 +31,7 @@
                         <td><%= pepe.idEmpleado %> </td>
                         <td><%= pepe.nombreEmpleado %></td>
                         <td><%= pepe.rol %> </td>
-                        <td><a href="/proyectos/modificar-proyecto/<%= pepe.idEmpleado %>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a></td>
+                        <td><a href="/users/modificar/<%= pepe.idEmpleado %>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a></td>
                         <td>
                             <form action="/tareas/eliminarTarea/" method="POST" id="eliminar_<%= pepe.idEmpleado %>">
                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">

@@ -26,9 +26,18 @@ module.exports = class User {
         return db.execute('SELECT * FROM empleado WHERE usuario=?', [username]);
     }
 
+    static fetchTwo(idEmpleado) {
+        return db.execute('SELECT * FROM empleado WHERE idEmpleado=?', [idEmpleado]);
+    }
+
+    
+
     static fetchAll() {
         return db.execute('SELECT * FROM empleado');
     }
 
-
+    static modify(nombre, username, password, rol,idEmpleado ) {
+        return db.execute('UPDATE empleado SET usuario=?, nombreEmpleado=?, contrasena=?, rol=? WHERE idEmplaedo=?',
+        [nombre, username, password, rol, idEmpleado]);
+    }
 }
