@@ -17,4 +17,6 @@ router.get('/register', usersController.getRegister);
 
 router.post('/register', usersController.postRegister);
 
+router.get('/modificar_empleado', usersController.getEmpleado);
+
 module.exports = router;

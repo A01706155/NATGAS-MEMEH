@@ -26,4 +26,9 @@ module.exports = class User {
         return db.execute('SELECT * FROM empleado WHERE usuario=?', [username]);
     }
 
+    static fetchAll() {
+        return db.execute('SELECT * FROM empleado');
+    }
+
+
 }

@@ -1,0 +1,65 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+  
+  <main class="container">
+    <!-- Titulo -->
+    <h1 class="header center white-text"><%= titulo %></h1>
+    
+
+    <!-- Para que se vea bonito-->
+    <div style="backdrop-filter: blur(10px) contrast(70%); padding:20px; border-radius: 20px; margin-bottom: 6%;">
+        <div class="center">
+            <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
+        </div>
+    <!-- Generar proyectos almacenados con tarjetas -->
+    <div class="row" id="resultados">
+       
+      <!-- Card creation -->
+      <div class="white-text ">
+
+            <table class="responsive-table" >
+                <tr>
+                <td>ID Usuario</td>    
+                <td>Nombre </td>
+                <td>Rol </td>
+                <td>Editar</td>
+                <td>Borrar</td>
+                </tr>
+                <tr> 
+                   
+                    <% for (let pepe of lista_empleados) { %>
+                        <td><%= pepe.idEmpleado %> </td>
+                        <td><%= pepe.nombreEmpleado %></td>
+                        <td><%= pepe.rol %> </td>
+                        <td><a href="/proyectos/modificar-proyecto/<%= pepe.idEmpleado %>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a></td>
+                        <td>
+                            <form action="/tareas/eliminarTarea/" method="POST" id="eliminar_<%= pepe.idEmpleado %>">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <input type="hidden" name="idEmpleado" value="<%= pepe.idEmpleado %>">
+                                <button type="submit" name="add" class="waves-effect waves-light red darken-4 btn-small"><i class="material-icons left">delete</i>Borrar Empleado</button>
+                                <script> 
+                                document.getElementById("eliminar_<%= pepe.idEmpleado   %>").addEventListener('submit', (e) => {
+                                    let confirmacion = confirm('¿Estás seguro de eliminar la tarea?');
+                                    if(!confirmacion){
+                                    e.preventDefault();
+                                    }  
+                                });
+                                </script>
+                            </form> 
+                        </td>
+                    </tr>  
+                    <% } %>
+                       
+                    
+            </table>   
+
+          </div>
+
+
+  </div>
+      
+  </div>
+
+  </main>
+
+  <%- include('partials/footer.ejs') %>

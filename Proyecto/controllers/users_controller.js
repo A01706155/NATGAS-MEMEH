@@ -77,3 +77,20 @@ exports.postRegister = (request, response, next) => {
         }).catch(err => console.log(err));
 
 }
+
+exports.getEmpleado = (request, response, next) => {
+    console.log(" SI ENTRE A MODIFICAR")
+    Usuario.fetchAll()
+        .then(([rows, fieldData]) => {
+            response.render('modificar_empleado', { 
+                user: request.session.usuario,
+                lista_empleados: rows, 
+                titulo: 'Empleado',
+                csrfToken: request.csrfToken(),
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
