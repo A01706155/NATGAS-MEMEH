@@ -4,7 +4,7 @@
     <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
         <h1 class="center white-text"><%= titulo %></h1>
         
-        <form class="passcontent grey-text text-lighten-1" action="/casodeuso/modificar-casodeuso" method="POST">
+        <form class="passcontent grey-text text-lighten-1" action="/casodeuso/modificar-casodeuso/<%= idCasoUso %>/<%= idProyecto %>" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <% for (let elemento of Historiausuario) { %> 
                 yo_como

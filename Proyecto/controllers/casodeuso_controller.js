@@ -58,10 +58,12 @@ exports.postRegistrarCasodeuso = (request, response, next) => {
 
 exports.getModificarCasodeuso = (request, response, next) => {
     const id = request.params.casodeuso_id;
+    const id_proyecto = request.params.proyecto_id;
     Historiausuario.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('modificar_casodeuso', { 
-                
+                idProyecto: id_proyecto,
+                idCasoUso: id,
                 Historiausuario: rows,  
                 titulo: 'Modificar Historia de usuario',
                 csrfToken: request.csrfToken(),
@@ -74,11 +76,12 @@ exports.getModificarCasodeuso = (request, response, next) => {
 };
 
 exports.postModificarCasodeuso = (request, response, next) => {
+    const id_proyecto = request.params.proyecto_id;
     console.log("Se esta modificando el caso de uso");
     console.log(request.body);
-    Historiausuario.modify(request.body.ap, request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario, request.body.idHistoria)
+    Historiausuario.modify(request.body.yo_como, request.body.quiero, request.body.para, request.body.comentario, request.body.ap, request.body.idHistoria)
         .then(() => {
-            response.redirect('/casodeuso');
+            response.redirect('/proyectos/casodeuso/'+ id_proyecto);
         }).catch(err => console.log(err));
 
 }

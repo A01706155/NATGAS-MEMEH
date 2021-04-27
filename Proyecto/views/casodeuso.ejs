@@ -37,11 +37,11 @@
                             <div class="center card-action">
                             
                               <!-- Dropdown Trigger -->
-                                <a class='dropdown-trigger btn' href='#' data-target='dropdown4' style="width: 90%;">Acciones</a>
+                                <a class='dropdown-trigger btn' href='#' data-target='<%= caso.idHistoria %>' style="width: 90%;">Acciones</a>
 
                                 <!-- Dropdown Structure -->
-                                <ul id='dropdown4' class='dropdown-content black'>
-                                    <li><a class="white-text" href="/casodeuso/modificar-casodeuso/<%= caso.idHistoria %>"><i class="material-icons">edit</i>Editar Historia</a></li>
+                                <ul id='<%= caso.idHistoria %>' class='dropdown-content black'>
+                                    <li><a class="white-text" href="/casodeuso/modificar-casodeuso/<%= caso.idHistoria %>/<%= caso.idProyecto %>"><i class="material-icons">edit</i>Editar Historia</a></li>
                                     <li><a class="white-text" href="/reporte/elegir-tareas/<%= caso.idProyecto %>/<%= caso.idHistoria %>"><i class="material-icons">assignment</i>Elegir Tareas</a></li>
                                     <li><a class="white-text" href="#"><i class="material-icons">summarize</i>Ver Reporte</a></li>
                                     <li class="divider" tabindex="-1"></li>

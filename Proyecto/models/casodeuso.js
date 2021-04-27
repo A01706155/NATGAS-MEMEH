@@ -3,7 +3,7 @@ const db = require('../util/database');
 module.exports = class Historiausuario {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(ap,yo_como, quiero, para,comentario, idProyecto) {
+    constructor(ap, yo_como, quiero, para,comentario, idProyecto) {
         this.idProyecto = idProyecto;
         this.yo_como = yo_como;
         this.quiero = quiero;
@@ -48,8 +48,15 @@ module.exports = class Historiausuario {
     }
 
 
-    static modify(ap, yo_como, quiero, para, comentario, idHistoria) {
-        return db.execute('UPDATE historiausuario SET AP=?, yo_como=?, quiero=?, para=?, comentario=? WHERE idHistoria=?',
-        [ap, yo_como, quiero, para, comentario, idHistoria]);
+    static modify(yo_como, quiero, para, comentario, AP, idHistoria) {
+        console.log("AAAAAAAAAAAAAAAAAAAA");
+        console.log(yo_como);
+        console.log(quiero);
+        console.log(para);
+        console.log(comentario);
+        console.log(AP);
+        console.log(idHistoria);
+        return db.execute('UPDATE historiausuario SET yo_como=?, quiero=?, para=?, comentario=?, AP=? WHERE idHistoria=?',
+        [yo_como, quiero, para, comentario, AP, idHistoria]);
     }
 }
