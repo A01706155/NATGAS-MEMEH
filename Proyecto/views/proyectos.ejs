@@ -45,10 +45,10 @@
                       <a class='dropdown-trigger btn' data-target='<%= proyecto.idProyecto %>' style="width: 80%;">Ver Proyecto</a>
                     
                       <!-- Dropdown Structure -->
-                      <ul id='<%= proyecto.idProyecto %>' class='dropdown-content'>
-                          <li><a href="/proyectos/modificar-proyecto/<%= proyecto.idProyecto %>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a></li>
-                          <li><a href="/fases/<%= proyecto.idProyecto %>" class="waves-effect waves-light pink darken-4 btn-large"><i class="material-icons left">grid_view</i>WBS</a></li>
-                          <li><a href="/proyectos/casodeuso/<%= proyecto.idProyecto %>" class="waves-effect waves-light btn-large"><i class="material-icons left">border_all</i>Historia de Usuario</a></li>  
+                      <ul id='<%= proyecto.idProyecto %>' class='dropdown-content black'>
+                          <li><a class="white-text" href="/proyectos/modificar-proyecto/<%= proyecto.idProyecto %>"><i class="material-icons">edit</i>Editar proyecto</a></li>
+                          <li><a class="white-text" href="/fases/<%= proyecto.idProyecto %>"><i class="material-icons">grid_view</i>Fases y tareas</a></li>
+                          <li><a class="white-text" href="/proyectos/casodeuso/<%= proyecto.idProyecto %>"><i class="material-icons">border_all</i>Historia de Usuario</a></li>  
                           <li class="divider" tabindex="-1"></li>
                       
                           <li>
@@ -73,10 +73,12 @@
                   </div>
 
                   <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">Proyecto <%= proyecto.nombreProyecto %><i class="material-icons right">close</i></span>
+                      <span class="card-title grey-text text-darken-4">Proyecto: <%= proyecto.nombreProyecto %><i class="material-icons right">close</i></span>
                       <br>
-                      <strong>Proyecto</strong> <%= proyecto.nombreProyecto %><br><br>
+                      <strong>Proyecto:</strong> <%= proyecto.nombreProyecto %><br><br>
                       <strong>Descripcion:</strong> <%= proyecto.descripcion %><br><br>
+                      <strong>Fecha de inicio:</strong> <%= proyecto.fechaPlaneada %><br><br>
+                      <strong>Fecha de finalización:</strong> <%= proyecto.fechaEntrega %><br><br>
                   </div>
 
               </div>
