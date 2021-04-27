@@ -14,7 +14,11 @@
                     <input class="white-text" type="text" name="descripcion" required><br>
                     Fecha de inicio<br>
                     <input type="text" name="fecha_inicio" class="datepicker white-text" required><br>
-                    Fecha de finalización<br>
+                    Fecha de finalización                  
+                    <% if (errorfecha) { %> 
+                        <span class="red-text text-darken-1"><%= errorfecha %></span><br>
+                    <% } %>
+                      <br>
                     <input type="text" name="fecha_fin" class="datepicker white-text" required><br><br>
 
 
