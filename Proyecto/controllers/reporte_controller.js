@@ -62,7 +62,10 @@ exports.getReporte = (request, response, next) => {
 };
 
 exports.postReporte = (request, response, next) => {
-    console.log(request.body);
+    console.log(request.body.tarea);
+    if (request.body.tarea == null) {
+        console.log("Vacío");
+    }
     for (let id of request.body.tarea) {
         //console.log("Post de Reporte");
         console.log(id);

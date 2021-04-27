@@ -9,19 +9,28 @@ exports.getRegistrarProyecto = (request, response, next) => {
     response.render('registrar_proyecto', {
         csrfToken: request.csrfToken(),
         titulo: 'Registrar proyecto',
+        errorfecha: request.session.errorfecha,
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };
 
 exports.postRegistrarProyecto = (request, response, next) => {
     console.log(request.body.nombreProyecto);
-    const nuevo_proyecto = new Proyecto(request.body.nombreProyecto,request.body.descripcion,request.body.fecha_inicio,request.body.fecha_fin,request.body.estado);
-    nuevo_proyecto.save()
-        .then(() => {
-            response.setHeader('Set-Cookie', ['ultimo_proyecto='+nuevo_proyecto.nombreProyecto+'; HttpOnly']);
-            response.redirect('/proyectos');
-        }).catch(err => console.log(err));
-
+    let inicio = request.body.fecha_inicio;
+    let fin = request.body.fecha_fin;
+    request.session.errorfecha = "Fecha invalida";
+    if (inicio > fin) {
+        response.redirect('/proyectos/registrar-proyecto');
+    }
+    else {
+        const nuevo_proyecto = new Proyecto(request.body.nombreProyecto,request.body.descripcion,inicio,fin,request.body.estado);
+        nuevo_proyecto.save()
+            .then(() => {
+                
+                response.setHeader('Set-Cookie', ['ultimo_proyecto='+nuevo_proyecto.nombreProyecto+'; HttpOnly']);
+                response.redirect('/proyectos');
+            }).catch(err => console.log(err));
+    }
 }
 
 exports.postBuscar = (request, response, next) => {
