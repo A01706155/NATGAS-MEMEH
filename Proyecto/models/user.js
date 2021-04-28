@@ -40,8 +40,18 @@ module.exports = class User {
         return db.execute('SELECT * FROM empleado');
     }
 
-    static modify(nombre, username, password, rol,idEmpleado ) {
-        return db.execute('UPDATE empleado SET usuario=?, nombreEmpleado=?, contrasena=?, rol=? WHERE idEmplaedo=?',
-        [nombre, username, password, rol, idEmpleado]);
+    static modify(username, nombre, rol, idEmpleado ) {
+        return db.execute('UPDATE empleado SET usuario=?, nombreEmpleado=?, rol=? WHERE idEmpleado=?',
+        [username, nombre, rol, idEmpleado]);
+    }
+
+    static modifyPassword(password, idEmpleado) {
+        return bcrypt.hash(password, 12)
+            .then((password_encriptado) => {
+                return db.execute('UPDATE empleado SET contrasena=? WHERE idEmpleado=?',
+                    [password_encriptado, idEmpleado]
+                );
+            }).catch(err => console.log(err)); 
+        
     }
 }
