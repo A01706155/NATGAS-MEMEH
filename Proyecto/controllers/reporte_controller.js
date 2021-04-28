@@ -141,19 +141,22 @@ exports.postReporteLista = (request, response, next) => {
     if (request.body.tarea == null) {
         console.log("Vacío");
     }
-    for (let id of request.body.tarea) {
-        //console.log("Post de Reporte");
-        console.log(id);
-        let reporte = new Reporte(
-            id,
-            request.params.casodeuso_id
-        );
-        reporte.save()
-        .then()
-        .catch(err =>{
-            console.log(err);
-        });
-    }
 
-    response.redirect('/proyectos/casodeuso/'+ request.params.proyecto_id);
+    else {
+        for (let id of request.body.tarea) {
+            //console.log("Post de Reporte");
+            console.log(id);
+            let reporte = new Reporte(
+                id,
+                request.params.casodeuso_id
+            );
+            reporte.save()
+            .then()
+            .catch(err =>{
+                console.log(err);
+            });
+        }
+    
+        response.redirect('/proyectos/casodeuso/'+ request.params.proyecto_id);
+    }
 }
