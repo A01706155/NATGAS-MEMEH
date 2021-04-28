@@ -3,19 +3,18 @@
 
     <main class="container">
         
-        <div class="container" style="position: absolute; left:25%; top:15%;
-        margin: auto; min-width:50%; max-width:max-content;">
+        <div class="container" style="margin: auto; min-width:50%; max-width:max-content;">
             <h1 class="center white-text"><%= titulo %></h1>
 
             <form class="passcontent" action="/users/register" method="POST">
                 
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                 <label for="nombre">Nombre</label> <input class="white-text" type="text" name="nombre" required>
-                <br><br>
+                <br>
                 <label for="usuario">Nombre de usuario</label> <input class="white-text" type="text" name="usuario" required>
-                <br><br>
+                <br>
                 <label for="password">Contraseña</label> <input class="white-text" type="password" name="password" required>
-                <br><br>
+                <br>
                 <label for="rol">Rol</label><br>
                 <div class="input-field col s12 white-text" style="max-width: 35%;">
                     <select class="browser-default transparent" id="name" name="rol" style="border-color: rgba(255, 255, 255, 0.322); color: rgb(255, 255, 255);" required>
@@ -23,7 +22,9 @@
                       <option class="black" value="2">2</option>
                     </select>
                 </div>
-               
+                
+                <br>
+
                 <div class="center card-action">
                     <button class="waves-effect waves-light btn-large green" type="submit"><i class="material-icons left">add</i>Registrar</button>
                     <p></p>
