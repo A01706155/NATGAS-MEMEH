@@ -73,6 +73,7 @@ exports.getModificarFase = (request, response, next) => {
 
 exports.getProyectoFase = (request, response, next) => {
     const id = request.params.proyecto_id;
+    const idcaso = request.params.historia_id;
     console.log("getFases");
     console.log(id);
     //console.log(request.session.rol);
@@ -82,6 +83,7 @@ exports.getProyectoFase = (request, response, next) => {
                 Fase: rows,
                 csrfToken: request.csrfToken(),
                 idProyecto: id,
+                idHistoria: idcaso,
                 titulo: 'Fases',
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
