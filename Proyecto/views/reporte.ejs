@@ -11,6 +11,9 @@
             <div class="white-text col md-12 sm-12 lg-9">
             <form action="/reporte/elegir-tareas/<%= idProyecto %>/<%= id_historia %>" method="POST">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                <input type="hidden" name="idHistoria" value="<%= id_historia %>" >
+                <input type="hidden" name="proyecto_id" value="<%= idProyecto %>" >
+
                 <table class="centered highlight">
                     <h6 class="header center grey-text text-lighten-1">Elige las tareas que quieres hacer para esta historia de usuario: </h6>
 
@@ -21,6 +24,10 @@
                             <% } %>
                         <% } %>
                     </h5>
+
+                    <% if (error) { %> 
+                        <div class="red-text text-darken-1" style="font-weight: bold;"><%= error %></div>
+                    <% } %>
 
                     <tr>
 
