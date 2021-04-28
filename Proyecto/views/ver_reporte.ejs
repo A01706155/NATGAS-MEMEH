@@ -31,21 +31,37 @@
                     
                         
                     </tr>
-
+                    
                         <% for (let fases of Fase) { %>
                             <% for (let tarea of Tareas) { %>
-                                <% if (tarea.idFase == fases.idFase) { %>
-                                    <% for (let estado of Estado) { %>
+                                <% for (let estado of Estado) { %>
+                                    <% if (tarea.idFase == fases.idFase) { %>
+                                    
                                         <tr>                                   
                                             <td><%= tarea.nombreTarea %></td>
                                             <td>(<%= fases.nombreFase %>)</td>
-                                            <td><%= estado.Estado %></td>
+                                            
+                                            <td>
+                                                
+                                                <div class="center input-field col s12 white-text" style="max-width: 35%;">
+                                                    <select class="browser-default transparent" id="estado" name="<%= estado.Estado %>" style="border-color: rgba(255, 255, 255, 0.322); color: rgb(255, 255, 255);" required>
+                                                      <option class="black" value="" disabled selected>Selecciona</option>
+                                                      <option class="black" value="1">Pendiente</option>
+                                                      <option class="black" value="2">En progreso</option>
+                                                      <option class="black" value="3">Terminado</option>
+                                                     
+                                                    </select>
+                                                </div>
+                                               
+                                            
+                                            </td>
+                                            
                                             <td> Acciones </td>
                                                 
                                             </td>
-                                            
+                                           
                                         </tr>
-                                    <% } %> 
+                                        <% } %>  
                                 <% } %>  
                             <% } %>
                         <% } %>
