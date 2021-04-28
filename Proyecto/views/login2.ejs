@@ -3,13 +3,12 @@
 
   <main class="container">
   
-    <div style="position: absolute; left:25%; top:20%;
-      margin: auto; min-width:50%; max-width:max-content;">
+    <div class="container white-text" style="margin: auto; min-width:50%; max-width:max-content;">
       <h1 class="center white-text"><%= titulo %></h1>
       
         <form class="passcontent grey-text text-lighten-1" action="/users/login" method="POST">
           <% if (error) { %> 
-            <span class="red-text text-darken-1"><%= error %></span><br>
+            <strong><span class="red-text text-darken-1"><%= error %></span><br></strong>
           <% } %>
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
           Nombre de usuario <br>
@@ -19,7 +18,7 @@
           <input class="white-text" type="password" name="password">
           <br><br>
           <input type="hidden" name="rol" value="rol">
-          <br><br>
+          <br>
           <div class="center">
             <button class="waves-effect waves-light green darken-1 btn-large" type="submit"> 
               <i class="material-icons left">login</i>Iniciar sesión
@@ -27,8 +26,8 @@
           </div>
           <br>
         </form>
+
     </div>
-  
 
   </main>
 
