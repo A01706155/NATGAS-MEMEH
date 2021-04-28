@@ -1,0 +1,11 @@
+------------------------------------------ PRIORIDAD PRINCIPAL --------------------------------------------
+1. Arreglar el diseño de ver reporte: quitar botón de guardado general (el de hasta abajo).
+2. Crear una forma para cada resultado.
+3. Crear una ruta post para guardar el estado de la tarea de cada forma.
+4. Crear un modelo que nos guarde el estado según el id del reporte.
+5. Crear un controlador que obtenga y guarde el estado según el id del reporte.
+------------------------------------------ PRIORIDAD SECUNDARIA -------------------------------------------
+6. Ya que está esto terminado, arreglar el link del botón regresar de la vista Elegir tareas.
+7. Establecer las tareas dependiendo del idProyecto para que no se hagan chocomilk con todos los proyectos.
+8. Revisar qué va saliendo en cuanto a errores y cosas que hagan el proyecto más fancy.
+9. Ver una forma de implementar un dashboard o gráfico con los datos que tenemos.
