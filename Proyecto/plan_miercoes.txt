@@ -5,7 +5,6 @@
 4. Crear un modelo que nos guarde el estado según el id del reporte.
 5. Crear un controlador que obtenga y guarde el estado según el id del reporte.
 ------------------------------------------ PRIORIDAD SECUNDARIA -------------------------------------------
-6. Ya que está esto terminado, arreglar el link del botón regresar de la vista Elegir tareas.
-7. Establecer las tareas dependiendo del idProyecto para que no se hagan chocomilk con todos los proyectos.
-8. Revisar qué va saliendo en cuanto a errores y cosas que hagan el proyecto más fancy.
-9. Ver una forma de implementar un dashboard o gráfico con los datos que tenemos.
+6. Establecer las tareas dependiendo del idProyecto para que no se hagan chocomilk con todos los proyectos.
+7. Revisar qué va saliendo en cuanto a errores y cosas que hagan el proyecto más fancy.
+8. Ver una forma de implementar un dashboard o gráfico con los datos que tenemos.
