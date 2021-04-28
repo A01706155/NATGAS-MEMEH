@@ -1,35 +1,44 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
 
-<main>
-    <h1 class="center white-text"><%= titulo %></h1>
+    <main>
+        <h1 class="center white-text"><%= titulo %></h1>
 
-    <!-- Detalles Fases y Tareas -->  
-    <div class="container highlight proyectContent">
-        <div style="margin-bottom: 0px;">
-             
-            <div class="white-text col md-12 sm-12 lg-9">
-            <form action="/reporte/ver-reporte/<%= idProyecto %>/<%= id_historia %>" method="POST">
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
-                <table class="centered highlight">
-                    <h6 class="header center grey-text text-lighten-1">Reporte del siguiente Historia de Usuario: </h6>
+        <!-- Detalles Fases y Tareas -->  
+        <div class="container highlight proyectContent">
+            <div style="margin-bottom: 0px;">
+                
+                <div class="white-text col md-12 sm-12 lg-9">
+                    <div class="center">
+                        <a href="/proyectos/casodeuso/<%= idProyecto %>" 
+                            class="waves-effect waves-light red btn" 
+                            style="width:14rem;">
+                            <i class="material-icons left">undo</i>
+                            Regresar
+                        </a>
+                    </div>
+                <form action="/reporte/ver-reporte/<%= idProyecto %>/<%= id_historia %>" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                    <table class="centered highlight">
+                        <h6 class="header center grey-text text-lighten-1">Reporte del siguiente Historia de Usuario: </h6>
 
-                    <h5 class="center white-text">
-                        <% for (let historia of Historia) { %>
-                            <% if (historia.idHistoria == id_historia) { %>
-                                Historia de Usuario: <%= historia.idHistoria %> 
+                        <h5 class="center white-text">
+                            <% for (let historia of Historia) { %>
+                                <% if (historia.idHistoria == id_historia) { %>
+                                    Historia de Usuario: <%= historia.idHistoria %> 
+                                <% } %>
                             <% } %>
-                        <% } %>
-                    </h5>
+                        </h5>
 
-                    <tr>
+                        <tr>
 
-                        <td>Nombre Tarea</td>
-                        <td>Estado</td>
-                        <td>Acciones</td>
-                    
+                            <td>Nombre Tarea</td>
+                            <td>Estado</td>
+                            <td>Acciones</td>
                         
-                    </tr>
+                            
+                        </tr>
+                        
                         <% for (let reporte of Reporte) { %>
                             <% if (reporte.idHistoria == idHistoria) { %>
                                 <% for (let historia of Historia) { %>
@@ -39,10 +48,10 @@
                                                 <% if (reporte.idTarea == tarea.idTarea) { %>
                                                     <% for (let estado of Estado) { %>
                                                         <% if (reporte.idEstado == estado.idEstado) { %>
-                                                         <% if (tarea.idFase == fases.idFase) { %>
+                                                            <% if (tarea.idFase == fases.idFase) { %>
                                                                 <tr>      
 
-                                                                    <td><%= historia.idHistoria %> <%= tarea.nombreTarea %> (<%= fases.nombreFase %>)</td>
+                                                                    <td><%= historia.idHistoria %> - <%= historia.quiero %> - <%= tarea.nombreTarea %> (<%= fases.nombreFase %>)</td>
                                                                     
                                                                     <td>
                                                                         <div class = "center">
@@ -81,36 +90,22 @@
                                                 <% } %>  
                                             <% } %>
                                         <% } %>
-                                        <% } %>
                                     <% } %>
-                                <% } %>     
-                            <% } %>                   
-                </table>
-                
-                <br>
-                
-  
-                <div class="center">
-                    <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action" value="Guardar">Guardar
-                        <i class="material-icons right">send</i>
-                    </button>
-                    <p></p>
-                    <a href="/proyectos/casodeuso/<%= idProyecto %>" class="waves-effect waves-light red btn" style="width:14rem;"><i class="material-icons left">undo</i>Regresar</a>
- 
-                </div>
+                                <% } %>
+                            <% } %>     
+                        <% } %>                   
+                    </table>
+                    
+                    <br>
 
 
-            </form>
+                </form>
                 <br><br>
+                </div>
             </div>
-        </div>
-    </div> 
+        </div> 
 
-
-
-
-
-</main>
+    </main>
 
 
 <%- include('partials/footer.ejs') %>

@@ -5,7 +5,7 @@
     <h1 class="center white-text"><%= titulo %></h1>
 
     <!-- Detalles Fases y Tareas -->  
-    <div class="container highlight proyectContent">
+    <div class="container highlight proyectContent" style="min-width:35%;">
         <div style="margin-bottom: 0px;">
              
             <div class="white-text col md-12 sm-12 lg-9">
@@ -54,19 +54,23 @@
                 </table>
                 
                 <br>
-            </form>
-            
                 <div class="center">
                     <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action" value="Guardar">Guardar
                         <i class="material-icons right">send</i>
                     </button>
+                </div>
+
+            </form>
+            
+                <div class="center">
+
                     <p></p>
                     <a href="/proyectos/casodeuso/<%= id_historia %>" class="waves-effect waves-light red btn" style="width:14rem;"><i class="material-icons left">undo</i>Regresar</a>
  
                 </div>
 
-            
-                <br><br>
+                <br>
+                
             </div>
         </div>
     </div> 
