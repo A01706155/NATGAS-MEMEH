@@ -20,4 +20,3 @@ for reportes of Reporte{
 		}
 	}
 }
-	
