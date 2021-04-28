@@ -47,4 +47,8 @@ module.exports = class Tarea {
     static EliminarTarea(idTarea) {
         return db.execute('DELETE FROM tarea WHERE idTarea=?', [idTarea]);
     }
+
+    static tareaRepetida(idFase, nombre) {
+        return db.execute('SELECT FROM tarea WHERE idFase=? AND nombreTarea=?', [idFase, '"'+nombre+'"']);
+    }
 }
