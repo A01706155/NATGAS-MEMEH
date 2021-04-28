@@ -43,7 +43,21 @@ exports.postRegistrarTarea = (request, response, next) => {
             }
             else {
                 request.session.errortarea = "Esa tarea ya existe";
-                response.redirect("/tareas/registrar-tarea/" + proyecto + "/" + fase);
+                Fase.fetchOneByFase(fase)
+                    .then(([rows, fieldData]) => {
+                        response.render('crear_tarea', { 
+                            fase: rows,
+                            idProyecto: proyecto,
+                            errortarea: request.session.errortarea,
+                            idFase: fase,
+                            csrfToken: request.csrfToken(),
+                            titulo: 'Crear tarea',
+                            isLoggedIn: request.session.isLoggedIn === true ? true : false
+                        });
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
             }
 
         })
