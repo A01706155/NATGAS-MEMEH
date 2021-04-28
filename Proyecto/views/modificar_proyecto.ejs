@@ -6,7 +6,7 @@
         <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
             <h1 class="center white-text"><%= titulo %></h1>
             
-            <form class="passcontent grey-text text-lighten-1" action="/proyectos/modificar-proyecto" method="POST">
+            <form class="passcontent grey-text text-lighten-1" action="/proyectos/modificar-proyecto" id="enviar" method="POST">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                 <% for (let elemento of proyecto) { %> 
                     
@@ -15,9 +15,12 @@
                     Descripción <br>
                     <input class="white-text" type="text" name="descripcion" value="<%= elemento.descripcion %>" required>
                     Fecha inicio <br>
-                    <input class="datepicker white-text" type="text" name="fecha_inicio" value="<%= elemento.fechaPlaneada %>" required>
+                    <input class="datepicker white-text" type="text" name="fecha_inicio" id="fecha_inicio" value="<%= elemento.fechaPlaneada %>" required>
+                    <% if (errorfecha) { %> 
+                        <div class="red-text text-darken-1" style="font-weight: bold;"><%= errorfecha %></div>
+                    <% } %>
                     Fecha de finalización <br>
-                    <input class="datepicker white-text" type="text" name="fecha_fin" value="<%= elemento.fechaEntrega %>" required>
+                    <input class="datepicker white-text" type="text" name="fecha_fin" id="fecha_fin" value="<%= elemento.fechaEntrega %>" required>
 
                     <input type="hidden" name="idProyecto" value="<%= elemento.idProyecto %>">
                     <br><br>
@@ -30,6 +33,10 @@
                         <p></p>
                         <a href="/proyectos" class="waves-effect waves-light red darken-2 btn"><i class="material-icons left">undo</i>Regresar</a>   
                     </div>
+
+                    <!-- Script para las fechas al revés -->
+                    <script src="/js/evitar_fecha_al_reves.js"></script>
+
                 </form>
                 <% } %>
             

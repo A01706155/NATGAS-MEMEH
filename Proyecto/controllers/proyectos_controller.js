@@ -18,8 +18,8 @@ exports.postRegistrarProyecto = (request, response, next) => {
     console.log(request.body.nombreProyecto);
     let inicio = request.body.fecha_inicio;
     let fin = request.body.fecha_fin;
-    request.session.errorfecha = "Fecha invalida";
     if (inicio > fin) {
+        request.session.errorfecha = "La fecha de finalización no puede ser anterior a la de inicio";
         response.redirect('/proyectos/registrar-proyecto');
     }
     else {
@@ -74,7 +74,7 @@ exports.getModificarProyecto = (request, response, next) => {
     Proyecto.fetchOne(id)
         .then(([rows, fieldData]) => {
             response.render('modificar_proyecto', { 
-                
+                errorfecha: request.session.errorfecha,
                 proyecto: rows,
                 titulo: 'Modificar proyecto',
                 csrfToken: request.csrfToken(),
@@ -89,11 +89,18 @@ exports.getModificarProyecto = (request, response, next) => {
 exports.postModificarProyecto = (request, response, next) => {
     console.log("Se esta modificando");
     console.log(request.body);
-    Proyecto.modify(request.body.nombreProyecto, request.body.descripcion, request.body.fecha_inicio, request.body.fecha_fin, request.body.idProyecto)
-        .then(() => {
-            response.redirect('/proyectos');
-        }).catch(err => console.log(err));
-
+    let inicio = request.body.fecha_inicio;
+    let fin = request.body.fecha_fin;
+    if (inicio > fin) {
+        request.session.errorfecha = "La fecha de finalización no puede ser anterior a la de inicio";
+        response.redirect('/proyectos/modificar-proyecto/' + request.body.idProyecto);
+    }
+    else{
+        Proyecto.modify(request.body.nombreProyecto, request.body.descripcion, request.body.fecha_inicio, request.body.fecha_fin, request.body.idProyecto)
+            .then(() => {
+                response.redirect('/proyectos');
+            }).catch(err => console.log(err));
+        }
 }
 
 exports.get = (request, response, next) => {
