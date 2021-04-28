@@ -49,6 +49,6 @@ module.exports = class Tarea {
     }
 
     static tareaRepetida(idFase, nombre) {
-        return db.execute('SELECT FROM tarea WHERE idFase=? AND nombreTarea=?', [idFase, '"'+nombre+'"']);
+        return db.execute("SELECT * FROM `tarea` WHERE idFase=? AND `nombreTarea` LIKE ? ", [idFase, nombre]);
     }
 }

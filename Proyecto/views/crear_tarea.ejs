@@ -8,9 +8,13 @@
 
             <form class="passcontent grey-text text-lighten-1" action="/tareas/registrar-tarea" method="POST">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                
                 Nombre de la tarea<br>
                 
                 <input class="white-text" type="text" name="nombreTarea" required><br>
+                <% if (errortarea) { %> 
+                    <div class="red-text text-darken-1" style="font-weight: bold;"><%= errortarea %></div>
+                <% } %>
 
                 <% for (let elemento of fase) { %>
                 <input type="hidden" name="idFase" value="<%= elemento.idFase %>">
