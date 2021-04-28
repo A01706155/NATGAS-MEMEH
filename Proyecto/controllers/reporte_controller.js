@@ -179,17 +179,9 @@ exports.getReporteLista = (request, response, next) => {
         });
 };
 
-<<<<<<< HEAD
 exports.postReporteEstado = (request, response, next) => {
     console.log("HOLAAAAAAAAAAAAAAAAAAA AQUÍ LARPM");
     if (request.body.estado == null) {
-=======
-
-//Cambiar estado
-exports.postReporteLista = (request, response, next) => {
-    console.log(request.body.tarea);
-    if (request.body.tarea == null) {
->>>>>>> ecb0e36bed4fe56e07c9d8f3666d2e9f37cf461f
         console.log("Vacío");
         response.redirect('/reporte/ver-reporte/'+ request.params.proyecto_id + '/' + request.params.casodeuso_id);
     }
