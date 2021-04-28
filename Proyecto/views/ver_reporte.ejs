@@ -31,9 +31,27 @@
                         <td>Estado</td>
                         <td>Acciones</td>
                     
-                    
+                        
                     </tr>
-                    
+
+                        <% for (let fases of Fase) { %>
+                            <% for (let tarea of Tareas) { %>
+                                <% if (tarea.idFase == fases.idFase) { %>
+                                        <tr>                                   
+                                        <td><%= idProyecto %></td>
+                                        <td>Como</td>
+                                        <td><%= tarea.nombreTarea %></td>
+                                        <td><%= fases.nombreFase %></td>
+                                        <td>Estado</td>
+                                        <td>
+                                            
+                                        </td>
+                                        
+                                        </tr>
+                                <% } %>  
+                            <% } %>
+                        <% } %>
+
                 </table>
                 
                 <br>
