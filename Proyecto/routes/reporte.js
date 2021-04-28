@@ -16,6 +16,10 @@ router.get('/elegir-tareas/:proyecto_id/:casodeuso_id/', isAuth, reportesControl
 
 router.post('/elegir-tareas/:proyecto_id/:casodeuso_id/', isAuth, reportesController.postReporte);
 
+router.get('/ver-reporte/:proyecto_id/:casodeuso_id/', isAuth, reportesController.getReporteLista);
+
+router.post('/ver-reporte/:proyecto_id/:casodeuso_id/', isAuth, reportesController.postReporteLista);
+
 // router.post('/crear-reporte/:proyecto_id/:casodeuso_id/', isAuth, tareasController.postRegistrarTarea);
 
 module.exports = router;

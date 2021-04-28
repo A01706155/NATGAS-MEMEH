@@ -121,6 +121,26 @@ exports.getReporte = (request, response, next) => {
         });
 };
 
+exports.getListaReporte = (request, response, next) => {
+    const idHistoria = request.params.casodeuso_id;
+    console.log(request.params);
+    Reporte.fetchByProject(idHistoria)
+        .then(([rows, fieldData]) => {
+            response.render('reporte', { 
+                rol: request.session.rol,
+                lista_reportes: rows, 
+                csrfToken: request.csrfToken(),
+                titulo: 'Reportes'  ,
+                idHistoria: idHistoria,
+                isLoggedIn: request.session.isLoggedIn === true ? true : false
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+
 exports.postEliminarHistoria = (request, response) => {
     const idHistoria = request.body.idHistoria;
     const id_proyecto = request.body.proyecto_id;
