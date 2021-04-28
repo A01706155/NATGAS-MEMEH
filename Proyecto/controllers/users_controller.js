@@ -122,3 +122,18 @@ exports.postModificarEmpleado = (request, response, next) => {
         }).catch(err => console.log(err));
 
 }
+
+exports.postEliminarEmpleado= (request, response) => {
+    
+    const idEmpleado = request.body.idEmpleado;
+    const id_proyecto = request.body.proyecto_id;
+    console.log("aquiiiiii" + idEmpleado)
+        Usuario.postEliminarEmpleados(idEmpleado)
+        .then(() => {
+            request.session.alerta = "Empleado eliminado exitosamente";
+            response.redirect('/users/modificar_empleado');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};

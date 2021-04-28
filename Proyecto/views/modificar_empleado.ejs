@@ -33,13 +33,13 @@
                         <td><%= pepe.rol %> </td>
                         <td><a href="/users/modificar/<%= pepe.idEmpleado %>" class="waves-effect waves-light yellow darken-4 btn-large"><i class="material-icons left">edit</i>Editar</a></td>
                         <td>
-                            <form action="/tareas/eliminarTarea/" method="POST" id="eliminar_<%= pepe.idEmpleado %>">
+                            <form action="/users/eliminarEmpleado/" method="POST" id="eliminar_<%= pepe.idEmpleado %>">
                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <input type="hidden" name="idEmpleado" value="<%= pepe.idEmpleado %>">
                                 <button type="submit" name="add" class="waves-effect waves-light red darken-4 btn-small"><i class="material-icons left">delete</i>Borrar Empleado</button>
                                 <script> 
                                 document.getElementById("eliminar_<%= pepe.idEmpleado   %>").addEventListener('submit', (e) => {
-                                    let confirmacion = confirm('¿Estás seguro de eliminar la tarea?');
+                                    let confirmacion = confirm('¿Estás seguro de eliminar la Empleado?');
                                     if(!confirmacion){
                                     e.preventDefault();
                                     }  

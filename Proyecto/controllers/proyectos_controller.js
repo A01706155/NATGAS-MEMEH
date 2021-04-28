@@ -6,10 +6,13 @@ const Reporte = require('../models/reporte');
 
 
 exports.getRegistrarProyecto = (request, response, next) => {
+    request.session.errorfecha = "";
     response.render('registrar_proyecto', {
         csrfToken: request.csrfToken(),
         titulo: 'Registrar proyecto',
+        
         errorfecha: request.session.errorfecha,
+        
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };

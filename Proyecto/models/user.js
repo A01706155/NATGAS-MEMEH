@@ -30,6 +30,10 @@ module.exports = class User {
         return db.execute('SELECT * FROM empleado WHERE idEmpleado=?', [idEmpleado]);
     }
 
+
+    static postEliminarEmpleados(idEmpleado){
+        return db.execute('DELETE FROM empleado WHERE idEmpleado=?', [idEmpleado]);
+    }
     
 
     static fetchAll() {

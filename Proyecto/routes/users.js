@@ -23,4 +23,6 @@ router.get('/modificar/:empleado_id', usersController.getModificarEmpleado); //m
 
 router.post('/modificar', usersController.postModificarEmpleado); 
 
+router.post('/eliminarEmpleado', usersController.postEliminarEmpleado);
+
 module.exports = router;
