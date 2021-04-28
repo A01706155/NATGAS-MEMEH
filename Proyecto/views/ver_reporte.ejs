@@ -25,31 +25,66 @@
                     <tr>
 
                         <td>Nombre Tarea</td>
-                        <td>Nombre Fase</td>
                         <td>Estado</td>
                         <td>Acciones</td>
                     
                         
                     </tr>
+                        <% for (let reporte of Reporte) { %>
+                            <% if (reporte.idHistoria == idHistoria) { %>
+                                <% for (let historia of Historia) { %>
+                                    <% if (historia.idHistoria == idHistoria) { %>
+                                        <% for (let fases of Fase) { %>
+                                            <% for (let tarea of Tareas) { %>
+                                                <% if (reporte.idTarea == tarea.idTarea) { %>
+                                                    <% for (let estado of Estado) { %>
+                                                        <% if (reporte.idEstado == estado.idEstado) { %>
+                                                         <% if (tarea.idFase == fases.idFase) { %>
+                                                                <tr>      
 
-                        <% for (let fases of Fase) { %>
-                            <% for (let tarea of Tareas) { %>
-                                <% if (tarea.idFase == fases.idFase) { %>
-                                    <% for (let estado of Estado) { %>
-                                        <tr>                                   
-                                            <td><%= tarea.nombreTarea %></td>
-                                            <td>(<%= fases.nombreFase %>)</td>
-                                            <td><%= estado.Estado %></td>
-                                            <td> Acciones </td>
-                                                
-                                            </td>
-                                            
-                                        </tr>
-                                    <% } %> 
-                                <% } %>  
-                            <% } %>
-                        <% } %>
-
+                                                                    <td><%= historia.idHistoria %> <%= tarea.nombreTarea %> (<%= fases.nombreFase %>)</td>
+                                                                    
+                                                                    <td>
+                                                                        <div class = "center">
+                                                                            <div class="input-field col s12 white-text" style="max-width: 45%;">
+                                                                                <select class="browser-default transparent" id="estado" name="<%= estado.Estado %>" style="border-color: rgba(255, 255, 255, 0.322); color: rgb(255, 255, 255);" required>
+                                                                                <option class="black" value="" disabled selected>Selecciona</option>
+                                                                                <option class="black" value="1">Pendiente</option>
+                                                                                <option class="black" value="2">En progreso</option>
+                                                                                <option class="black" value="3">Terminado</option>
+                                                                                
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    
+                                                                    
+                                                                    </td>
+                                                                    
+                                                                    <td> 
+                                                                        <form action="/reporte/guardarEstado" method="POST" id="guardar_<%= estado.idEstado %>">
+                                                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                                            <input type="hidden" name="idEstado" value="<%= estado.idEstado %>">
+                                                                            <button class="transparent" style="border-color: rgba(255, 255, 255, 0);"><li><a type="submit" name="add" class="btn-small waves-effect waves-light green" href="#!"><i class="material-icons left">save</i>Guardar</a></li></button>
+                                                                            <script> 
+                                                                            document.getElementById("guardar_<%= estado.idEstado   %>").addEventListener('submit')
+                                                                                
+                                                                            </script>
+                                                                        </form>  
+                                                                    </td>
+                                                                        
+                                                                    </td>
+                                                                
+                                                                </tr>
+                                                            <% } %> 
+                                                        <% } %>   
+                                                    <% } %>
+                                                <% } %>  
+                                            <% } %>
+                                        <% } %>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>     
+                            <% } %>                   
                 </table>
                 
                 <br>

@@ -99,22 +99,26 @@ exports.getReporteLista = (request, response, next) => {
                     .then(([rows3, fieldData]) => {
                         Historiausuario.fetchAll()
                         .then(([rows4, fieldData]) => {
-                            //console.log(rows);
-                            //console.log(rows2);
-                            //console.log(rows3);
-                            response.render('ver_reporte', { 
-                                Fase: rows,
-                                Tareas: rows2,
-                                Estado: rows3,
-                                Historia: rows4,
-                                id_historia: caso_id,
-                                idProyecto: id,
-                                csrfToken: request.csrfToken(),
-                                titulo: 'Reporte',
-                                idHistoria: caso_id,
-                                isLoggedIn: request.session.isLoggedIn === true ? true : false
-                            });
-                        })
+                            Reporte.fetchAll()
+                            .then(([rows5, fieldData]) => {
+                                    response.render('ver_reporte', { 
+                                        Fase: rows,
+                                        Tareas: rows2,
+                                        Estado: rows3,
+                                        Historia: rows4,
+                                        Reporte: rows5,
+                                        id_historia: caso_id,
+                                        idProyecto: id,
+                                        csrfToken: request.csrfToken(),
+                                        titulo: 'Reporte',
+                                        idHistoria: caso_id,
+                                        isLoggedIn: request.session.isLoggedIn === true ? true : false
+                                    });
+                                })
+                                    .catch(err => {
+                                        console.log(err);
+                                });
+                            })
                         .catch(err => {
                                 console.log(err);
                         });

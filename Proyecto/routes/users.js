@@ -21,6 +21,8 @@ router.get('/modificar_empleado', usersController.getEmpleado);
 
 router.get('/modificar/:empleado_id', usersController.getModificarEmpleado); //modificar
 
+router.post('/modificar-contrasena', usersController.postModificarContrasena); 
+
 router.post('/modificar', usersController.postModificarEmpleado); 
 
 router.post('/eliminarEmpleado', usersController.postEliminarEmpleado);

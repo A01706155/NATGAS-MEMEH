@@ -85,7 +85,7 @@ exports.getEmpleado = (request, response, next) => {
             response.render('modificar_empleado', { 
                 user: request.session.usuario,
                 lista_empleados: rows, 
-                titulo: 'Empleado',
+                titulo: 'Todos los usuarios',
                 csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
@@ -103,7 +103,7 @@ exports.getModificarEmpleado = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('modificar-empleado', { 
                 lista_empleados: rows,
-                titulo: 'Modificar empleado',
+                titulo: 'Modificar usuario',
                 csrfToken: request.csrfToken(),
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });
@@ -114,13 +114,21 @@ exports.getModificarEmpleado = (request, response, next) => {
 };
 
 exports.postModificarEmpleado = (request, response, next) => {
-    console.log("Se esta modificando");
+    console.log("Se esta modificando el empleado");
     console.log(request.body);
-    Usuario.modify(request.body.nombre, request.body.username, request.body.password, request.body.rol, request.body.idEmpleado)
+    Usuario.modify(request.body.usuario, request.body.nombre, request.body.rol, request.body.idEmpleado)
         .then(() => {
-            response.redirect('/users/modificar-empleado');
+            response.redirect('/users/modificar_empleado');
         }).catch(err => console.log(err));
+}
 
+exports.postModificarContrasena = (request, response, next) => {
+    console.log("Se esta modificando la contraseña");
+    console.log(request.body);
+    Usuario.modifyPassword(request.body.password, request.body.idEmpleado)
+        .then(() => {
+            response.redirect('/users/modificar_empleado');
+        }).catch(err => console.log(err));
 }
 
 exports.postEliminarEmpleado= (request, response) => {
