@@ -9,7 +9,7 @@ const path = require('path');
 const fasesController = require('../controllers/fases_controller');
 
 
-router.get('/registrar-fase', isAuth, fasesController.getRegistrarFase);
+router.get('/registrar-fase/:proyecto_id', isAuth, fasesController.getRegistrarFase);
 
 router.post('/registrar-fase', isAuth, fasesController.postRegistrarFase);
 
