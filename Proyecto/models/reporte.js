@@ -24,4 +24,9 @@ module.exports = class Reporte {
     static fetchByProject(idHistoria) {
         return db.execute('SELECT * FROM reporte WHERE idHistoria=?', [idHistoria]);
     }
+
+    static modify(idEstado, idReporte) {
+        return db.execute('UPDATE reporte SET idEstado=?  WHERE idReporte=?',
+        [idEstado, idReporte]);
+    }
 }

@@ -136,27 +136,23 @@ exports.getReporteLista = (request, response, next) => {
         });
 };
 
-exports.postReporteLista = (request, response, next) => {
-    console.log(request.body.tarea);
-    if (request.body.tarea == null) {
+exports.postReporteEstado = (request, response, next) => {
+    console.log("HOLAAAAAAAAAAAAAAAAAAA AQUÍ LARPM");
+    if (request.body.estado == null) {
         console.log("Vacío");
+        response.redirect('/reporte/ver-reporte/'+ request.params.proyecto_id + '/' + request.params.casodeuso_id);
     }
 
     else {
-        for (let id of request.body.tarea) {
             //console.log("Post de Reporte");
-            console.log(id);
-            let reporte = new Reporte(
-                id,
-                request.params.casodeuso_id
-            );
-            reporte.save()
+            console.log(request.body.estado);
+            console.log(request.body.idRepOrte);
+            Reporte.modify(request.body.estado, request.body.idRepOrte)
             .then()
             .catch(err =>{
                 console.log(err);
             });
-        }
     
-        response.redirect('/proyectos/casodeuso/'+ request.params.proyecto_id);
+        response.redirect('/reporte/ver-reporte/'+ request.params.proyecto_id + '/' + request.params.casodeuso_id);
     }
 }

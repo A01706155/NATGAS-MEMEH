@@ -18,7 +18,7 @@ router.post('/elegir-tareas/:proyecto_id/:casodeuso_id/', isAuth, reportesContro
 
 router.get('/ver-reporte/:proyecto_id/:casodeuso_id/', isAuth, reportesController.getReporteLista);
 
-router.post('/ver-reporte/:proyecto_id/:casodeuso_id/', isAuth, reportesController.postReporteLista);
+router.post('/ver-reporte/:proyecto_id/:casodeuso_id/', isAuth, reportesController.postReporteEstado);
 
 // router.post('/crear-reporte/:proyecto_id/:casodeuso_id/', isAuth, tareasController.postRegistrarTarea);
 
