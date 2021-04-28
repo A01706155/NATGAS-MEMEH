@@ -20,6 +20,7 @@
         usuario VARCHAR(14),       
         nombreEmpleado VARCHAR(64),
         contrasena VARCHAR(100),
+        rol INT(1),
         PRIMARY KEY(idEmpleado)
     );
 
@@ -48,6 +49,7 @@
         comentario VARCHAR(255), 
         AP INT NOT NULL, 
         idProyecto INT,
+        iteracion INT(3),
         PRIMARY KEY(idHistoria),
         FOREIGN KEY(idProyecto) REFERENCES Proyecto(idProyecto)
     );
