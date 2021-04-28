@@ -1,7 +1,7 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/navbar.ejs') %>
 
-    <div class="container white-text" style="margin: auto; min-width:70%; max-width:max-content;">
+    <div class="container white-text" style="margin: auto; min-width:55%; max-width:max-content;">
         <h1 class="center white-text"><%= titulo %></h1>
         
         <form class="passcontent grey-text text-lighten-1" action="/casodeuso/modificar-casodeuso/<%= idCasoUso %>/<%= idProyecto %>" method="POST">
@@ -36,8 +36,9 @@
                 </div>
                 
                 <input type="hidden" name="idHistoria" value="<%= elemento.idHistoria %>">
-                <br><br>
+
                 <br>  
+
                 <div class="center">
                     <button class="btn-large waves-effect waves-light green" style="width:18rem;" type="submit" name="action">Modificar Historia
                         <i class="material-icons right">send</i>
