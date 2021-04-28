@@ -28,6 +28,7 @@ exports.getReporte = (request, response, next) => {
     const caso_id = request.params.casodeuso_id;
     const id = request.params.proyecto_id;
     idProyecto = id;
+    request.session.errortareas = "";
     //console.log(request.params.proyecto_id);
     //console.log(request.params.casodeuso_id);
     Fase.fetchAll()
@@ -43,6 +44,7 @@ exports.getReporte = (request, response, next) => {
                             response.render('reporte', { 
                                 Fase: rows,
                                 Tareas: rows2,
+                                error : request.session.errortareas,
                                 Historia: rows3,
                                 id_historia: caso_id,
                                 idProyecto: id,
@@ -64,26 +66,67 @@ exports.getReporte = (request, response, next) => {
         });
 };
 
+//Elegir tarea
 exports.postReporte = (request, response, next) => {
     console.log(request.body.tarea);
     if (request.body.tarea == null) {
         console.log("Vacío");
-    }
-    for (let id of request.body.tarea) {
-        //console.log("Post de Reporte");
-        console.log(id);
-        let reporte = new Reporte(
-            id,
-            request.params.casodeuso_id
-        );
-        reporte.save()
-        .then()
-        .catch(err =>{
+        let caso_id = request.body.idHistoria;
+        let id = request.body.proyecto_id;
+        request.session.errortareas = "Seleccione al menos una tarea para continuar";
+
+        Fase.fetchAll()
+        .then(([rows, fieldData]) => {
+            Tarea.fetchAll()
+                .then(([rows2, fieldData]) => {
+                    
+                    Historiausuario.fetchAll()
+                        .then(([rows3, fieldData]) => {
+                            //console.log(rows);
+                            //console.log(rows2);
+                            //console.log(rows3);
+                            response.render('reporte', { 
+                                Fase: rows,
+                                Tareas: rows2,
+                                error : request.session.errortareas,
+                                Historia: rows3,
+                                id_historia: caso_id,
+                                idProyecto: id,
+                                csrfToken: request.csrfToken(),
+                                titulo: 'Elegir tareas',
+                                isLoggedIn: request.session.isLoggedIn === true ? true : false
+                            });
+                        })
+                        .catch(err => {
+                                console.log(err);
+                        });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        })
+        .catch(err => {
             console.log(err);
         });
-    }
 
-    response.redirect('/proyectos/casodeuso/'+ request.params.proyecto_id);
+    }
+    else {
+        for (let id of request.body.tarea) {
+            //console.log("Post de Reporte");
+            console.log(id);
+            let reporte = new Reporte(
+                id,
+                request.params.casodeuso_id
+            );
+            reporte.save()
+            .then()
+            .catch(err =>{
+                console.log(err);
+            });
+        }
+
+        response.redirect('/proyectos/casodeuso/'+ request.params.proyecto_id);
+    } 
 }
 
 exports.getReporteLista = (request, response, next) => {
@@ -136,6 +179,8 @@ exports.getReporteLista = (request, response, next) => {
         });
 };
 
+
+//Cambiar estado
 exports.postReporteLista = (request, response, next) => {
     console.log(request.body.tarea);
     if (request.body.tarea == null) {
