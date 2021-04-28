@@ -5,6 +5,7 @@ const Historiausuario = require('../models/casodeuso');
 const Fase = require('../models/fase');
 const Tarea = require('../models/tarea');
 const Reporte = require('../models/reporte');
+const Estado = require('../models/estado');
 
 
 
@@ -33,6 +34,7 @@ exports.getReporte = (request, response, next) => {
         .then(([rows, fieldData]) => {
             Tarea.fetchAll()
                 .then(([rows2, fieldData]) => {
+                    
                     Historiausuario.fetchAll()
                         .then(([rows3, fieldData]) => {
                             //console.log(rows);
@@ -93,15 +95,18 @@ exports.getReporteLista = (request, response, next) => {
         .then(([rows, fieldData]) => {
             Tarea.fetchAll()
                 .then(([rows2, fieldData]) => {
-                    Historiausuario.fetchAll()
-                        .then(([rows3, fieldData]) => {
+                    Estado.fetchAll()
+                    .then(([rows3, fieldData]) => {
+                        Historiausuario.fetchAll()
+                        .then(([rows4, fieldData]) => {
                             //console.log(rows);
                             //console.log(rows2);
                             //console.log(rows3);
                             response.render('ver_reporte', { 
                                 Fase: rows,
                                 Tareas: rows2,
-                                Historia: rows3,
+                                Estado: rows3,
+                                Historia: rows4,
                                 id_historia: caso_id,
                                 idProyecto: id,
                                 csrfToken: request.csrfToken(),
@@ -113,6 +118,10 @@ exports.getReporteLista = (request, response, next) => {
                         .catch(err => {
                                 console.log(err);
                         });
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
                 })
                 .catch(err => {
                     console.log(err);
