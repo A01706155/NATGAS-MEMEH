@@ -143,13 +143,13 @@ exports.getListaReporte = (request, response, next) => {
 
 exports.postEliminarHistoria = (request, response) => {
     const idHistoria = request.body.idHistoria;
-    const id_proyecto = request.body.proyecto_id;
+    const id_proyecto = request.params.proyecto_id;
     console.log("idHistoria: " + idHistoria)
         Historiausuario.EliminarConexionHistoriaReporte(idHistoria)
         Historiausuario.EliminarHistoria(idHistoria)
         .then(() => {
             request.session.alerta = "Historia de Usuario eliminada exitosamente";
-            response.redirect('/');
+            response.redirect('/proyectos/casodeuso/' + id_proyecto);
         })
         .catch(err => {
             console.log(err);
