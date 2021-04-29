@@ -131,7 +131,7 @@ exports.postReporte = (request, response, next) => {
             });
         }
 
-        response.redirect('/proyectos/casodeuso/'+ request.params.proyecto_id);
+        response.redirect('/reporte/ver-reporte/'+ request.params.proyecto_id +'/'+ request.params.casodeuso_id);
     } 
 }
 
