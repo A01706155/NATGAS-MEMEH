@@ -37,7 +37,7 @@
                         <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Estadisticas</a>
 
                         <!-- Modal Structure -->
-                        <div id="modal1" class="modal">
+                        <div id="modal1" class="modal black">
                             <div class="modal-content">
                             <h4>Tareas Activas</h4>
                             <p><table class="centered highlight">
@@ -87,7 +87,7 @@
                                         <td><%= var3 %></td>
                                         <tr>
                                         </table>
-                                        <canvas id="myChart" width="400" height="400"></canvas>
+                                        <canvas id="myChart" width="400" height="180"></canvas>
                                         <script>
                                         var ctx = document.getElementById('myChart').getContext('2d');
                                         var myChart = new Chart(ctx, {
@@ -95,19 +95,19 @@
                                             data: {
                                                 labels: ['Pendiente', 'En progreso', 'Terminados'],
                                                 datasets: [{
-                                                    label: '# of Votes',
+                                                    label: '# de tareas',
                                                     data: [<%= var1 %>, <%= var2 %>, <%= var3 %>],
                                                     backgroundColor: [
-                                                        'rgba(255, 99, 132, 0.2)',
-                                                        'rgba(54, 162, 235, 0.2)',
-                                                        'rgba(255, 206, 86, 0.2)'
+                                                        'rgba(255, 99, 132, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)'
                                                     ],
                                                     borderColor: [
                                                         'rgba(255, 99, 132, 1)',
                                                         'rgba(54, 162, 235, 1)',
                                                         'rgba(255, 206, 86, 1)'
                                                     ],
-                                                    borderWidth: 1
+                                                    borderWidth: 1,
                                                 }]
                                             },
                                             options: {
@@ -130,8 +130,8 @@
                      
                              </p>
                             </div>
-                            <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                            <div class="modal-footer grey darken-4">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat white-text">Agree</a>
                             </div>
                         </div>
                         </div>

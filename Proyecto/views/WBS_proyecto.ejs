@@ -28,7 +28,7 @@
                     <li><a class="white-text" href="/tareas/registrar-tarea/<%= idProyecto %>/<%= detalle.idFase %>"><i class="material-icons">add</i>Agregar tarea</a></li>
                     <li class="divider" tabindex="-1"></li>
                     <li>
-                        <form action="/fases/eliminarFase/" method="POST" id="eliminar_<%= detalle.idFase %>">
+                        <form action="/fases/eliminarFase/" method="POST" id="eliminar <%= detalle.idFase %>">
                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <input type="hidden" name="idFase" value="<%= detalle.idFase %>">
                             <button class="transparent" style="border-color: rgba(255, 255, 255, 0);">
@@ -39,7 +39,7 @@
                                 </li>
                             </button>
                             <script> 
-                            document.getElementById("eliminar_<%= detalle.idFase%>").addEventListener('submit', (e) => {
+                            document.getElementById("eliminar <%= detalle.idFase%>").addEventListener('submit', (e) => {
                                 let confirmacion = confirm('¿Estás seguro de eliminar la fase?');
                                 if(!confirmacion){
                                 e.preventDefault();
@@ -68,7 +68,7 @@
                                         <input type="hidden" name="idTarea" value="<%= tarea.idTarea %>">
                                             <button type="submit" name="add" class="waves-effect waves-light red darken-4 btn-small"><i class="material-icons left">delete</i>Borrar Tarea</button>
                                             <script> 
-                                            document.getElementById("eliminar_<%= tarea.idTarea   %>").addEventListener('submit', (e) => {
+                                            document.getElementById("eliminar_<%= tarea.idTarea %>").addEventListener('submit', (e) => {
                                                 let confirmacion = confirm('¿Estás seguro de eliminar la tarea?');
                                                 if(!confirmacion){
                                                 e.preventDefault();

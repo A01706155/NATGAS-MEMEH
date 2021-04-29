@@ -6,6 +6,6 @@
 5. Crear un controlador que obtenga y guarde el estado según el id del reporte. ✅
 ------------------------------------------ PRIORIDAD SECUNDARIA -------------------------------------------
 6. Revisar qué va saliendo en cuanto a errores.
-7. Ver una forma de implementar un dashboard o gráfico con los datos que tenemos.
+7. Ver una forma de implementar un dashboard o gráfico con los datos que tenemos. ✅
 8. Establecer las tareas dependiendo del idProyecto para que no se hagan chocomilk con todos los proyectos.
 9. Cosas que hagan el proyecto más fancy.
