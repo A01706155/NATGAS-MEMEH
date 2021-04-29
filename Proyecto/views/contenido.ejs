@@ -1,0 +1,34 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
+<br><br><br>
+    <div class="container">
+        <div class="row">
+             
+            <div class="col md-12 sm-12 lg-9">
+                <table class="responsive-table">
+                <tr>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+                <td>Fecha inicial</td>
+                <td>Fecha Final</td>
+                </tr>
+                <tr> 
+                    <% for (let elemento of Proyecto) { %>
+                        <td><%= elemento.nombreProyecto %> </td>
+                        <td><%= elemento.descripcion %></td>
+                        <td><%= elemento.fecha_inicio %> </td>
+                        <td><%= elemento.fecha_fin %></td>
+                    <% } %>          
+                   </tr>      
+                </table>    
+                    <br><br><br>
+                    <a href="#" class="btn btn-primary">WBS</a>
+                    <a href="/proyectos" class="btn btn-primary">Volver al inicio</a>
+                    <br><br>                
+            </div>
+        </div>
+    </div>    
+
+
+<%- include('partials/footer.ejs') %>
