@@ -17,7 +17,7 @@ Al hacer el clone del repositorio es importante:
 ```sh
   npm start
   ```
-* Desde cualquier navegador ingresar a la ruta "localhost:3000/users/login" e ingresar al sistema con las siguientes credenciales:
+* Desde cualquier navegador ingresar a la ruta "localhost:3000/users/login" e ingresar al url:
 ```sh
     Nombre de Usuario: admin
     Contraseña: 123
