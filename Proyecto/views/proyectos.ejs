@@ -55,7 +55,7 @@
                             <form action="/proyectos/eliminarProyecto" method="POST" id="eliminar_<%= proyecto.idProyecto %>">
                               <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                               <input type="hidden" name="idProyecto" value="<%= proyecto.idProyecto %>">
-                              <button class="transparent" style="border-color: rgba(255, 255, 255, 0);"><li><a type="submit" name="add" class="waves-effect waves-light red"><i class="material-icons left">delete</i>Borrar</a></li></button>
+                              <button class="transparent" style="border-color: rgba(255, 255, 255, 0);"><li><a type="submit" name="add" class="waves-effect waves-light transparent red-text"><i class="material-icons left">delete</i>Eliminar</a></li></button>
                               <script> 
                                 document.getElementById("eliminar_<%= proyecto.idProyecto   %>").addEventListener('submit', (e) => {
                                   let confirmacion = confirm('¿Estás seguro de eliminar el Proyecto?');
