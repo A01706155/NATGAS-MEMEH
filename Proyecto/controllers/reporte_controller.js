@@ -35,27 +35,33 @@ exports.getReporte = (request, response, next) => {
         .then(([rows, fieldData]) => {
             Tarea.fetchAll()
                 .then(([rows2, fieldData]) => {
-                    
-                    Historiausuario.fetchAll()
-                        .then(([rows3, fieldData]) => {
-                            //console.log(rows);
-                            //console.log(rows2);
-                            //console.log(rows3);
-                            response.render('reporte', { 
-                                Fase: rows,
-                                Tareas: rows2,
-                                error : request.session.errortareas,
-                                Historia: rows3,
-                                id_historia: caso_id,
-                                idProyecto: id,
-                                csrfToken: request.csrfToken(),
-                                titulo: 'Elegir tareas',
-                                isLoggedIn: request.session.isLoggedIn === true ? true : false
+                    Reporte.fetchAll()
+                            .then(([rows5, fieldData]) => {
+                        Historiausuario.fetchAll()
+                                .then(([rows3, fieldData]) => {
+                                //console.log(rows);
+                                //console.log(rows2);
+                                //console.log(rows3);
+                                response.render('reporte', { 
+                                    Fase: rows,
+                                    Tareas: rows2,
+                                    error : request.session.errortareas,
+                                    Historia: rows3,
+                                    id_historia: caso_id,
+                                    idProyecto: id,
+                                    csrfToken: request.csrfToken(),
+                                    titulo: 'Elegir tareas',
+                                    reporte: rows5,
+                                    isLoggedIn: request.session.isLoggedIn === true ? true : false
+                                });
+                            })
+                            .catch(err => {
+                                    console.log(err);
                             });
-                        })
-                        .catch(err => {
-                                console.log(err);
-                        });
+                    })
+                    .catch(err => {
+                            console.log(err);
+                    });
                 })
                 .catch(err => {
                     console.log(err);

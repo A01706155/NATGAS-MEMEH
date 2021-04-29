@@ -11,14 +11,7 @@
             <div style="margin-bottom: 0px;">
                 
                 <div class="white-text col md-12 sm-12 lg-9">
-                    <div class="center">
-                        <a href="/proyectos/casodeuso/<%= idProyecto %>" 
-                            class="waves-effect waves-light red btn" 
-                            style="width:14rem;">
-                            <i class="material-icons left">undo</i>
-                            Regresar
-                        </a>
-                    </div>
+
                     <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                     
                         <h6 class="header center grey-text text-lighten-1">Reporte del siguiente Historia de Usuario: </h6>
@@ -34,8 +27,16 @@
 
                             <br>
                           <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Estadisticas</a>
-
+                        <a class="waves-effect waves-light btn-large modal-trigger" href="#modal1">Estadisticas</a>
+                        <br><br>
+                        <div class="center">
+                            <a href="/proyectos/casodeuso/<%= idProyecto %>" 
+                                class="waves-effect waves-light red btn" 
+                                style="width:14rem;">
+                                <i class="material-icons left">undo</i>
+                                Regresar
+                            </a>
+                        </div>
                         <!-- Modal Structure -->
                         <div id="modal1" class="modal black">
                             <div class="modal-content">
@@ -122,16 +123,11 @@
 
     
                                     <% } %>
-                                
-                                                                
-                                
-                                   
-                                
                      
                              </p>
                             </div>
                             <div class="modal-footer grey darken-4">
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat white-text">Agree</a>
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat white-text">Cerrar</a>
                             </div>
                         </div>
                         </div>
@@ -142,7 +138,6 @@
                             <td>Nombre Tarea</td>
                             <td>Estado</td>
                             <td>Acciones</td>
-                        
                             
                         </tr>
                         
@@ -209,8 +204,6 @@
             </div>
         </div> 
 
-  
     </main>
-
 
 <%- include('partials/footer.ejs') %>
