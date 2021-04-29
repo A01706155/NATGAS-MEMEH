@@ -180,7 +180,7 @@ exports.getReporteLista = (request, response, next) => {
 };
 
 exports.postReporteEstado = (request, response, next) => {
-    console.log("HOLAAAAAAAAAAAAAAAAAAA AQUÍ LARPM");
+    //console.log("HOLAAAAAAAAAAAAAAAAAAA AQUÍ LARPM");
     if (request.body.estado == null) {
         console.log("Vacío");
         response.redirect('/reporte/ver-reporte/'+ request.params.proyecto_id + '/' + request.params.casodeuso_id);
