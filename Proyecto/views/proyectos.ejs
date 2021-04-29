@@ -11,7 +11,7 @@
       
       <div class="input-field">
         <i class="material-icons prefix">search</i>
-        <label for="buscar">Buscar un proyecto</label>
+        <label for="buscar">Escribe aquí para buscar un proyecto</label>
         <input class="white-text" type="text" name="buscar" id="buscar" onkeyup="buscar()">
 
       </div> 
@@ -27,10 +27,10 @@
     
     <!-- Generar proyectos almacenados con tarjetas -->
     <div class="row" id="resultados">
-            
+
       <!-- Card creation -->
       <% for (let proyecto of lista_proyecto) { %>
-          <div class="col s12 m6 l4">
+          <div class="col s12 m6 l3">
               <div class="card medium grey darken-4">
                   
                   <div class="card-image waves-effect waves-block waves-light">
@@ -38,14 +38,14 @@
                   </div>
                   
                   <div class="card-content">
-                  <span class="card-title activator grey-text text-lighten-3"><%= proyecto.nombreProyecto %>   
+                  <span class="card-title activator grey-text text-lighten-3">Proyecto: <%= proyecto.nombreProyecto %>   
                       
                     <div class="center card-action">
                       <!-- Dropdown Trigger -->
-                      <a class='dropdown-trigger btn' data-target='<%= proyecto.idProyecto %>' style="width: 80%;">Acciones</a>
+                      <a class="dropdown-trigger btn" data-target="<%= proyecto.idProyecto %>" style="width: 80%;">Acciones</a>
                     
                       <!-- Dropdown Structure -->
-                      <ul id='<%= proyecto.idProyecto %>' class='dropdown-content black'>
+                      <ul id="<%= proyecto.idProyecto %>" class="dropdown-content black">
                           <li><a class="white-text" href="/proyectos/modificar-proyecto/<%= proyecto.idProyecto %>"><i class="material-icons">edit</i>Editar proyecto</a></li>
                           <li><a class="white-text" href="/fases/<%= proyecto.idProyecto %>"><i class="material-icons">grid_view</i>Fases y tareas</a></li>
                           <li><a class="white-text" href="/proyectos/casodeuso/<%= proyecto.idProyecto %>"><i class="material-icons">border_all</i>Historia de Usuario</a></li>  
@@ -73,8 +73,9 @@
                   </div>
 
                   <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4"><strong>Proyecto:</strong> <%= proyecto.nombreProyecto %><i class="material-icons right">close</i></span>
+                      <span class="card-title grey-text text-darken-4">Proyecto: <%= proyecto.nombreProyecto %><i class="material-icons right">close</i></span>
                       <br>
+                      <strong>Proyecto:</strong> <%= proyecto.nombreProyecto %><br><br>
                       <strong>Descripcion:</strong> <%= proyecto.descripcion %><br><br>
                       <strong>Fecha de inicio:</strong> <%= proyecto.fechaPlaneada %><br><br>
                       <strong>Fecha de finalización:</strong> <%= proyecto.fechaEntrega %><br><br>
