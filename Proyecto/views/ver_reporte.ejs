@@ -17,8 +17,8 @@
                             Regresar
                         </a>
                     </div>
-
-                    <table class="centered highlight">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                    
                         <h6 class="header center grey-text text-lighten-1">Reporte del siguiente Historia de Usuario: </h6>
 
                         <h5 class="center white-text">
@@ -28,7 +28,36 @@
                                 <% } %>
                             <% } %>
                         </h5>
+                        <div class="center">
 
+                          <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Estadisticas</a>
+
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                            <h4>Tareas Activas</h4>
+                            <p><table class="centered highlight">
+                                <tr>
+                                    <td>Pendiente</td>
+                                    <td>Estado</td>
+                                    <td>Termiando</td>
+                                </tr>
+                                <tr>
+                                    
+                                </tr>
+
+                                
+                            </table>
+                             </p>
+                            </div>
+                            <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                            </div>
+                        </div>
+                        </div>
+                        <table class="centered highlight">
+                        <br><br>
                         <tr>
 
                             <td>Nombre Tarea</td>
@@ -51,16 +80,16 @@
                                                                 <tr>      
                                                                     <td><%= historia.idHistoria %> - <%= historia.quiero %> - <%= tarea.nombreTarea %> (<%= fases.nombreFase %>)</td>
                                                                     
-                                                                        <form action="/reporte/ver-reporte/<%= idProyecto %>/<%= id_historia %>" method="POST">
+                                                                        <form action="/reporte/guardarEstado" method="POST"></form>
                                                                             
                                                                             <td>
                                                                                 <div class = "center">
-                                                                                    <div class="input-field col s12 white-text">
-                                                                                        <select class="browser-default transparent" id="estado" name="estado" style="border-color: rgba(255, 255, 255, 0.322); color: rgb(255, 255, 255);" required>
-                                                                                            <option class="black" value='<%= estado.idEstado %>' disabled selected><%= estado.Estado %></option>
-                                                                                            <option class="black" value="1">Pendiente</option>
-                                                                                            <option class="black" value="2">En progreso</option>
-                                                                                            <option class="black" value="3">Terminado</option>
+                                                                                    <div class="input-field col s12 white-text" style="max-width: 45%;">
+                                                                                        <select class="browser-default transparent" id="estado" name="<%= estado.Estado %>" style="border-color: rgba(255, 255, 255, 0.322); color: rgb(255, 255, 255);" required>
+                                                                                        <option class="black" value='<%= estado.idEstado %>' disabled selected><%= estado.Estado %></option>
+                                                                                        <option class="black" value="1">Pendiente</option>
+                                                                                        <option class="black" value="2">En progreso</option>
+                                                                                        <option class="black" value="3">Terminado</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -68,12 +97,14 @@
                                                                             
                                                                             <td> 
                                                                                 
-                                                                                <input type="hidden" name="idRepOrte" value="<%= reporte.idReporte %>">
                                                                                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                                                                
                                                                                 <button class="btn-large waves-effect waves-light green" type="submit" name="action">
                                                                                     <i class="material-icons right">save</i>Guardar
                                                                                 </button>
+                                                                                <script> 
+                                                                                document.getElementById("guardar_<%= estado.idEstado   %>").addEventListener('submit')
+                                                                                    
+                                                                                </script>
                                                                                 
                                                                             </td>
                                                                             
