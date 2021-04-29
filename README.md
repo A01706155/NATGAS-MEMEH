@@ -19,4 +19,4 @@ Al hacer el clone del repositorio es importante:
     Contraseña: 123
 
 [contributors-shield]: https://img.shields.io/github/contributors/A01706155/NATGAS-MEMEH.svg?style=for-the-badge
-[contributors-url]: https://github.com/JR-espacial/NATGAS-MEMEH/graphs/contributors
+[contributors-url]: https://github.com/A01706155/NATGAS-MEMEH/graphs/contributors
