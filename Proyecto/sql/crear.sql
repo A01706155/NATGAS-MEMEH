@@ -82,3 +82,6 @@ INSERT INTO `fases` (`idFase`, `nombreFase`) VALUES
 (2, `Diseño`),
 (3, `Implementación`),
 (4, `Pruebas`);
+
+INSERT INTO `empleado` (`idEmpleado`, `usuario`, `nombreEmpleado`, `contrasena`) VALUES
+(1, 'admin', 'admin', '$2a$12$3PTLrE4XWH2A58lTpnQmeOOD7n87BR8bfPC27ead74qxB2wWvHmu2');
