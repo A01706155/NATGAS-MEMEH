@@ -56,7 +56,7 @@ CREATE TABLE HistoriaUsuario(
 
 CREATE TABLE Estado (
     idEstado INT AUTO_INCREMENT NOT NULL,
-    Estado INT (1),
+    Estado VARCHAR (50),
     PRIMARY KEY(idEstado)
 );
 
@@ -82,3 +82,6 @@ INSERT INTO `fases` (`idFase`, `nombreFase`) VALUES
 (2, `Diseño`),
 (3, `Implementación`),
 (4, `Pruebas`);
+
+INSERT INTO `empleado` (`idEmpleado`, `usuario`, `nombreEmpleado`, `contrasena`, `rol`) VALUES 
+(1, 'admin', 'admin', '123', '1');
