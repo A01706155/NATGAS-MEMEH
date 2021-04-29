@@ -3,7 +3,7 @@
 ### Installation
 * Clonar el repositorio de github en la terminal donde quiera que sea guardada. 
 ```sh
-  npm install
+  git clone https://github.com/A01706155/NATGAS-MEMEH.git
   ```
 Al hacer el clone del repositorio es importante:
 * Utilizar los scripts dentro de las carpetas "Proyecto/sql". 
