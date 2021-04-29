@@ -1,6 +1,10 @@
 [![Contributors][contributors-shield]][contributors-url]
 # MEMEH
 ### Installation
+* Clonar el repositorio de github en la terminal donde quiera que sea guardada. 
+```sh
+  npm install
+  ```
 Al hacer el clone del repositorio es importante:
 * Utilizar los scripts dentro de las carpetas "Proyecto/sql". 
   * Para crear la estructura de la base de datos se utiliza el archivo "create.sql" que debe ejecutarse dentro del DBMS.
