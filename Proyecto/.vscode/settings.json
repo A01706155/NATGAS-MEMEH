@@ -1,8 +1,0 @@
-{
-    "appService.zipIgnorePattern": [
-        "node_modules{,/**}",
-        ".vscode{,/**}"
-    ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/a84a5f21-7518-4678-b15f-2073d2208b6a/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/natgas-memeh",
-    "appService.deploySubpath": "."
-}
